@@ -1,0 +1,680 @@
+<!doctype html>
+<html lang="en">
+<head>
+<script>/* smAisle look: Dark mode Off / On / Match phone, shared key "smaisle-dark" on smaisle.app. Set before drawing so there's no flash. */
+(function(){var m='off';try{m=localStorage.getItem('smaisle-dark')||'off'}catch(e){}
+var dark=m==='on'||(m==='auto'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);
+if(dark)document.documentElement.setAttribute('data-mode','navy')})();</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
+<title>Blipword</title>
+<meta name="description" content="A daily word game. A word flashes on the screen for a split second. Pick its definition from four look-alikes.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Blipword">
+<meta name="theme-color" content="#f4efe1">
+<link rel="icon" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,900;1,700&family=Libre+Baskerville:ital@0;1&family=Libre+Franklin:wght@500;600;700;800;900&display=swap">
+<style>
+:root{
+  --paper:#f4efe1;--paper2:#ebe4d0;--ink:#1a1814;--ink2:#4a453b;--fade:#8c8574;--card:#fffdf6;--red:#b3261e;--green:#2f7d3a;
+  --hi:#ffe27a;--hi-ink:#1a1814;--line:#1a1814;--btn:#1a1814;--btn-ink:#f4efe1;--key:#fffdf6;--shadow:#1a1814;
+  --head:"Playfair Display",Georgia,"Times New Roman",serif;--body:"Libre Baskerville",Georgia,serif;--sans:"Libre Franklin","Helvetica Neue",Arial,sans-serif;
+  color-scheme:light;
+}
+:root[data-mode="navy"]{--paper:#121b2e;--paper2:#0d1424;--card:#1c2a44;--ink:#efe6cc;--ink2:#c9b98f;--fade:#8792ab;--line:#3a4a6b;--btn:#c9a961;--btn-ink:#121b2e;
+  --hi:#ffe27a;--hi-ink:#121b2e;--red:#e0402f;--green:#4caf63;--key:#24355a;--shadow:#05080f;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{height:100%;margin:0;touch-action:manipulation;-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font-family:var(--body);-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;overscroll-behavior:none}
+button{font:inherit;color:inherit;touch-action:manipulation;cursor:pointer}
+#app{max-width:520px;margin:0 auto;height:100vh;height:100dvh;overflow:hidden;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 10px)}
+#dailyBar{display:block;margin:0 -16px;padding:8px 16px;background:var(--card);border-bottom:2px solid var(--line);color:var(--ink);font:800 12px var(--sans);text-decoration:none;letter-spacing:.01em}
+#top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;border-bottom:3px double var(--line)}
+#top .no{font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);min-width:70px}
+#top h1{margin:0;font:900 30px/1 var(--head);letter-spacing:-.01em}
+#top h1 span{background:var(--hi);color:var(--hi-ink);padding:0 4px;margin-left:1px}
+#menuBtn{min-width:70px;text-align:right;background:none;border:0;padding:6px 0;font-size:24px;line-height:1}
+#pastTag{background:var(--ink);color:var(--paper);font:800 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:5px;margin-top:8px}
+#pips{display:flex;justify-content:center;gap:5px;margin:12px 0 10px}
+.pip{flex:0 1 34px;height:34px;border:2px solid var(--line);background:var(--card);display:grid;place-items:center;font:800 12px var(--sans);color:var(--fade)}
+.pip.now{border-color:var(--ink);box-shadow:2px 2px 0 var(--shadow);color:var(--ink);transform:translateY(-2px)}
+.pip.w{background:var(--green);border-color:var(--green);color:#fff}
+.pip.l{background:var(--red);border-color:var(--red);color:#fff}
+#stage{flex:1;display:flex;flex-direction:column}
+.meta{display:flex;justify-content:space-between;align-items:center;font:700 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--fade);margin:2px 0 8px}
+.meta .spd{text-transform:none;background:var(--hi);color:var(--hi-ink);border:2px solid var(--line);font:800 13px var(--sans);letter-spacing:.04em;padding:3px 8px;box-shadow:2px 2px 0 var(--shadow)}
+/* the flash window */
+#win{position:relative;height:128px;background:var(--card);border:2px solid var(--line);box-shadow:6px 6px 0 var(--shadow);margin:0 6px 0 0;display:grid;place-items:center;overflow:hidden;cursor:pointer}
+#win .fx{font:900 34px var(--sans);color:var(--fade)}
+#win .wd{font:900 clamp(30px,10vw,46px)/1 var(--sans);letter-spacing:.06em;color:var(--ink)}
+#win .mask{display:flex;gap:.12em;font:900 clamp(30px,10vw,46px)/1 var(--sans)}
+#win .mask i{display:block;width:.62em;height:.74em;background:var(--ink2)}
+#win .tap{font:800 15px var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink2);text-align:center;line-height:1.5}
+#win .tap b{display:block;font:900 26px var(--head);letter-spacing:0;text-transform:none;color:var(--ink)}
+#win .gone{font:italic 16px var(--body);color:var(--fade)}
+#win.ok{border-color:var(--green)} #win.bad{border-color:var(--red)}
+#win .rev{font:900 clamp(26px,8.5vw,40px)/1 var(--head);letter-spacing:.02em}
+.stamp{position:absolute;right:10px;top:10px;font:800 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;border:2.5px solid currentColor;transform:rotate(-8deg)}
+.stamp.ok{color:var(--green)} .stamp.bad{color:var(--red)}
+.ask{font:700 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin:18px 0 4px}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;margin:8px 0;padding:12px 12px;border:2px solid var(--line);background:var(--card);font:16px/1.4 var(--body);box-shadow:3px 3px 0 var(--shadow);animation:rise .25s ease-out both}
+.opt:nth-child(2){animation-delay:.04s}.opt:nth-child(3){animation-delay:.08s}.opt:nth-child(4){animation-delay:.12s}
+@keyframes rise{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+.opt .n{flex:0 0 22px;height:22px;border:2px solid var(--line);display:grid;place-items:center;font:800 12px var(--sans);margin-top:1px}
+.opt .d{flex:1}
+.opt .w{flex:0 0 auto;align-self:center;font:800 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2)}
+.opt:active:not([disabled]){transform:translate(2px,2px);box-shadow:1px 1px 0 var(--shadow)}
+.opt[disabled]{cursor:default}
+.opt[disabled]:not(.wrong){animation:none}
+.opt.right{border-color:var(--green);background:var(--green);color:#fff} .opt.right .n{border-color:#fff} .opt.right .w{color:#fff}
+.opt.wrong{border-color:var(--red);background:var(--red);color:#fff;animation:shake .4s} .opt.wrong .n{border-color:#fff} .opt.wrong .w{color:#fff}
+.opt.dim{opacity:.55}
+@keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+.go{display:block;width:100%;margin:16px 0 0;padding:14px;border:2px solid var(--line);background:var(--btn);color:var(--btn-ink);font:800 16px var(--sans);letter-spacing:.04em;text-transform:uppercase;box-shadow:4px 4px 0 var(--shadow)}
+.go:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+.go.alt{background:var(--card);color:var(--ink)} .go.hi{background:var(--hi);color:var(--hi-ink)}
+.small{font:600 13px var(--sans);color:var(--ink2);text-align:center;margin-top:12px}
+.link{background:none;border:0;text-decoration:underline;font:600 13px var(--sans);color:var(--ink2);padding:6px}
+/* sheets */
+.sheet{position:fixed;inset:0;z-index:10;background:rgba(26,24,20,.45);display:flex;align-items:flex-end;justify-content:center;padding:16px}
+:root[data-mode="navy"] .sheet{background:rgba(5,8,15,.75)}
+.sheet>.box2{width:100%;max-width:480px;max-height:calc(100% - 20px);overflow:auto;background:var(--paper);border:2px solid var(--line);box-shadow:6px 6px 0 var(--shadow);padding:18px 18px 16px;margin-bottom:env(safe-area-inset-bottom);-webkit-user-select:text;user-select:text}
+@media (min-height:640px){.sheet{align-items:center}}
+.sheet h2{margin:0 0 4px;font:900 26px var(--head)} .sheet h3{margin:16px 0 6px;font:800 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
+.sheet p,.sheet li{font:15px/1.55 var(--body)} .sheet ul{padding-left:20px;margin:6px 0}
+.x{float:right;background:none;border:0;font:700 24px/1 var(--sans);padding:0 2px;color:var(--ink2)}
+.mbtn{display:block;width:100%;text-align:left;margin:8px 0;padding:13px 14px;border:2px solid var(--line);background:var(--card);font:800 15px var(--sans);letter-spacing:.03em}
+.mbtn.y{background:var(--hi);color:var(--hi-ink)}
+.seg{display:flex;border:2px solid var(--line);margin:6px 0 10px}
+.seg button{flex:1;padding:9px 4px;border:0;background:var(--card);font:700 13px var(--sans)}
+.seg button+button{border-left:2px solid var(--line)}
+.seg button.on{background:var(--btn);color:var(--btn-ink)}
+.spdseg{margin:14px 0 0}
+/* Home screen (v2.1) */
+body.home #top,body.home #pips,body.home #pastTag{display:none!important}
+#home{flex:1;display:flex;flex-direction:column;justify-content:center;text-align:center;padding:10px 0 6px}
+#home .ttl{border-top:3px double var(--line);border-bottom:3px double var(--line);padding:12px 0 10px;margin:0 0 10px}
+#home .ttl h1{margin:0;font:900 52px/1 var(--head);letter-spacing:-.01em}#home .ttl h1 span{background:var(--hi);color:var(--hi-ink);padding:0 6px;margin-left:2px}
+#home .tag{font:italic 16px/1.4 var(--body);color:var(--ink2);margin:0 0 12px}
+#home .lbl{font:800 11px var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ink2);margin:14px 0 6px}
+.hcard{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:14px 14px;border:2px solid var(--line);background:var(--card);box-shadow:4px 4px 0 var(--shadow)}
+.hcard:active{transform:translate(2px,2px);box-shadow:2px 2px 0 var(--shadow)}
+.hcard b{display:block;font:900 26px/1.1 var(--head)} .hcard small{display:inline-block;margin-top:5px;background:var(--hi);color:var(--hi-ink);font:800 11px var(--sans);letter-spacing:.08em;text-transform:uppercase;padding:2px 6px}
+.hcard .go2{font:800 14px var(--sans);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+#home .links{margin:14px 0 0;font:800 12px var(--sans);letter-spacing:.06em;text-transform:uppercase}
+#home .links button{background:none;border:0;text-decoration:underline;font:inherit;padding:6px 4px;color:var(--ink)}
+#home .foot{border-top:2px solid var(--line);margin-top:16px;padding-top:10px;display:flex;flex-direction:column;gap:2px;font:800 13px var(--sans)}
+#home .foot a{color:var(--ink);text-decoration:none;padding:5px} #home .foot i{font:italic 13px var(--body);color:var(--ink2);font-weight:400;margin-left:6px}
+#home .hv{font:600 11px var(--sans);color:var(--fade);margin-top:8px}
+.fit1 #home .ttl h1{font-size:44px}.fit2 #home .tag{margin-bottom:6px}.fit2 #home .lbl{margin:8px 0 4px}.fit3 #home .ttl h1{font-size:38px}.fit3 .hcard{padding:10px 12px}.fit3 .hcard b{font-size:22px}.spdseg button{padding:8px 2px;font-size:12.5px}
+.fit3 .spdseg{margin-top:8px}.fit3 .spdseg button{padding:6px 2px}
+.ver{font:600 12px var(--sans);color:var(--fade);text-align:center;margin-top:14px}
+.statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;margin:10px 0}
+.statrow b{display:block;font:900 30px var(--head)} .statrow span{font:600 11px var(--sans);color:var(--ink2);text-transform:uppercase;letter-spacing:.05em}
+.bar{display:flex;align-items:center;gap:8px;margin:4px 0;font:700 13px var(--sans)}
+.bar i{display:block;height:18px;background:var(--fade);min-width:22px;color:#fff;font-style:normal;text-align:right;padding:1px 6px;font-size:12px}
+.bar i.me{background:var(--green)}
+.arch{display:flex;justify-content:space-between;align-items:center;width:100%;padding:11px 12px;margin:6px 0;border:2px solid var(--line);background:var(--card);font:700 14px var(--sans);text-align:left}
+.arch small{display:block;font:600 12px var(--sans);color:var(--fade);margin-top:2px}
+.arch .r{font:800 14px var(--sans);white-space:nowrap}
+.wl{margin:6px 0;padding:8px 10px;border-left:4px solid var(--fade);background:var(--card)}
+.wl b{font:900 17px var(--head);letter-spacing:.03em} .wl div{font:13.5px/1.45 var(--body);color:var(--ink2)}
+.wl .ms{font:700 11px var(--sans);color:var(--fade);letter-spacing:.06em;float:right;margin-top:4px}
+.wl.w{border-color:var(--green)} .wl.l{border-color:var(--red)}
+#result{text-align:center;background:var(--card);border:2px solid var(--line);box-shadow:6px 6px 0 var(--shadow);padding:16px;margin:0 6px 0 0;animation:rise .3s ease-out}
+#result.ok{border-color:var(--green)}
+#result .big{font:900 64px/1 var(--head);margin:10px 0 2px}
+#result .sq{font-size:20px;letter-spacing:2px;margin:6px 0}
+#result .msg{font:italic 17px var(--body);color:var(--ink2);margin:4px 0 6px}
+.countdown{font:800 22px var(--sans);font-variant-numeric:tabular-nums}
+#toast{position:fixed;left:50%;top:calc(env(safe-area-inset-top) + 70px);transform:translateX(-50%);z-index:20;background:var(--btn);color:var(--btn-ink);font:700 14px var(--sans);padding:10px 16px;border:2px solid var(--line);opacity:0;transition:opacity .2s;pointer-events:none}
+#toast.on{opacity:1}
+/* Fit levels: fit() adds fit1..fit4 until the whole game fits on one screen with no scrolling. */
+.fit1 #win{height:104px}.fit1 .opt{padding:9px 10px;font-size:15px;margin:6px 0}.fit1 .go{padding:11px;margin-top:12px}.fit1 .ask{margin:12px 0 2px}.fit1 #pips{margin:8px 0 6px}
+.fit2 #top{padding:6px 0 5px}.fit2 #top h1{font-size:25px}.fit2 #dailyBar{padding:6px 16px}.fit2 .pip{height:28px}.fit2 #win{height:88px}.fit2 #win .wd,.fit2 #win .mask,.fit2 #win .rev{font-size:30px}.fit2 .opt{padding:7px 9px;font-size:14px;margin:5px 0}.fit2 .small{margin-top:8px}
+.fit3 .opt{font-size:13px;line-height:1.3;padding:6px 8px;box-shadow:2px 2px 0 var(--shadow)}.fit3 .opt .n{flex-basis:20px;height:20px}.fit3 #win{height:76px}.fit3 .meta{margin:0 0 5px}.fit3 .go{padding:9px;font-size:14px}.fit3 #result .big{font-size:48px;margin:4px 0 0}.fit3 #result{padding:10px}
+.fit4 #dailyBar{display:none}.fit4 .pip{height:24px;font-size:11px}.fit4 #win{height:66px}.fit4 #win .wd,.fit4 #win .mask,.fit4 #win .rev{font-size:26px}.fit4 .ask{display:none}.fit4 .opt{margin:4px 0}
+.fit5 #top h1{font-size:22px}.fit5 #pips{margin:5px 0 4px;gap:3px}.fit5 .pip{height:22px}.fit5 #win{height:56px}.fit5 .opt{font-size:12.5px;padding:5px 7px;margin:3px 0}.fit5 .go{margin-top:8px;padding:8px}.fit5 #result .big{font-size:40px}.fit5 #result .msg{font-size:14px}.fit5 .countdown{font-size:17px}.fit5 #result .sq{font-size:16px}.fit5 .opt .w{font-size:9px;letter-spacing:.03em}.fit5 .opt{line-height:1.2}.fit5 .meta{margin:0 0 3px}.fit5 #top{padding:4px 0 3px}
+@media (prefers-reduced-motion:reduce){.opt,#result{animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <a id="dailyBar" href="https://smaisle.app/daily/">‹ smAisle Daily</a>
+  <div id="top"><span class="no" id="noLbl">No. 1</span><h1 id="homeLink" style="cursor:pointer">Blip<span>word</span></h1><button id="menuBtn" aria-label="Menu">☰</button></div>
+  <div id="pastTag" hidden></div>
+  <div id="pips"></div>
+  <div id="stage"></div>
+</div>
+
+<div class="sheet" id="sMenu" hidden><div class="box2">
+  <button class="x" data-close>×</button><h2>Menu</h2>
+  <button class="mbtn" id="mHome">Home</button>
+  <button class="mbtn" id="mHelp">How to Play</button>
+  <button class="mbtn" id="mArch">Archive</button>
+  <button class="mbtn" id="mPrac">Practice</button>
+  <button class="mbtn" id="mStats">Stats</button>
+  <button class="mbtn y" id="mDaily">‹ smAisle Daily</button>
+  <h3>Dark mode</h3>
+  <div class="seg" id="dmSeg"><button data-m="off">Off</button><button data-m="on">On</button><button data-m="auto">Match phone</button></div>
+  <h3>Speed</h3>
+  <div class="seg" id="spdMenu"><button data-sp="slow">🐢 Slow</button><button data-sp="normal">⚡ Normal</button><button data-sp="fast">🔥 Fast</button></div>
+  <h3>Sound</h3>
+  <div class="seg" id="sndSeg"><button data-s="on">On</button><button data-s="off">Off</button></div>
+  <div class="ver" id="menuVer"></div>
+</div></div>
+
+<div class="sheet" id="sHelp" hidden><div class="box2">
+  <button class="x" data-close>×</button><h2>How to Play</h2>
+  <p>Every day there are 10 words. Each one flashes on the screen for a split second, then disappears.</p>
+  <ul>
+    <li>Tap <b>Flash</b> when you're ready. Blocks show where the word will be, the word blips on, then the blocks cover it again.</li>
+    <li>Pick the <b>definition</b> of the word you saw from 4 choices.</li>
+    <li>The other 3 choices belong to look-alike words (BRAKE, BREAK, BRAVE, BAKER), so read carefully.</li>
+    <li>Each word flashes <b>once</b>, and each one goes a little faster than the last. Longer words stay up longer, so every word is fair: a short word on word 1 shows for about a third of a second.</li>
+    <li>The last 3 words are <b>Hard</b>: long, rare words. Get all 10 for a perfect day.</li>
+    <li>Pick a speed before you start: 🐢 <b>Slow</b>, ⚡ <b>Normal</b> or 🔥 <b>Fast</b>. Aced Normal? Try Fast. Your speed is locked in once the first word flashes.</li>
+  </ul>
+  <p>A new game comes out every day at midnight Eastern time. Past days are in the <b>Archive</b>. Want to warm up first? Try <b>Practice</b> in the menu.</p>
+  <p class="small" id="termsLine">By playing, you agree to the smAisle <a href="https://smaisle.app/about.html" target="_blank" rel="noopener">Terms and Privacy</a>. The game counts opens and plays anonymously to see how many people play. No names, no accounts.</p>
+  <button class="go" data-close id="helpGo">Play</button>
+  <div class="ver" id="helpVer"></div>
+</div></div>
+
+<div class="sheet" id="sStats" hidden><div class="box2">
+  <button class="x" data-close>×</button><h2>Stats</h2>
+  <div id="statsBody"></div>
+</div></div>
+
+<div class="sheet" id="sWords" hidden><div class="box2">
+  <button class="x" data-close>×</button><h2 id="wordsHd">Today's words</h2>
+  <div id="wordsBody"></div>
+</div></div>
+
+<div class="sheet" id="sPlus" hidden><div class="box2">
+  <button class="x" data-close>×</button><h2>smAisle Daily Plus</h2>
+  <p>This is the free preview of Blipword: the first 3 words of each day's game.</p>
+  <p>Plus unlocks all 10 words every day, the Hard words, the Archive and Practice.</p>
+  <button class="go hi" id="plusGo">‹ smAisle Daily</button>
+</div></div>
+
+<div class="sheet" id="sArch" hidden><div class="box2">
+  <button class="x" data-close>×</button><h2>Archive</h2>
+  <p class="small" style="text-align:left;margin-top:0">Play any past day. Archive games don't change your streak.</p>
+  <div id="archBody"></div>
+</div></div>
+
+<div id="toast"></div>
+
+<script>
+/* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
+const VERSION='2.1',VDATE='Nov 2',GAME='bw';
+
+/* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
+   Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
+const GROUPS_TXT=`BRAKE|A pedal that slows a car down;BREAK|To snap something into pieces;BRAVE|Showing courage in danger;BAKER|A person who makes bread for a living
+PLANE|An aircraft with wings;PLANT|A living thing with roots and leaves;PLATE|A flat dish you eat from;PLANET|A world that circles a star
+HORSE|An animal you can ride and saddle;HOUSE|A building a family lives in;HOARSE|Having a rough, croaky voice;NURSE|A person who cares for patients
+DESERT|A dry, sandy region with little rain;DESSERT|The sweet course after dinner;DESERVE|To have earned something;DETEST|To hate intensely
+STAIR|One step in a staircase;STARE|To look at something for a long time;STAR|A ball of burning gas in the night sky;STRAW|A thin tube for sipping drinks
+CLOUD|A white puff floating in the sky;CLOUT|Influence or power;CLOWN|A circus performer with a red nose;COULD|Was able to
+TRAIL|A path through the woods;TRIAL|A case heard in a courtroom;TRAIN|Cars pulled along a railway;TRAIT|A quality of someone's character
+SILENT|Making no sound at all;LISTEN|To pay attention to a sound;TINSEL|Shiny strips hung on a holiday tree;ENLIST|To sign up for the army
+COMPLEMENT|Something that goes well with another thing;COMPLIMENT|A nice thing said about someone;COMPLAINT|An expression of unhappiness;COMPARTMENT|A separate section inside a container
+ANGEL|A heavenly being with wings;ANGLE|The space between two lines that meet;ANKLE|The joint between your foot and leg;BAGEL|A ring-shaped bread roll
+BREATH|The air taken into your lungs;BREADTH|Width, measured side to side;BREATHE|To take air in and out;BEARD|Hair growing on a man's chin
+QUITE|Fairly or very;QUIET|Making little noise;QUILT|A padded bed cover sewn from patches;QUIT|To stop doing something
+FLOWER|The colorful bloom of a plant;FOLLOWER|Someone who supports a leader;FLOUR|Ground wheat used for baking;LOWER|To move something down
+DAIRY|Milk, cheese and butter;DIARY|A book where you write about each day;DAISY|A white flower with a yellow center;DIRTY|Covered in mud or grime
+SPORT|A game like soccer or tennis;SPOUT|The tube a teapot pours from;SHORT|Not tall;SNORT|A loud sound made through the nose
+CHAIR|A seat with a back;CHAIN|A row of linked metal rings;CHARM|A pleasing, attractive quality;CHOIR|A group of singers in a church
+THOUGH|Despite the fact that;THROUGH|In one side and out the other;THOROUGH|Careful and complete;TOUGH|Hard to chew, cut or break
+COAST|The land along the sea;TOAST|Bread browned by heat;ROAST|To cook meat in an oven;COAT|A warm jacket for outdoors
+CASUAL|Relaxed and informal;CAUSAL|Relating to cause and effect;CASUALTY|A person hurt or killed in an accident;CAUSE|The reason something happens
+MEDAL|An award for winning a race;METAL|Iron, copper or steel;MODEL|A small copy of something;PEDAL|A lever you push with your foot
+SWEAT|Salty water from your skin;SWEET|Tasting of sugar;SWEPT|Cleaned with a broom;SWEAR|To promise solemnly
+ADVICE|A suggestion about what to do;ADVISE|To tell someone what you think they should do;DEVICE|A gadget or machine;DEVISE|To plan or invent a scheme
+LOOSE|Not tight;LOSE|To fail to win;LOUSE|A tiny insect that lives in hair;NOOSE|A loop of rope that tightens when pulled
+ACCEPT|To agree to take what's offered;EXCEPT|Not including;EXPECT|To think something will happen;ACCENT|A way of pronouncing words from a region
+WEATHER|Rain, sun, wind and snow;WHETHER|If, or if not;FEATHER|One piece of a bird's soft covering;LEATHER|Material made from animal skin
+CRANE|A tall machine that lifts heavy loads;CRATE|A wooden box for shipping;GRATE|To shred cheese into bits;GRAPE|A small fruit that grows in bunches
+SHOUT|To yell loudly;SNOUT|An animal's long nose and mouth;STOUT|Short and heavy;SCOUT|Someone sent ahead to explore
+PIRATE|A robber at sea;PRIVATE|Not open to the public;PARROT|A colorful bird that can talk;PILOT|A person who flies a plane
+LEMON|A sour yellow citrus fruit;MELON|A large juicy fruit with a thick rind;DEMON|An evil spirit;LEMUR|A ring-tailed animal from Madagascar
+SCARED|Afraid;SACRED|Holy;SCARRED|Marked by old wounds;SCARF|A cloth worn around the neck
+ROUTE|The way you travel from place to place;ROUGE|Red makeup for the cheeks;ROUTINE|Your usual way of doing things;ROUT|A crushing defeat
+CONSERVE|To save from waste;CONVERSE|To talk with someone;CONCERN|A worry;CONVERT|To change from one form to another
+MARINE|Having to do with the sea;MARINA|A harbor for small boats;MARINATE|To soak food in a sauce before cooking;MARGIN|The blank edge of a page
+STEAL|To take without permission;STEEL|A strong metal made from iron;STALE|No longer fresh;STEAM|Hot water vapor
+TABLE|Furniture with a flat top and legs;CABLE|A thick wire;FABLE|A short story with a moral;GABLE|The triangle-shaped end of a roof
+BARON|A nobleman;BACON|Salty strips of pork;BATON|The stick passed in a relay race;BARN|A farm building for animals
+HEARD|Took in with your ears;HEART|The organ that pumps blood;HEARTH|The floor of a fireplace;HEAD|The top part of your body
+SPRING|The season after winter;STRING|Thin cord for tying;SPRINT|To run very fast for a short way;STRIPE|A long band of color
+CRUST|The hard outer part of bread;TRUST|To believe someone is honest;CRUSH|To squeeze hard;CREST|The top of a hill or wave
+MOUTH|The opening you eat with;MONTH|About four weeks;MOTH|A night insect drawn to light;YOUTH|The time of being young
+GLOVE|A covering for the hand;GLOBE|A round model of the Earth;GROVE|A small group of trees;GLOW|A soft, steady light
+CANDLE|A wax stick with a wick;HANDLE|The part of a cup you hold;CANDID|Honest and frank;CANDY|Sweets made with sugar
+BRIDGE|A road over a river;BRIDE|A woman on her wedding day;RIDGE|A long, narrow hilltop;BRIGADE|A large unit of soldiers
+PRAISE|Words of approval;PRAIRIE|Wide, flat grassland;PARADISE|A perfect, heavenly place;RAISE|To lift up
+STAPLE|A small wire clip for paper;STABLE|A building for horses;STEEPLE|A church tower with a spire;SAMPLE|A small part to try
+CARTON|A cardboard box for milk;CARTOON|A funny drawing;CANTON|A district in Switzerland;CARBON|The element in coal and diamonds
+GUEST|A visitor to your home;GUESS|To answer without knowing for sure;QUEST|A long search;GUST|A sudden rush of wind
+SNAKE|A legless reptile;SNACK|A small bite between meals;SHAKE|To move quickly back and forth;SNARE|A trap for catching animals
+MOIST|Slightly wet;MIST|Fine drops of water in the air;MOST|The largest amount;JOIST|A beam that holds up a floor
+CLIMATE|The usual weather of a place;CLIMAX|The most exciting point of a story;CLIMB|To go up using hands and feet;CLIENT|A customer of a business
+SHOOT|To fire an arrow or a gun;SHOOK|Moved something back and forth;SHOO|Go away! (said to a pest);HOOT|The call of an owl
+BOWL|A deep, round dish;BLOW|To push air out of your mouth;BOLT|A metal bar that locks a door;BLOT|An ink stain
+WAIST|The middle of your body;WASTE|To use carelessly;WAIT|To stay until something happens;WRIST|The joint between your hand and arm
+SOLDIER|A member of an army;SOLDER|Metal melted to join wires;SHOULDER|Where your arm joins your body;BOLDER|More daring
+PATIENT|Able to wait calmly;PATENT|The legal right to an invention;PARENT|A mother or father;PATIO|A paved area outside a house
+RELIEF|The feeling when worry ends;BELIEF|Something you think is true;RELIC|An object from the distant past;BRIEF|Short in time
+FINALLY|At last, after a long wait;FINELY|Into very small pieces;FAMILY|Parents and their children;FINAL|Last in a series
+PERSONAL|Private, your own;PERSONNEL|The people who work for a company;PERSONA|The image someone shows the world;PERSON|A human being
+CAREER|A job you do for many years;CAREEN|To swerve wildly;CARRIER|A company that delivers mail or goods;CAREFREE|Without a worry
+HUMBLE|Not proud;HUMID|Damp and sticky;TUMBLE|To fall and roll over;BUMBLE|To act clumsily
+GRAIN|Seeds of wheat or rice;GROAN|A low sound of pain;GRAND|Large and impressive;BRAIN|The organ you think with
+CROWN|A king's golden headpiece;CROW|A large black bird;BROWN|The color of chocolate;DROWN|To sink under water and die
+FAIRY|A tiny magical being with wings;FAIRLY|Somewhat;FERRY|A boat that carries cars across water;FIERY|Full of flames
+SHINE|To give off light;SHRINE|A holy place;SPINE|The backbone;SWINE|Pigs
+POINT|The sharp end of something;PRINT|To put words on paper with ink;PINT|Half a quart;PAINT|Colored liquid for walls
+SCALE|A device for weighing things;SCALP|The skin on top of your head;SCALD|To burn with hot liquid;SHALE|Soft gray rock that splits into layers
+CHEAP|Low in price;CHEAT|To break the rules to win;CHEER|To shout in support;CHEEK|The side of your face
+FLASH|A sudden burst of light;FLESH|The soft part of the body;FLUSH|To clean a toilet with rushing water;FLASK|A small bottle for a drink
+CURVE|A bend in a line;CARVE|To cut wood or meat into shape;CRAVE|To want badly;COVER|To place something over
+SPEAR|A long pointed weapon;SPARE|Extra, kept just in case;PEARS|Juicy fruits that narrow at the top;SPEAK|To say words
+VOLUME|How loud a sound is;VOLUNTEER|Someone who works for free;COLUMN|A tall stone pillar;VOLCANO|A mountain that erupts lava
+MEDIUM|In the middle size;MUSEUM|A building that displays art or history;MEDIA|TV, radio and newspapers;MEDIC|A medical worker in the army
+PIGEON|A gray city bird;PIDGIN|A simple mixed language;LEGION|A large unit of an army;PIGPEN|A muddy place where pigs live
+BOARD|A flat piece of wood;BROAD|Wide;ABOARD|On a ship or plane;ABROAD|In a foreign country
+ANIMAL|A living creature that moves;ANIMATE|To bring to life;MANUAL|Done by hand;ANNUAL|Happening once a year
+ENVELOPE|A paper cover for a letter;ENVELOP|To wrap up completely;DEVELOP|To grow over time;ENVOY|A messenger sent by a government
+POLITE|Having good manners;POLICE|Officers who enforce laws;POLICY|A rule or plan of action;POLKA|A lively dance
+CANAL|A man-made waterway;CAMEL|A humped desert animal;CARAMEL|Burnt-sugar candy;CAMEO|A brief appearance by a star
+SIGHT|The ability to see;NIGHT|The dark time between evening and morning;SLIGHT|Small in amount;EIGHT|The number after seven
+TIGER|A big striped cat;TIMER|A clock that counts down;TIER|One level of a stack;TILDE|The squiggle in the Spanish letter ñ
+FIELD|An open area of grass;FILED|Put away in a folder;FIEND|An evil, cruel person;YIELD|To give way to traffic
+LADDER|Steps you climb to reach high places;LADLE|A big spoon for soup;LADEN|Heavily loaded;LEADER|The person in charge
+HOLLOW|Empty inside;HALLOW|To make holy;FOLLOW|To come after;HOLLY|A prickly plant with red berries
+MASSAGE|Rubbing muscles to relax them;MESSAGE|A note sent to someone;PASSAGE|A narrow hallway;SAUSAGE|Ground meat in a casing
+DOUGH|Flour and water for bread;COUGH|To push air from your lungs with a noise;ROUGH|Not smooth;BOUGH|A main branch of a tree
+BUTTER|A spread made from cream;BITTER|A sharp, unpleasant taste;BUTLER|The head servant in a big house;BATTER|The player trying to hit in baseball
+CEREAL|Breakfast grains eaten with milk;SERIAL|A story told in parts;SURREAL|Strange, like a dream;CORAL|Hard sea growth that forms reefs
+STATIONARY|Not moving;STATIONERY|Writing paper and envelopes;STATION|A stop for trains or buses;STATUTORY|Required by law
+MINOR|Small or not important;MANOR|A large country house;MINER|A worker who digs for coal;MIRROR|Glass that shows your reflection
+OCEAN|A vast body of salt water;CANOE|A narrow boat you paddle;OCTANE|A rating for gasoline;ACORN|The nut of an oak tree
+PEACE|Freedom from war;PIECE|A part of something;PEACH|A fuzzy orange fruit;PLACE|A particular spot
+WORLD|The Earth and all its people;WORD|A unit of language;WOULD|The past form of will;WORM|A long, wiggly creature in the soil
+GENTLE|Soft and kind;GENIAL|Friendly and cheerful;GENIUS|A very clever person;GENERAL|A high-ranking army officer
+ALTAR|The table at the front of a church;ALTER|To change;ALERT|Watchful and ready;LATER|After some time
+BELOW|Under;ELBOW|The joint in the middle of your arm;BELLOW|To shout in a deep voice;BELONG|To be owned by
+FOREST|Land covered with trees;FOSTER|To care for a child not your own;FORGET|To not remember;SOFTER|Less hard
+MANGO|A sweet tropical fruit;MANGLE|To crush or twist badly;TANGO|A dramatic dance from Argentina;AMONG|In the middle of
+THREAD|A thin strand for sewing;THREAT|A warning of harm;TREAD|The grooves on a tire;THROAT|The front of your neck
+CHAPEL|A small church;CHAPTER|A section of a book;CHEAPER|Costing less;CHALET|A wooden house in the Alps
+SALAD|Mixed raw vegetables;SALARY|Yearly pay for a job;SALUTE|A soldier's hand-to-forehead greeting;SALMON|A pink fish that swims upstream`;
+/* Hard groups: long, rare look-alike words, used for the last 3 words of each day (rounds 8-10, since v1.4). */
+const HARD_TXT=`PERSPICACIOUS|Quick to notice and understand things;PERSPICUOUS|Clearly expressed and easy to follow;PERNICIOUS|Harmful in a slow, hidden way;PERTINACIOUS|Stubbornly sticking to a course
+MENDACIOUS|Lying, untruthful;MENDICANT|A beggar, often a religious one;MERCURIAL|Changing mood suddenly;MERETRICIOUS|Showy but cheap and worthless
+OBSEQUIOUS|Too eager to please or obey;OBSTREPEROUS|Noisy and hard to control;OBSEQUIES|Funeral rites;OBSOLESCENT|Going out of date
+PUSILLANIMOUS|Lacking courage, timid;MAGNANIMOUS|Generous and forgiving;UNANIMOUS|Agreed on by everyone;PSEUDONYMOUS|Written under a false name
+EPHEMERAL|Lasting a very short time;EPHEMERIS|A table of where the planets will be;ETHEREAL|Light, delicate and heavenly;EMPYREAL|Of the highest heaven
+GARRULOUS|Talking far too much;QUERULOUS|Complaining in a whiny way;GARRISON|Troops stationed in a town;GLAMOROUS|Full of style and allure
+SANGUINE|Cheerful and hopeful;SANGUINARY|Bloodthirsty;SANCTIMONIOUS|Acting morally superior;SANITARIUM|A place for long rest and treatment
+PROPINQUITY|Nearness in place or relationship;PROPENSITY|A natural tendency;PROPRIETY|Correct, polite behavior;PROPITIOUS|Favorable, a good sign
+INVEIGLE|To trick someone into doing something;INVEIGH|To speak out angrily against;INVIGILATE|To watch over students taking an exam;INVIOLATE|Never broken or harmed
+PERIPATETIC|Traveling from place to place;PERIPHERAL|At the outer edge;PERIPHRASIS|Using many words where few would do;PERIPETEIA|A sudden reversal in a story
+ABSTEMIOUS|Eating and drinking very little;ABSTRUSE|Hard to understand;ABSTERGENT|Used for cleansing;ABSTRACTED|Lost in thought
+RECALCITRANT|Stubbornly refusing to obey;RECAPITULATE|To sum up the main points;RECIPROCATE|To return a favor or feeling;RECRIMINATE|To accuse your accuser in return
+INEFFABLE|Too great to be put into words;INEFFACEABLE|Impossible to rub out or forget;INEFFECTUAL|Not producing results;INELUCTABLE|Impossible to avoid
+IMPECUNIOUS|Having little or no money;IMPECCABLE|Without any flaw;IMPERIOUS|Bossy and arrogant;IMPETUOUS|Acting quickly without thinking
+LUGUBRIOUS|Sad and gloomy;SALUBRIOUS|Good for your health;LUDICROUS|So silly it's laughable;LUXURIOUS|Very comfortable and expensive
+TRUCULENT|Eager to fight or argue;SUCCULENT|Juicy and tender;TURBULENT|Rough and unsteady;TRUNCHEON|A police officer's short club
+VICISSITUDE|An unwelcome change in fortune;VERISIMILITUDE|The appearance of being true or real;SOLICITUDE|Care and concern for someone;SIMILITUDE|A likeness or resemblance
+ANTEDILUVIAN|Hopelessly old-fashioned;ANTEBELLUM|From before the American Civil War;ANTECEDENT|Something that comes before;ANTEPENULTIMATE|Third from last
+CIRCUMLOCUTION|Talking around a point instead of making it;CIRCUMNAVIGATE|To sail all the way around;CIRCUMSPECT|Cautious and careful;CIRCUMVENT|To find a way around a rule
+DILETTANTE|Someone who dabbles without real skill;DILATORY|Slow, causing delay;DILAPIDATED|Falling apart from neglect;DILIGENT|Careful and hardworking
+PREDILECTION|A special liking for something;PREDICAMENT|A difficult situation;PREDESTINATION|The belief that fate is decided in advance;PREDACIOUS|Living by hunting other animals
+CONFLAGRATION|A huge, destructive fire;CONFABULATION|An informal chat, or a made-up memory;CONFEDERATION|A union of states or groups;CONGREGATION|The people gathered for a church service
+OSTENTATIOUS|Showy, meant to impress;OSTENSIBLE|Seeming true, but maybe not;OSTRACIZE|To shut someone out of a group;OSTEOPATH|A practitioner who treats by moving bones and muscles
+PERFUNCTORY|Done quickly and without care;PERFIDIOUS|Disloyal and treacherous;PERFORATED|Full of small holes;PERFECTIBLE|Able to be made perfect
+INSOUCIANT|Casually unconcerned;INSOLUBLE|Unable to be dissolved or solved;INSOLVENT|Unable to pay your debts;INSOLENT|Rude and disrespectful
+EQUANIMITY|Calmness under stress;EQUIVOCATE|To speak vaguely to dodge the truth;EQUIDISTANT|Equally far from two points;EQUINOCTIAL|Having to do with the equinox
+SYCOPHANT|A flatterer who sucks up to the powerful;SYCAMORE|A large tree with peeling bark;SYMPHONY|A long piece for orchestra;SYNCOPATE|To shift the beat in music
+PARSIMONIOUS|Extremely stingy;ACRIMONIOUS|Bitter and angry;PARENTHETICAL|Added as an aside;PARSONAGE|The house a church gives its minister
+INTRANSIGENT|Refusing to change your views;INTRANSITIVE|Describing a verb that takes no object;INTRAVENOUS|Into a vein;INTRINSIC|Belonging naturally, built in
+REPROBATE|A person with no morals;REPRIMAND|A sharp official scolding;REPRISAL|Revenge for an attack;REPRIEVE|A last-minute cancellation of a punishment
+MAGNILOQUENT|Using grand, boastful language;MAGNIFICENT|Very beautiful and impressive;MAGNETOMETER|An instrument that measures magnetism;MAGNITUDE|Great size or importance
+OBFUSCATE|To make something unclear on purpose;OBVIATE|To remove a need or problem in advance;OBLITERATE|To destroy completely;OBDURATE|Stubbornly refusing to change
+ACQUIESCE|To accept without arguing;ACQUISITIVE|Eager to get possessions;ACQUITTAL|A not-guilty verdict;ACQUAINTANCE|Someone you know slightly
+PROSELYTIZE|To try to convert someone to your faith;PROSTRATE|Lying face down;PROSAIC|Dull and ordinary;PROSCENIUM|The arch that frames a theater stage
+CANTANKEROUS|Grouchy and quarrelsome;CANTILEVER|A beam supported at only one end;CANTALOUPE|An orange-fleshed melon;CANTATA|A choral piece with instruments
+BELLIGERENT|Hostile and ready to fight;BELLWETHER|A leader or trendsetter;BELLETRIST|A writer of elegant literature;BELLADONNA|A poisonous plant, deadly nightshade
+SESQUIPEDALIAN|Fond of very long words;SEQUESTER|To isolate or set apart;SESQUICENTENNIAL|A 150th anniversary;SEQUACIOUS|Following others without thinking
+QUINTESSENTIAL|The most perfect example of something;QUINQUENNIAL|Happening every five years;QUINTUPLET|One of five babies born at once;QUIESCENT|Quiet and inactive
+DEMAGOGUE|A leader who stirs up people's fears;DEMIURGE|A creator god in ancient philosophy;DEMITASSE|A small cup for strong coffee;DEMOGRAPHIC|A group within a population
+UBIQUITOUS|Found everywhere;INIQUITOUS|Very wicked;ANTIQUITY|Ancient times;INEQUITABLE|Unfair`;
+const parseG=t=>t.split('\n').map(l=>l.split(';').map(p=>p.split('|')));
+const NORMAL_N=parseG(GROUPS_TXT).length,GROUPS=parseG(GROUPS_TXT).concat(parseG(HARD_TXT)),HARD_FROM=7; // GROUPS[NORMAL_N..] are hard
+const isHard=i=>i>=HARD_FROM;
+const START='2026-11-02',ROUNDS=10;
+/* Flash time is worked out from the word's length (v1.8): ms per letter for each round, times the letters, rounded to 10 ms, never under 0.08 sec.
+   A 5-letter word gets about 0.32 sec on word 1 and 0.12 on word 7; a 12-letter Hard word gets about 0.35 on word 8 and 0.26 on word 10. */
+/* Speed setting (v2.0): Slow / Normal / Fast, each with its own ms-per-letter table and floor.
+   Normal is the v1.8 table. Slow is about 1.6x as long (good for kids and first-timers); Fast is about 0.65x (for players who ace Normal).
+   A day's game locks in the speed at its first flash (G.spd), so changing the setting mid-game can't help. */
+const SPEEDS={
+  slow:  {name:'Slow',  icon:'🐢',min:120,per:[100,88,75,64,56,48,42,46,41,36]},
+  normal:{name:'Normal',icon:'⚡',min:80, per:[64,55,46,38,33,27,24,29,25,22]},
+  fast:  {name:'Fast',  icon:'🔥',min:50, per:[44,37,31,26,22,18,16,20,17,15]}};
+const speedSet=()=>{const v=store.get('bw-speed','normal');return SPEEDS[v]?v:'normal'};
+const curSpeed=()=>(G&&G.spd&&SPEEDS[G.spd])?G.spd:speedSet();
+function spd(i){const S=SPEEDS[curSpeed()];return Math.max(S.min,Math.round(S.per[i]*word(i).length/10)*10)}
+function setSpeed(v){if(!SPEEDS[v])return;store.set('bw-speed',v);
+  const started=G&&(G.seen||G.pick.length);
+  if(PRAC){if(G.spd)G.spd=v}else if(started&&G.spd&&G.spd!==v&&!G.done)toast(`This game stays on ${SPEEDS[G.spd].name}. ${SPEEDS[v].name} starts next game.`);
+  if(!started&&!PRAC)G.spd=null;spdSegApply();if(!busy)draw()}
+function spdSegHtml(){return `<div class="seg spdseg">${Object.keys(SPEEDS).map(k=>`<button data-sp="${k}" class="${speedSet()===k?'on':''}">${SPEEDS[k].icon} ${SPEEDS[k].name}</button>`).join('')}</div>`}
+function spdSegApply(){document.querySelectorAll('#spdMenu button').forEach(b=>b.classList.toggle('on',b.dataset.sp===speedSet()))}
+
+/* ---------- Helpers ---------- */
+const $=id=>document.getElementById(id);
+const store={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},
+  json(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},put(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+function etParts(d){const p={};new Intl.DateTimeFormat('en-US',{timeZone:'America/New_York',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',second:'2-digit',hourCycle:'h23'}).formatToParts(d||new Date()).forEach(x=>p[x.type]=x.value);return p}
+function today(){const p=etParts();return `${p.year}-${p.month}-${p.day}`}
+const dnum=s=>Math.round((Date.parse(s+'T12:00:00Z')-Date.parse(START+'T12:00:00Z'))/864e5)+1;
+const dateOf=n=>new Date(Date.parse(START+'T12:00:00Z')+(n-1)*864e5).toISOString().slice(0,10);
+const niceDate=s=>new Date(s+'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',weekday:'long',month:'long',day:'numeric'});
+const shortDate=s=>new Date(s+'T12:00:00Z').toLocaleDateString('en-US',{timeZone:'UTC',weekday:'short',month:'short',day:'numeric'});
+const cap=w=>w.charAt(0)+w.slice(1).toLowerCase();
+const secs=ms=>(ms/1000).toFixed(ms%100?2:1)+' sec';
+/* Font size so a word of n letters fits the flash box (inline style beats the fit levels). */
+function fsz(n){const box=Math.min(innerWidth,520)-60;const px=Math.min(46,Math.floor(box/(n*.78)));return n>9?`font-size:${px}px`:''}
+function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove('on'),1800)}
+function rng(seed){let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(arr,r){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ---------- Puzzle for a day. Groups are dealt from a shuffled deck, 10 a day, so no group repeats until the deck runs out;
+   then a new shuffle. Each round: g = group, a = answer index in the group, o = order the 4 choices are shown. ---------- */
+function deckOrder(cycle){const ids=[];for(let i=0;i<NORMAL_N;i++)ids.push(i);return shuffle(ids,rng(9001+cycle*7919))}
+function puzzleFor(n){
+  if(n<=1)return puzzleV1(n); // No. 1 (Nov 2) stays exactly as it was dealt, so saved games still match
+  /* 7 normal words from the normal deck, then 3 from the hard deck; each deck reshuffles when it runs out. */
+  const r=rng(n*104729+17),out=[];
+  const deal=(lo,hi,count,salt)=>{const ids=[];for(let i=lo;i<hi;i++)ids.push(i);const per=Math.floor(ids.length/count),k=n-2,cycle=Math.floor(k/per),slot=k%per;
+    const deck=shuffle(ids,rng(salt+cycle*7919));return deck.slice(slot*count,slot*count+count)};
+  deal(0,NORMAL_N,HARD_FROM,9001).concat(deal(NORMAL_N,GROUPS.length,ROUNDS-HARD_FROM,4242)).forEach(g=>out.push({g,a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)}));
+  return out;
+}
+function puzzleV1(n){
+  const per=Math.floor(NORMAL_N/ROUNDS),cycle=Math.floor((n-1)/per),slot=(n-1)%per,deck=deckOrder(cycle),r=rng(n*104729+17);
+  const rounds=[];for(let i=0;i<ROUNDS;i++){const g=deck[slot*ROUNDS+i];rounds.push({g,a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)})}
+  return rounds;
+}
+function practicePuzzle(){const r=rng((Math.random()*4294967296)>>>0),ids=GROUPS.map((_,i)=>i);
+  const norm=shuffle(ids.slice(0,NORMAL_N),r).slice(0,HARD_FROM),hard=shuffle(ids.slice(NORMAL_N),r).slice(0,ROUNDS-HARD_FROM);
+  return norm.concat(hard).map(g=>({g,a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)}))}
+
+/* ---------- Game state. One saved record per day: r = round you're on, seen = this round's word has flashed,
+   pick = choice index per round (or -1), done = game over. Saved the moment the word flashes, so a reload can't show it again. ---------- */
+let DATE,PZ,G,PAST=false,PRAC=false,busy=false;
+const keyOf=d=>'bw-day-'+d;
+function blank(){return {r:0,seen:false,pick:[],done:false}}
+function load(d){PRAC=false;DATE=d;PAST=d!==today();PZ=puzzleFor(dnum(d));G=store.json(keyOf(d),null)||blank();}
+function startPractice(){if(preview())return showPlus();HOME=false;PRAC=true;PAST=false;PZ=practicePuzzle();G=blank();draw()}
+function save(){if(!PRAC)store.put(keyOf(DATE),G)}
+const right=(g,i)=>g.pick[i]!=null&&g.pick[i]===PZ[i].a;
+const word=i=>GROUPS[PZ[i].g][PZ[i].a][0];
+
+/* ---------- Drawing ---------- */
+function drawTop(){
+  $('noLbl').textContent=PRAC?'':'No. '+dnum(DATE);
+  $('pastTag').hidden=!(PAST||PRAC);$('pastTag').textContent=PRAC?'Practice · not counted':'Archive · '+niceDate(DATE);
+  const lk=preview()&&!PRAC;
+  $('pips').innerHTML=PZ.map((_,i)=>{const p=G.pick[i];const cls=p!=null?(p===PZ[i].a?'w':'l'):(!G.done&&i===G.r&&!(lk&&i>=PREVIEW_N)?'now':'');return `<div class="pip ${cls}" data-i="${i}"${PRAC?' style="cursor:pointer"':''}>${p!=null?(p===PZ[i].a?'✓':'✕'):lk&&i>=PREVIEW_N?'🔒':i+1}</div>`}).join('');
+}
+function draw(){drawInner();fit()}
+/* Practice only, for now (Jeff, v1.7): tap a number at the top to jump to that word and play it again. */
+$('pips').addEventListener('click',e=>{const d=e.target.closest('.pip');if(!d||!PRAC||busy)return;const i=+d.dataset.i;
+  G.r=i;G.done=false;G.seen=false;G.pick=G.pick.slice(0,i);draw()});
+function fit(){const b=document.body,L=['fit1','fit2','fit3','fit4','fit5'];b.classList.remove(...L);const app=$('app');
+  for(const c of L){if(app.scrollHeight<=app.clientHeight+1)break;b.classList.add(c)}}
+addEventListener('resize',fit);try{document.fonts.ready.then(fit)}catch(e){}
+function drawInner(){
+  document.body.classList.toggle('home',HOME);
+  if(HOME){drawHome();return}
+  drawTop();
+  if(G.done){drawResult();return}
+  if(preview()&&!PRAC&&G.r>=PREVIEW_N){drawLock();return}
+  const i=G.r,R=PZ[i],grp=GROUPS[R.g],picked=G.pick[i]!=null;
+  let win;
+  if(picked){const ok=right(G,i);win=`<div class="rev" style="${fsz(word(i).length)}">${cap(word(i))}</div>`}
+  else if(G.seen)win=`<div class="gone">The word is gone. Which one was it?</div>`;
+  else win=`<div class="tap"><b>Tap to flash</b>Word ${i+1} · ${secs(spd(i))}</div>`;
+  $('stage').innerHTML=`<div class="meta"><span>Word ${i+1} of ${ROUNDS}${picked?(right(G,i)?' · <b style="color:var(--green)">Got it ✓</b>':' · <b style="color:var(--red)">Missed ✕</b>'):''}</span><span class="spd">${SPEEDS[curSpeed()].icon} ${isHard(i)?'Hard · ':''}${secs(spd(i))}</span></div>
+  <div id="win" class="${picked?(right(G,i)?'ok':'bad'):''}">${win}</div>
+  ${G.seen?`<div class="ask">${picked?'The choices':'Pick the definition'}</div><div id="opts">${R.o.map((k,n)=>{
+      const cls=picked?(k===R.a?'right':k===G.pick[i]?'wrong':'dim'):'';
+      return `<button class="opt ${cls}" data-k="${k}"${picked?' disabled':''}><span class="n">${n+1}</span><span class="d">${grp[k][1]}.</span>${picked?`<span class="w">${grp[k][0]}</span>`:''}</button>`}).join('')}</div>`
+    :`${(i===0&&!G.pick.length)||PRAC?spdSegHtml():''}<button class="go" id="flashBtn">Flash ${SPEEDS[curSpeed()].icon}</button><div class="small">${PRAC?'Practice: tap a number at the top to jump to that word.':PAST?'Archive game: it won’t change your streak.':'Each word flashes only once. Eyes on the box.'}</div>`}
+  ${picked?`<button class="go hi" id="nextBtn">${preview()&&!PRAC&&i+1>=PREVIEW_N?'Continue ›':i+1<ROUNDS?'Next word ›':'See your result ›'}</button>`:''}`;
+  if(!G.seen){$('flashBtn').onclick=flash;$('win').onclick=flash}
+  else if(!picked)document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.k));
+  if(picked)$('nextBtn').onclick=next;
+}
+
+/* ---------- The flash: solid blocks the length of the word, the word for spd(i) ms, then the blocks again so it can't linger on screen. ---------- */
+function waitMs(ms){return new Promise(res=>{const t0=performance.now();(function f(t){if(t-t0>=ms-8)res();else requestAnimationFrame(f)})(t0)})}
+async function flash(){
+  if(busy||G.seen||G.done)return;busy=true;
+  const i=G.r,w=word(i),win=$('win'),btn=$('flashBtn');if(btn){btn.disabled=true;btn.style.visibility='hidden'}
+  G.seen=true;if(!G.spd)G.spd=curSpeed();save();
+  const ml=Math.max(...GROUPS[PZ[i].g].map(x=>x[0].length)),mask=`<div class="mask" style="${fsz(ml)}">${'<i></i>'.repeat(ml)}</div>`; // solid blocks before and after, as long as the group's longest word so they don't give away the length
+  win.innerHTML=mask;await waitMs(650);
+  sfx('blink');win.innerHTML=`<div class="wd" style="${fsz(Math.max(...GROUPS[PZ[i].g].map(x=>x[0].length)))}">${w}</div>`;
+  await new Promise(r=>requestAnimationFrame(()=>r()));await waitMs(spd(i));
+  win.innerHTML=mask;
+  await waitMs(300);
+  busy=false;draw();
+}
+function choose(k){
+  if(busy||G.done)return;const i=G.r;if(G.pick[i]!=null)return;
+  G.pick[i]=k;save();const ok=k===PZ[i].a;sfx(ok?(i+1>=ROUNDS?'win':'ok'):'bad');
+  if(!ok&&navigator.vibrate)try{navigator.vibrate(100)}catch(e){}
+  draw();
+  if(i+1>=ROUNDS){G.done=true;save();if(!PRAC&&!PAST){recordDay();markDone();checkIn('play')}}
+}
+function next(){if(G.done){draw();return}G.r++;G.seen=false;save();draw()}
+document.addEventListener('keydown',e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey||document.querySelector('.sheet:not([hidden])'))return;
+  if(/^[1-4]$/.test(e.key)){const b=document.querySelectorAll('.opt:not([disabled])')[+e.key-1];if(b)b.click()}
+  else if(e.key==='Enter'||e.key===' '){const b=$('nextBtn')||$('flashBtn');if(b&&!b.disabled){e.preventDefault();b.click()}}
+});
+
+/* ---------- End of game ---------- */
+function score(g,pz){pz=pz||PZ;return pz.filter((R,i)=>g.pick&&g.pick[i]===R.a).length}
+const MSG=['Blink and you miss it. Tomorrow’s a new day.','One! It’s a start.','Two for ten. Those flashes are quick.','Three for ten. Keep your eyes peeled.','Four for ten. Getting there.','Five for ten. Half right at a blink.','Six for ten. Sharp eyes.','Seven for ten. Very quick reading.','Eight for ten. Impressive.','Nine for ten. So close to perfect!','Perfect day. Ten for ten!'];
+function squares(g,pz){pz=pz||PZ;let s='';for(let i=0;i<ROUNDS;i++){const p=g.pick&&g.pick[i];s+=p==null?'⬜':p===pz[i].a?'🟩':'🟥'}return s}
+function drawResult(){
+  const s=score(G);
+  $('stage').innerHTML=`<div id="result" class="${s===ROUNDS?'ok':''}">
+    <div class="meta"><span>${PRAC?'Practice':'No. '+dnum(DATE)}</span><span>${SPEEDS[curSpeed()].icon} ${SPEEDS[curSpeed()].name}${PRAC?' · Practice':PAST?' · Archive':''}</span></div>
+    <div class="big">${s}/${ROUNDS}</div>
+    <div class="sq">${squares(G)}</div>
+    <div class="msg">${MSG[s]}</div>
+  </div>
+  ${PRAC?`<button class="go hi" id="pracAgain">Practice again</button><button class="go alt" id="backToday">Back to today</button>`
+    :`<button class="go hi" id="shareBtn">Share result</button>${PAST?`<button class="go alt" id="backToday">Back to today</button>`:`<div class="small">Next game in <div class="countdown" id="cd"></div></div>`}`}
+  <div class="small"><button class="link" id="rArch">Archive</button> · <button class="link" id="rPrac">Practice</button> · <button class="link" id="rStats">Stats</button></div>
+  <button class="go alt" id="wordsBtn">See ${PRAC||PAST?'the':'today’s'} words</button>`;
+  $('wordsHd').textContent=(PRAC||PAST?'The':'Today’s')+' words';
+  $('wordsBody').innerHTML=`${PZ.map((R,i)=>{const g=GROUPS[R.g],ok=right(G,i),p=G.pick[i];
+    return `<div class="wl ${ok?'w':'l'}"><span class="ms">${secs(spd(i))}</span><b>${cap(g[R.a][0])}</b>${!ok&&p!=null?` <span style="font:700 12px var(--sans);color:var(--red)">you picked ${cap(g[p][0])}</span>`:''}<div>${g[R.a][1]}.</div></div>`}).join('')}`;
+  $('wordsBtn').onclick=()=>only('sWords');
+  if($('shareBtn'))$('shareBtn').onclick=share;
+  if($('pracAgain'))$('pracAgain').onclick=startPractice;
+  $('rArch').onclick=showArchive;$('rStats').onclick=showStats;$('rPrac').onclick=startPractice;
+  if($('backToday'))$('backToday').onclick=()=>{load(today());draw();checkIn('open',true)};
+  tick();
+}
+function tick(){const e=$('cd');if(!e)return;const p=etParts(),left=86400-(+p.hour*3600+ +p.minute*60+ +p.second),h=Math.floor(left/3600),m=Math.floor(left%3600/60),s=left%60;
+  e.textContent=`${h}:${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+  if(left<=1)setTimeout(()=>{if(!PAST&&!PRAC){load(today());draw()}},1500)}
+setInterval(tick,1000);
+function share(){
+  const t=`Blipword No. ${dnum(DATE)} · ${SPEEDS[curSpeed()].icon} ${SPEEDS[curSpeed()].name}\n${squares(G)} ${score(G)}/${ROUNDS}\nhttps://smaisle.app/Blipword/`;
+  if(navigator.share){navigator.share({text:t}).catch(()=>{});return}
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>toast('Copied to clipboard')).catch(()=>{prompt('Copy your result:',t)});
+}
+
+/* ---------- Stats (today's games only; Archive and Practice games don't count) ---------- */
+function hist(){return store.json('bw-hist',{})}
+function recordDay(){const h=hist();if(h[DATE]==null){h[DATE]=score(G);store.put('bw-hist',h)}}
+function streaks(h){const days=Object.keys(h).sort();let best=0,run=0,prev=null;
+  days.forEach(d=>{run=(prev&&dnum(d)===dnum(prev)+1)?run+1:1;best=Math.max(best,run);prev=d});
+  const t=today(),last=days[days.length-1];const cur=last&&(last===t||dnum(last)===dnum(t)-1)?run:0;return {cur,best}}
+function showStats(){
+  const h=hist(),v=Object.values(h),n=v.length,perf=v.filter(x=>x===ROUNDS).length,st=streaks(h),avg=n?(v.reduce((a,b)=>a+b,0)/n).toFixed(1):'–';
+  const dist=[...Array(ROUNDS+1).keys()].map(k=>v.filter(x=>x===k).length),mx=Math.max(1,...dist),mine=h[today()];
+  $('statsBody').innerHTML=`<div class="statrow"><div><b>${n}</b><span>Played</span></div><div><b>${avg}</b><span>Avg score</span></div><div><b>${st.cur}</b><span>Streak</span></div><div><b>${st.best}</b><span>Best streak</span></div></div>
+  <div class="statrow" style="grid-template-columns:1fr"><div><b>${perf}</b><span>Perfect days (10/10)</span></div></div>
+  <h3>Words right</h3>${dist.map((c,k)=>`<div class="bar"><span style="width:18px">${k}</span><i class="${mine===k?'me':''}" style="width:${Math.max(8,c/mx*100)}%">${c}</i></div>`).reverse().join('')}
+  <p class="small">Stats count each day’s game played on its day. Archive and Practice games don’t count.</p>`;
+  only('sStats');
+}
+
+/* ---------- Archive ---------- */
+function showArchive(){
+  if(preview())return showPlus();
+  const t=dnum(today());let html='';
+  for(let n=t;n>=1;n--){const d=dateOf(n),g=store.json(keyOf(d),null),pz=puzzleFor(n);
+    const r=g&&g.done?`${score(g,pz)}/${ROUNDS}`:g&&(g.r||g.seen)?'In progress':'Play ›';
+    html+=`<button class="arch" data-d="${d}"><span>No. ${n}<small>${shortDate(d)}${n===t?' · Today':''}</small></span><span class="r">${r}</span></button>`}
+  $('archBody').innerHTML=html;
+  $('archBody').querySelectorAll('.arch').forEach(b=>b.onclick=()=>{closeSheets();HOME=false;load(b.dataset.d);draw()});
+  only('sArch');
+}
+
+/* ---------- Sheets and menu ---------- */
+function only(id){closeSheets();$(id).hidden=false}
+function closeSheets(){document.querySelectorAll('.sheet').forEach(s=>s.hidden=true)}
+document.querySelectorAll('.sheet').forEach(s=>{s.addEventListener('click',e=>{if(e.target===s||e.target.closest('[data-close]'))s.hidden=true})});
+$('menuBtn').onclick=()=>{if(!busy)only('sMenu')};
+$('mHelp').onclick=()=>only('sHelp');$('mArch').onclick=showArchive;$('mStats').onclick=showStats;
+$('mPrac').onclick=()=>{closeSheets();startPractice()};
+$('mDaily').onclick=()=>{location.href='https://smaisle.app/daily/'};
+$('helpGo').addEventListener('click',()=>{if(!agreed()){store.set(TERMS_KEY,new Date().toISOString());checkIn('open')}});
+$('menuVer').textContent=$('helpVer').textContent=`Blipword · v${VERSION} · ${VDATE} · smAisle`;
+
+/* Dark mode: Off (smAisle colors, the default) / On (Navy) / Match phone. Shared on smaisle.app as localStorage "smaisle-dark". */
+const DM_MQ=window.matchMedia?matchMedia('(prefers-color-scheme: dark)'):null;
+function dmGet(){return store.get('smaisle-dark','off')}
+function dmApply(){const m=dmGet(),dark=m==='on'||(m==='auto'&&DM_MQ&&DM_MQ.matches);
+  if(dark)document.documentElement.setAttribute('data-mode','navy');else document.documentElement.removeAttribute('data-mode');
+  const tc=document.querySelector('meta[name="theme-color"]');if(tc)tc.content=dark?'#121b2e':'#f4efe1';
+  try{window.webkit.messageHandlers.dg.postMessage({cmd:'mode',navy:!!dark})}catch(e){}
+  document.querySelectorAll('#dmSeg button').forEach(b=>b.classList.toggle('on',b.dataset.m===m))}
+document.querySelectorAll('#dmSeg button').forEach(b=>b.onclick=()=>{store.set('smaisle-dark',b.dataset.m);dmApply()});
+if(DM_MQ&&DM_MQ.addEventListener)DM_MQ.addEventListener('change',dmApply);
+
+/* ---------- Sound: little synth tones. On/off in the menu. ---------- */
+let ac=null,acStale=false;const soundOn=()=>store.get('bw-sound','on')!=='off';
+function newAc(){ac=new (window.AudioContext||window.webkitAudioContext)();const b=ac.createBufferSource();b.buffer=ac.createBuffer(1,1,22050);b.connect(ac.destination);b.start(0)}
+function unlockAudio(){if(!soundOn()||(ac&&ac.state==='running'&&!acStale))return;acStale=false;
+  try{if(!ac)return newAc();ac.resume().catch(()=>{});const old=ac;setTimeout(()=>{if(ac===old&&old.state!=='running'){try{old.close()}catch(e){}ac=null;try{newAc()}catch(e){}}},250)}catch(e){}}
+['pointerdown','touchend','click','keydown'].forEach(ev=>document.addEventListener(ev,unlockAudio,true));
+document.addEventListener('visibilitychange',()=>{if(document.hidden)acStale=true});
+function tone(f,t0,dur,type,vol){const o=ac.createOscillator(),g=ac.createGain();o.type=type||'sine';o.frequency.value=f;g.gain.setValueAtTime(0,ac.currentTime+t0);
+  g.gain.linearRampToValueAtTime(vol||.15,ac.currentTime+t0+.01);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+t0+dur);o.connect(g);g.connect(ac.destination);o.start(ac.currentTime+t0);o.stop(ac.currentTime+t0+dur+.05)}
+function sfx(k){if(!soundOn()||!ac)return;try{
+  if(k==='blink')tone(1320,0,.05,'sine',.08);
+  else if(k==='ok'){tone(660,0,.1,'triangle');tone(990,.09,.18,'triangle')}
+  else if(k==='bad'){tone(160,0,.35,'sawtooth',.12);tone(120,.12,.4,'sawtooth',.1)}
+  else if(k==='win'){[523,659,784,1047].forEach((f,i)=>tone(f,i*.11,.3,'triangle'))}}catch(e){}}
+const sndApply=()=>document.querySelectorAll('#sndSeg button').forEach(b=>b.classList.toggle('on',b.dataset.s===(soundOn()?'on':'off')));
+document.querySelectorAll('#sndSeg button').forEach(b=>b.onclick=()=>{store.set('bw-sound',b.dataset.s);sndApply();unlockAudio();setTimeout(()=>sfx('ok'),50)});
+
+/* ---------- smAisle Daily hub: when today's game is over, add "bw" to localStorage 'smaisle_done'
+   {"YYYY-MM-DD":["bw",...]} (device-local date, last 60 days), same as SMAISLE.markDone in daily/games.js. ---------- */
+function markDone(){if(PAST||PRAC||!G.done)return;try{const d=new Date(),day=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+  let s=store.json('smaisle_done',{})||{};s[day]=s[day]||[];if(s[day].indexOf('bw')<0)s[day].push('bw');
+  const k=Object.keys(s).sort();while(k.length>60)delete s[k.shift()];store.put('smaisle_done',s)}catch(e){}}
+
+/* ---------- Usage check-in (website copy only, after the player agrees). Collection bw_devices in aislerun-88e79.
+   o = opens per day, h = words right per day (0-10, set when that day's game is over), on today's game only. ---------- */
+const FB_KEY='AIzaSyAlbSCTpAiK-1tojkyWrY3QuJsSzILHSfs',FB_PROJ='aislerun-88e79',TERMS_KEY='bw-terms';
+function agreed(){return !!store.get(TERMS_KEY,'')}
+function devId(){let id=store.get('bw-dev','');if(!id){id=Array.from(crypto.getRandomValues(new Uint8Array(12)),b=>'abcdefghijklmnopqrstuvwxyz0123456789'[b%36]).join('');store.set('bw-dev',id)}return id}
+function trimMap(m){const k=Object.keys(m).sort();while(k.length>60)delete m[k.shift()];return m}
+async function checkIn(kind,noCount){
+  if(!agreed())return;
+  const day=today(),u=store.json('bw-usage',{first:day,days:0,opens:0,plays:0,o:{}});
+  if(u.o[day]==null){u.days++;u.o[day]=0}
+  if(kind==='open'&&!noCount){u.opens++;u.o[day]++}
+  if(kind==='play')u.plays++;
+  trimMap(u.o);store.put('bw-usage',u);
+  if(!/github\.io$|smaisle\.app$/.test(location.hostname)&&!window.BW_TEST)return;
+  const h=hist(),hm={};Object.keys(h).sort().slice(-60).forEach(k=>hm[k]=h[k]);
+  const st=streaks(h),vals=Object.values(h);
+  const I=n=>({integerValue:String(Math.round(n)||0)}),T=v=>({stringValue:String(v)}),M=m=>({mapValue:{fields:Object.fromEntries(Object.entries(m).map(([k,v])=>[k,I(v)]))}});
+  const body={fields:{first:T(u.first),last:T(day),days:I(u.days),v:T(VERSION),opens:I(u.opens),plays:I(u.plays),done:I(vals.length),perfect:I(vals.filter(x=>x===ROUNDS).length),
+    streak:I(st.cur),best:I(st.best),terms:T(store.get(TERMS_KEY,'').slice(0,10)),desk:{booleanValue:innerWidth>=820},t:I(Date.now()),o:M(u.o),h:M(hm),sp:T(speedSet())}};
+  try{await fetch(`https://firestore.googleapis.com/v1/projects/${FB_PROJ}/databases/(default)/documents/${GAME}_devices/${devId()}?key=${FB_KEY}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),keepalive:true})}catch(e){}
+}
+
+/* ---------- smAisle Daily Plus preview (v1.6). Blipword is a Plus game in smAisle Daily, with no purchase of its own.
+   Preview = ?preview=1 in the URL, or inside the app when window.DG_APP.plus isn't true. The preview is today's first 3 words only;
+   Archive and Practice are locked. When the app reports Plus (dgNative('store',{plus:true})), the rest of today's game opens where you left off. ---------- */
+const PREVIEW_N=3;
+function preview(){return /[?&]preview=1\b/.test(location.search)||(!!window.DG_APP&&!window.DG_APP.plus)}
+function toApp(m){try{window.webkit.messageHandlers.dg.postMessage(m)}catch(e){}}
+function goDaily(){closeSheets();if(window.DG_APP)toApp({cmd:'home'});location.href='https://smaisle.app/daily/'}
+function showPlus(){only('sPlus')}
+$('plusGo').onclick=goDaily;
+function drawLock(){
+  if(PAST){load(today())}
+  const s=PZ.slice(0,PREVIEW_N).filter((R,i)=>G.pick[i]===R.a).length;
+  $('stage').innerHTML=`<div id="result">
+    <div class="meta"><span>No. ${dnum(DATE)} · Free preview</span><span>${s}/${PREVIEW_N}</span></div>
+    <div class="big" style="font-size:44px">🔒</div>
+    <div class="msg" style="font:900 22px/1.25 var(--head);font-style:normal;color:var(--ink)">Unlock the rest with smAisle Daily Plus</div>
+    <div class="msg">You got ${s} of the first ${PREVIEW_N}. Plus has all 10 words every day, including the 3 Hard ones, plus the Archive and Practice.</div>
+  </div>
+  <button class="go hi" id="lockGo">‹ smAisle Daily</button>
+  <div class="small">Next free preview in <div class="countdown" id="cd"></div></div>`;
+  $('lockGo').onclick=goDaily;tick();
+}
+(function(){const prev=window.dgNative;window.dgNative=(cmd,d)=>{if(cmd==='store'&&window.DG_APP){window.DG_APP.plus=!!(d&&d.plus);if(!busy)draw();if(!preview()&&!$('sPlus').hidden)closeSheets()}if(typeof prev==='function')try{prev(cmd,d)}catch(e){}}})();
+if(window.DG_APP)toApp({cmd:'ready'});
+
+document.addEventListener('click',e=>{const b=e.target.closest('[data-sp]');if(b)setSpeed(b.dataset.sp)});
+/* ---------- Home screen (v2.1, Jeff: "create a home screen" like the other smAisle games). Shows on open; the title in the top bar and Menu → Home come back to it. ---------- */
+let HOME=false;
+function goHome(){if(busy)return;closeSheets();HOME=true;PRAC=false;load(today());draw()}
+function drawHome(){
+  const t=today(),g=store.json(keyOf(t),null),pz=puzzleFor(dnum(t)),pv=preview(),S=SPEEDS[speedSet()];
+  const st=g&&g.done?`Done · ${score(g,pz)}/${ROUNDS}`:g&&(g.r||g.seen)?'In progress':pv?'Free preview · 3 words':`10 words · ${S.icon} ${S.name}`;
+  const go=g&&g.done?'See result ›':g&&(g.r||g.seen)?'Continue ›':'Play ›';
+  $('stage').innerHTML=`<div id="home">
+    <div class="ttl"><h1>Blip<span>word</span></h1></div>
+    <p class="tag">A word blips on screen. Pick what it means.</p>
+    <button class="hcard" id="hPlay"><span><b>No. ${dnum(t)}</b><small>${st}</small></span><span class="go2">${go}</span></button>
+    <div class="lbl">Speed</div>
+    ${spdSegHtml().replace('seg spdseg','seg spdseg" style="margin:0')}
+    <div class="links"><button id="hArch">${pv?'🔒 ':''}Archive</button> · <button id="hPrac">${pv?'🔒 ':''}Practice</button> · <button id="hStats">Stats</button> · <button id="hHelp">How to Play</button></div>
+    <div class="foot"><a href="https://smaisle.app/daily/">‹ smAisle Daily<i>Back to today’s games</i></a><a href="https://smaisle.app/">‹ smAisle Home<i>More games by smAisle</i></a></div>
+    <div class="hv">Blipword · v${VERSION} · ${VDATE}</div>
+  </div>`;
+  $('hPlay').onclick=()=>{HOME=false;load(today());draw()};
+  $('hArch').onclick=showArchive;$('hPrac').onclick=startPractice;$('hStats').onclick=showStats;$('hHelp').onclick=()=>only('sHelp');
+}
+$('homeLink').onclick=goHome;$('mHome').onclick=goHome;
+/* ---------- Start ---------- */
+dmApply();sndApply();spdSegApply();load(today());HOME=true;draw();
+if(!agreed())only('sHelp');else checkIn('open');
+</script>
+</body>
+</html>
