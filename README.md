@@ -59,3 +59,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.4 (Nov 2)
 - smAisle finish-screen standard: the results screen and the preview lock screen have a "‹ smAisle Daily" button and a "More smAisle games" row (icons from smaisle.app/daily/icons, links to each game; list in MORE, from daily/games.js). Share link stays hardcoded to https://smaisle.app/Blipword/.
+
+## v2.5 (Nov 2)
+- Check-in adds field code (string): the device's saved invite code, same lookup as gate.js (localStorage smaisle_code, else first of JSON smaisle_codes preferring daily15/abcdeal/gramble/all, else 'unknown'). For the "By code" table on smaisle.app/stats.html.

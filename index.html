@@ -241,7 +241,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.4',VDATE='Nov 2',GAME='bw';
+const VERSION='2.5',VDATE='Nov 2',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -638,6 +638,10 @@ function markDone(){if(PAST||PRAC||!G.done)return;try{const d=new Date(),day=d.g
 const FB_KEY='AIzaSyAlbSCTpAiK-1tojkyWrY3QuJsSzILHSfs',FB_PROJ='aislerun-88e79',TERMS_KEY='bw-terms';
 function agreed(){return !!store.get(TERMS_KEY,'')}
 function devId(){let id=store.get('bw-dev','');if(!id){id=Array.from(crypto.getRandomValues(new Uint8Array(12)),b=>'abcdefghijklmnopqrstuvwxyz0123456789'[b%36]).join('');store.set('bw-dev',id)}return id}
+/* Invite code for the stats page's "By code" table (v2.5): same lookup as gate.js. */
+function inviteCode(){try{const c=localStorage.getItem('smaisle_code');if(c)return String(c).slice(0,40);
+  const m=JSON.parse(localStorage.getItem('smaisle_codes')||'null');if(m&&typeof m==='object'){for(const k of ['daily15','abcdeal','gramble','all'])if(m[k])return String(m[k]).slice(0,40);
+  const v=Object.values(m).find(Boolean);if(v)return String(v).slice(0,40)}}catch(e){}return 'unknown'}
 function trimMap(m){const k=Object.keys(m).sort();while(k.length>60)delete m[k.shift()];return m}
 async function checkIn(kind,noCount){
   if(!agreed())return;
@@ -651,7 +655,7 @@ async function checkIn(kind,noCount){
   const st=streaks(h),vals=Object.values(h);
   const I=n=>({integerValue:String(Math.round(n)||0)}),T=v=>({stringValue:String(v)}),M=m=>({mapValue:{fields:Object.fromEntries(Object.entries(m).map(([k,v])=>[k,I(v)]))}});
   const body={fields:{first:T(u.first),last:T(day),days:I(u.days),v:T(VERSION),opens:I(u.opens),plays:I(u.plays),done:I(vals.length),perfect:I(vals.filter(x=>x===ROUNDS).length),
-    streak:I(st.cur),best:I(st.best),terms:T(store.get(TERMS_KEY,'').slice(0,10)),desk:{booleanValue:innerWidth>=820},t:I(Date.now()),o:M(u.o),h:M(hm),sp:T(speedSet())}};
+    streak:I(st.cur),best:I(st.best),terms:T(store.get(TERMS_KEY,'').slice(0,10)),desk:{booleanValue:innerWidth>=820},t:I(Date.now()),o:M(u.o),h:M(hm),sp:T(speedSet()),code:T(inviteCode())}};
   try{await fetch(`https://firestore.googleapis.com/v1/projects/${FB_PROJ}/databases/(default)/documents/${GAME}_devices/${devId()}?key=${FB_KEY}`,{method:'PATCH',headers:{'Content-Type':'application/json'},body:JSON.stringify(body),keepalive:true})}catch(e){}
 }
 
