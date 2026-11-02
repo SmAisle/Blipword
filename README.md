@@ -56,3 +56,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.3 (Nov 2)
 - How to Play rewritten to fit an iPhone without scrolling (4 short steps), with a looping demo at the top: blocks, BRAKE blips on, blocks, then the 4 look-alike choices and the right one lights up. If it still doesn't fit (very small screens), the sheet switches to a tighter layout.
+
+## v2.4 (Nov 2)
+- smAisle finish-screen standard: the results screen and the preview lock screen have a "‹ smAisle Daily" button and a "More smAisle games" row (icons from smaisle.app/daily/icons, links to each game; list in MORE, from daily/games.js). Share link stays hardcoded to https://smaisle.app/Blipword/.

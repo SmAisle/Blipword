@@ -156,6 +156,14 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 .sheet:has(.help.tight){padding:8px}.help.tight{padding:12px 14px 10px}.help.tight .ver{display:none}.help.tight .hnote{font-size:12.5px;margin:4px 0}.help.tight .small{margin-top:4px;font-size:11px}.help.tight .go{margin-top:6px}.help.tight #demo{padding:6px;margin-bottom:4px}
 .help.tight #demo .dwin{height:42px}.help.tight .dopts div{min-height:0;font-size:11px;padding:4px 5px}.help.tight .hsteps li{font-size:13px;margin:1px 0}.help.tight h2{font-size:22px}.help.tight .go{padding:9px}
 .help.tighter .dopts div{font-size:10.5px;line-height:1.15}.help.tighter .dopts b{font-size:8.5px}.help.tighter .hsteps li{font-size:12px;line-height:1.3}.help.tighter h2{font-size:20px;margin-bottom:4px}.help.tighter #demo .dwin{height:36px;font-size:22px}.help.tighter .hnote{display:none}
+.two{display:flex;gap:8px}.two .go{flex:1;padding-left:6px;padding-right:6px;font-size:14px}
+.countdown{display:inline}
+#result+.two .go{margin-top:14px}
+.more{margin:14px 0 8px;text-align:left}.more .mh{font:800 11px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:6px}
+.mrow{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 6px;-webkit-overflow-scrolling:touch;scrollbar-width:none}.mrow::-webkit-scrollbar{display:none}
+.mrow a{flex:0 0 58px;text-align:center;text-decoration:none;color:var(--ink);font:700 9.5px/1.15 var(--sans)}
+.mrow img{display:block;width:44px;height:44px;margin:0 auto 3px;border:1.5px solid var(--line);border-radius:10px;background:var(--card)}
+.fit2 .more{margin:8px 0 4px}.fit3 .mrow img{width:36px;height:36px}.fit3 .mrow a{flex-basis:48px;font-size:8.5px}.fit4 .more .mh{display:none}.fit5 .mrow span{display:none}
 @media (prefers-reduced-motion:reduce){.opt,#result{animation:none!important}}
 </style>
 </head>
@@ -233,7 +241,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.3',VDATE='Nov 2',GAME='bw';
+const VERSION='2.4',VDATE='Nov 2',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -527,10 +535,11 @@ function drawResult(){
     <div class="sq">${squares(G)}</div>
     <div class="msg">${MSG[s]}</div>
   </div>
-  ${PRAC?`<button class="go hi" id="pracAgain">Practice again</button><button class="go alt" id="backToday">Back to today</button>`
-    :`<button class="go hi" id="shareBtn">Share result</button>${PAST?`<button class="go alt" id="backToday">Back to today</button>`:`<div class="small">Next game in <div class="countdown" id="cd"></div></div>`}`}
-  <div class="small"><button class="link" id="rArch">Archive</button> · <button class="link" id="rPrac">Practice</button> · <button class="link" id="rStats">Stats</button></div>
-  <button class="go alt" id="wordsBtn">See ${PRAC||PAST?'the':'today’s'} words</button>`;
+  <div class="two">${PRAC?`<button class="go hi" id="pracAgain">Practice again</button>`:`<button class="go hi" id="shareBtn">Share result</button>`}<button class="go alt" id="resDaily" style="text-transform:none">‹ smAisle Daily</button></div>
+  ${PRAC||PAST?`<button class="go alt" id="backToday">Back to today</button>`:`<div class="small">Next game in <span class="countdown" id="cd"></span></div>`}
+  <div class="small"><button class="link" id="wordsBtn">${PRAC||PAST?'The':'Today’s'} words</button> · <button class="link" id="rArch">Archive</button> · <button class="link" id="rPrac">Practice</button> · <button class="link" id="rStats">Stats</button></div>
+  ${moreGames()}`;
+  $('resDaily').onclick=goDaily;
   $('wordsHd').textContent=(PRAC||PAST?'The':'Today’s')+' words';
   $('wordsBody').innerHTML=`${PZ.map((R,i)=>{const g=GROUPS[R.g],ok=right(G,i),p=G.pick[i];
     return `<div class="wl ${ok?'w':'l'}"><span class="ms">${secs(spd(i))}</span><b>${cap(g[R.a][0])}</b>${!ok&&p!=null?` <span style="font:700 12px var(--sans);color:var(--red)">you picked ${cap(g[p][0])}</span>`:''}<div>${g[R.a][1]}.</div></div>`}).join('')}`;
@@ -664,7 +673,7 @@ function drawLock(){
     <div class="msg" style="font:900 22px/1.25 var(--head);font-style:normal;color:var(--ink)">Unlock the rest with smAisle Daily Plus</div>
     <div class="msg">You got ${s} of the first ${PREVIEW_N}. Plus has all 10 words every day, including the 3 Hard ones, plus the Archive and Practice.</div>
   </div>
-  <button class="go hi" id="lockGo">‹ smAisle Daily</button>
+  <button class="go hi" id="lockGo" style="text-transform:none">‹ smAisle Daily</button>${moreGames()}
   <div class="small">Next free preview in <div class="countdown" id="cd"></div></div>`;
   $('lockGo').onclick=goDaily;tick();
 }
@@ -709,6 +718,10 @@ function helpOpen(){fitHelp();
     await step(()=>op.querySelector('[data-ok="1"]').classList.add('tap'),1300);await step(()=>op.classList.add('rev'),500);
     await step(()=>{},2200);if(run===demoRun&&!$('sHelp').hidden)loop()})();
 }
+/* "More smAisle games" row on the finish screens (smAisle standard, Nov 2): the other games from daily/games.js, icon + link. */
+const MORE=[['The Daily 15','DailyGrid/','daily-15'],['A, B, C, Deal','abcdeal/','abc-deal'],['Gramble','gramble/','gramble'],['Jexicon','Jexicon/','jexicon'],['Capital Ship','CapitalShip/','capital-ship'],
+  ['Straight Down','StraightDown/','straight-down'],['Shuffle Blast','ShuffleBlast/','shuffle-blast'],['Bullseye Roulette','BullseyeRoulette/','bullseye-roulette'],['Connello','Connello/','connello']];
+function moreGames(){return `<div class="more"><div class="mh">More smAisle games</div><div class="mrow">${MORE.map(([n,u,ic])=>`<a href="https://smaisle.app/${u}" title="${n}"><img src="https://smaisle.app/daily/icons/${ic}.png" alt="${n}" width="44" height="44" loading="lazy" onerror="this.style.visibility='hidden'"><span>${n}</span></a>`).join('')}</div></div>`}
 /* ---------- Start ---------- */
 dmApply();sndApply();spdSegApply();load(today());HOME=true;draw();
 if(!agreed())only('sHelp');else checkIn('open');
