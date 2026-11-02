@@ -62,3 +62,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.5 (Nov 2)
 - Check-in adds field code (string): the device's saved invite code, same lookup as gate.js (localStorage smaisle_code, else first of JSON smaisle_codes preferring daily15/abcdeal/gramble/all, else 'unknown'). For the "By code" table on smaisle.app/stats.html.
+
+## v2.6 (Nov 2)
+- Cleaner menu (change list #21): Dark mode, Speed and Sound moved to a new Settings screen.
