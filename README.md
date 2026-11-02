@@ -50,3 +50,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.1 (Nov 2)
 - Home screen (Jeff): shows when the game opens. Title, tagline, today's game card (Play / Continue / See result, with score or speed), speed picker, Archive · Practice · Stats · How to Play, and links "‹ smAisle Daily" and "‹ smAisle Home" (smaisle.app). Tap the title in the top bar or Menu → Home to come back. In preview mode the card says "Free preview · 3 words" and Archive/Practice show a lock.
+
+## v2.2 (Nov 2)
+- Today's game (No. 1, Nov 2) now uses the current rules too (Jeff): 7 normal + 3 Hard words. The old No. 1 freeze is gone and every day deals from k = day - 1. A No. 1 game saved under the old deal is cleared once (localStorage flag bw-mig22) so it can be replayed.

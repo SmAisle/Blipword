@@ -211,7 +211,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.1',VDATE='Nov 2',GAME='bw';
+const VERSION='2.2',VDATE='Nov 2',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -401,10 +401,9 @@ function shuffle(arr,r){const a=arr.slice();for(let i=a.length-1;i>0;i--){const 
    then a new shuffle. Each round: g = group, a = answer index in the group, o = order the 4 choices are shown. ---------- */
 function deckOrder(cycle){const ids=[];for(let i=0;i<NORMAL_N;i++)ids.push(i);return shuffle(ids,rng(9001+cycle*7919))}
 function puzzleFor(n){
-  if(n<=1)return puzzleV1(n); // No. 1 (Nov 2) stays exactly as it was dealt, so saved games still match
   /* 7 normal words from the normal deck, then 3 from the hard deck; each deck reshuffles when it runs out. */
   const r=rng(n*104729+17),out=[];
-  const deal=(lo,hi,count,salt)=>{const ids=[];for(let i=lo;i<hi;i++)ids.push(i);const per=Math.floor(ids.length/count),k=n-2,cycle=Math.floor(k/per),slot=k%per;
+  const deal=(lo,hi,count,salt)=>{const ids=[];for(let i=lo;i<hi;i++)ids.push(i);const per=Math.floor(ids.length/count),k=n-1,cycle=Math.floor(k/per),slot=k%per;
     const deck=shuffle(ids,rng(salt+cycle*7919));return deck.slice(slot*count,slot*count+count)};
   deal(0,NORMAL_N,HARD_FROM,9001).concat(deal(NORMAL_N,GROUPS.length,ROUNDS-HARD_FROM,4242)).forEach(g=>out.push({g,a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)}));
   return out;
@@ -672,6 +671,9 @@ function drawHome(){
   $('hArch').onclick=showArchive;$('hPrac').onclick=startPractice;$('hStats').onclick=showStats;$('hHelp').onclick=()=>only('sHelp');
 }
 $('homeLink').onclick=goHome;$('mHome').onclick=goHome;
+/* v2.2: No. 1 (Nov 2) now uses the current rules (7 normal + 3 Hard words). A No. 1 game saved under the old deal would no longer match,
+   so it is cleared once (with its stats entry) and can be played again. */
+try{if(!store.get('bw-mig22','')){const d='2026-11-02';if(store.get(keyOf(d),null)!=null){localStorage.removeItem(keyOf(d));const h=hist();delete h[d];store.put('bw-hist',h)}store.set('bw-mig22','1')}}catch(e){}
 /* ---------- Start ---------- */
 dmApply();sndApply();spdSegApply();load(today());HOME=true;draw();
 if(!agreed())only('sHelp');else checkIn('open');
