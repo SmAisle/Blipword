@@ -184,13 +184,19 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
   <button class="mbtn" id="mPrac">Practice</button>
   <button class="mbtn" id="mStats">Stats</button>
   <button class="mbtn y" id="mDaily">‹ smAisle Daily</button>
+  <button class="mbtn" id="mSet">Settings</button>
+  <div class="ver" id="menuVer"></div>
+</div></div>
+
+<div class="sheet" id="sSet" hidden><div class="box2">
+  <button class="x" data-close>×</button><h2>Settings</h2>
   <h3>Dark mode</h3>
   <div class="seg" id="dmSeg"><button data-m="off">Off</button><button data-m="on">On</button><button data-m="auto">Match phone</button></div>
   <h3>Speed</h3>
   <div class="seg" id="spdMenu"><button data-sp="slow">🐢 Slow</button><button data-sp="normal">⚡ Normal</button><button data-sp="fast">🔥 Fast</button></div>
   <h3>Sound</h3>
   <div class="seg" id="sndSeg"><button data-s="on">On</button><button data-s="off">Off</button></div>
-  <div class="ver" id="menuVer"></div>
+  <button class="mbtn" id="setBack" style="margin-top:16px">Back to the menu</button>
 </div></div>
 
 <div class="sheet" id="sHelp" hidden><div class="box2 help">
@@ -241,7 +247,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.5',VDATE='Nov 2',GAME='bw';
+const VERSION='2.6',VDATE='Nov 2',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -593,6 +599,7 @@ function only(id){closeSheets();$(id).hidden=false;if(id==='sHelp')helpOpen()}
 function closeSheets(){document.querySelectorAll('.sheet').forEach(s=>s.hidden=true)}
 document.querySelectorAll('.sheet').forEach(s=>{s.addEventListener('click',e=>{if(e.target===s||e.target.closest('[data-close]'))s.hidden=true})});
 $('menuBtn').onclick=()=>{if(!busy)only('sMenu')};
+$('mSet').onclick=()=>only('sSet');$('setBack').onclick=()=>only('sMenu');
 $('mHelp').onclick=()=>only('sHelp');$('mArch').onclick=showArchive;$('mStats').onclick=showStats;
 $('mPrac').onclick=()=>{closeSheets();startPractice()};
 $('mDaily').onclick=()=>{location.href='https://smaisle.app/daily/'};
@@ -610,7 +617,7 @@ function dmApply(){const m=dmGet(),dark=m==='on'||(m==='auto'&&DM_MQ&&DM_MQ.matc
 document.querySelectorAll('#dmSeg button').forEach(b=>b.onclick=()=>{store.set('smaisle-dark',b.dataset.m);dmApply()});
 if(DM_MQ&&DM_MQ.addEventListener)DM_MQ.addEventListener('change',dmApply);
 
-/* ---------- Sound: little synth tones. On/off in the menu. ---------- */
+/* ---------- Sound: little synth tones. On/off in Settings. ---------- */
 let ac=null,acStale=false;const soundOn=()=>store.get('bw-sound','on')!=='off';
 function newAc(){ac=new (window.AudioContext||window.webkitAudioContext)();const b=ac.createBufferSource();b.buffer=ac.createBuffer(1,1,22050);b.connect(ac.destination);b.start(0)}
 function unlockAudio(){if(!soundOn()||(ac&&ac.state==='running'&&!acStale))return;acStale=false;
