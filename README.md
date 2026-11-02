@@ -53,3 +53,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.2 (Nov 2)
 - Today's game (No. 1, Nov 2) now uses the current rules too (Jeff): 7 normal + 3 Hard words. The old No. 1 freeze is gone and every day deals from k = day - 1. A No. 1 game saved under the old deal is cleared once (localStorage flag bw-mig22) so it can be replayed.
+
+## v2.3 (Nov 2)
+- How to Play rewritten to fit an iPhone without scrolling (4 short steps), with a looping demo at the top: blocks, BRAKE blips on, blocks, then the 4 look-alike choices and the right one lights up. If it still doesn't fit (very small screens), the sheet switches to a tighter layout.

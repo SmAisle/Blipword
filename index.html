@@ -138,6 +138,24 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 .fit3 .opt{font-size:13px;line-height:1.3;padding:6px 8px;box-shadow:2px 2px 0 var(--shadow)}.fit3 .opt .n{flex-basis:20px;height:20px}.fit3 #win{height:76px}.fit3 .meta{margin:0 0 5px}.fit3 .go{padding:9px;font-size:14px}.fit3 #result .big{font-size:48px;margin:4px 0 0}.fit3 #result{padding:10px}
 .fit4 #dailyBar{display:none}.fit4 .pip{height:24px;font-size:11px}.fit4 #win{height:66px}.fit4 #win .wd,.fit4 #win .mask,.fit4 #win .rev{font-size:26px}.fit4 .ask{display:none}.fit4 .opt{margin:4px 0}
 .fit5 #top h1{font-size:22px}.fit5 #pips{margin:5px 0 4px;gap:3px}.fit5 .pip{height:22px}.fit5 #win{height:56px}.fit5 .opt{font-size:12.5px;padding:5px 7px;margin:3px 0}.fit5 .go{margin-top:8px;padding:8px}.fit5 #result .big{font-size:40px}.fit5 #result .msg{font-size:14px}.fit5 .countdown{font-size:17px}.fit5 #result .sq{font-size:16px}.fit5 .opt .w{font-size:9px;letter-spacing:.03em}.fit5 .opt{line-height:1.2}.fit5 .meta{margin:0 0 3px}.fit5 #top{padding:4px 0 3px}
+
+/* How to Play: compact so it fits an iPhone without scrolling, with a looping demo (v2.3) */
+.help h2{margin-bottom:8px}
+#demo{border:2px solid var(--line);background:var(--paper2);padding:8px;margin:0 0 8px}
+#demo .dwin{height:52px;background:var(--card);border:2px solid var(--line);display:grid;place-items:center;font:900 26px/1 var(--sans);letter-spacing:.06em}
+#demo .dwin .mk{display:flex;gap:4px}#demo .dwin .mk i{display:block;width:17px;height:20px;background:var(--ink2)}
+#demo .dwin .q{font:italic 13px var(--body);letter-spacing:0;color:var(--fade)}
+.dopts{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:6px;transition:opacity .2s}
+.dopts div{border:1.5px solid var(--line);background:var(--card);font:12px/1.25 var(--body);padding:5px 6px;min-height:34px}
+.dopts b{display:none;font:800 9.5px var(--sans);letter-spacing:.08em;margin-top:2px}
+.dopts.rev b{display:block}.dopts.rev div[data-ok="1"]{background:var(--green);border-color:var(--green);color:#fff}.dopts.rev div[data-ok="0"]{opacity:.5}
+.dopts .tap{outline:3px solid var(--hi);outline-offset:1px}
+.hsteps{margin:4px 0 6px;padding-left:20px}.help .hsteps li{font:14px/1.4 var(--body);margin:3px 0}
+.help .hnote{font:13.5px/1.4 var(--body);margin:6px 0;color:var(--ink2)}
+.help .small{margin-top:6px;font-size:11.5px}.help .go{margin-top:10px;padding:12px}.help .ver{margin-top:8px}
+.sheet:has(.help.tight){padding:8px}.help.tight{padding:12px 14px 10px}.help.tight .ver{display:none}.help.tight .hnote{font-size:12.5px;margin:4px 0}.help.tight .small{margin-top:4px;font-size:11px}.help.tight .go{margin-top:6px}.help.tight #demo{padding:6px;margin-bottom:4px}
+.help.tight #demo .dwin{height:42px}.help.tight .dopts div{min-height:0;font-size:11px;padding:4px 5px}.help.tight .hsteps li{font-size:13px;margin:1px 0}.help.tight h2{font-size:22px}.help.tight .go{padding:9px}
+.help.tighter .dopts div{font-size:10.5px;line-height:1.15}.help.tighter .dopts b{font-size:8.5px}.help.tighter .hsteps li{font-size:12px;line-height:1.3}.help.tighter h2{font-size:20px;margin-bottom:4px}.help.tighter #demo .dwin{height:36px;font-size:22px}.help.tighter .hnote{display:none}
 @media (prefers-reduced-motion:reduce){.opt,#result{animation:none!important}}
 </style>
 </head>
@@ -167,19 +185,23 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
   <div class="ver" id="menuVer"></div>
 </div></div>
 
-<div class="sheet" id="sHelp" hidden><div class="box2">
+<div class="sheet" id="sHelp" hidden><div class="box2 help">
   <button class="x" data-close>×</button><h2>How to Play</h2>
-  <p>Every day there are 10 words. Each one flashes on the screen for a split second, then disappears.</p>
-  <ul>
-    <li>Tap <b>Flash</b> when you're ready. Blocks show where the word will be, the word blips on, then the blocks cover it again.</li>
-    <li>Pick the <b>definition</b> of the word you saw from 4 choices.</li>
-    <li>The other 3 choices belong to look-alike words (BRAKE, BREAK, BRAVE, BAKER), so read carefully.</li>
-    <li>Each word flashes <b>once</b>, and each one goes a little faster than the last. Longer words stay up longer, so every word is fair: a short word on word 1 shows for about a third of a second.</li>
-    <li>The last 3 words are <b>Hard</b>: long, rare words. Get all 10 for a perfect day.</li>
-    <li>Pick a speed before you start: 🐢 <b>Slow</b>, ⚡ <b>Normal</b> or 🔥 <b>Fast</b>. Aced Normal? Try Fast. Your speed is locked in once the first word flashes.</li>
-  </ul>
-  <p>A new game comes out every day at midnight Eastern time. Past days are in the <b>Archive</b>. Want to warm up first? Try <b>Practice</b> in the menu.</p>
-  <p class="small" id="termsLine">By playing, you agree to the smAisle <a href="https://smaisle.app/about.html" target="_blank" rel="noopener">Terms and Privacy</a>. The game counts opens and plays anonymously to see how many people play. No names, no accounts.</p>
+  <div id="demo" aria-hidden="true">
+    <div class="dwin"><div id="dShow"></div></div>
+    <div class="dopts" id="dOpts">
+      <div data-ok="0">To snap into pieces<b>BREAK</b></div><div data-ok="1">A pedal that slows a car<b>BRAKE</b></div>
+      <div data-ok="0">Showing courage<b>BRAVE</b></div><div data-ok="0">A person who makes bread<b>BAKER</b></div>
+    </div>
+  </div>
+  <ol class="hsteps">
+    <li>Tap <b>Flash</b>. A word blips on for a split second.</li>
+    <li>Pick its <b>meaning</b> from 4 look-alikes.</li>
+    <li>10 words a day, each faster. The last 3 are <b>Hard</b>.</li>
+    <li>Pick 🐢 <b>Slow</b>, ⚡ <b>Normal</b> or 🔥 <b>Fast</b>.</li>
+  </ol>
+  <p class="hnote">New game daily at midnight Eastern. Past days are in the <b>Archive</b>.</p>
+  <p class="small" id="termsLine">By playing, you agree to the smAisle <a href="https://smaisle.app/about.html" target="_blank" rel="noopener">Terms and Privacy</a>. Plays are counted anonymously.</p>
   <button class="go" data-close id="helpGo">Play</button>
   <div class="ver" id="helpVer"></div>
 </div></div>
@@ -211,7 +233,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.2',VDATE='Nov 2',GAME='bw';
+const VERSION='2.3',VDATE='Nov 2',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -558,7 +580,7 @@ function showArchive(){
 }
 
 /* ---------- Sheets and menu ---------- */
-function only(id){closeSheets();$(id).hidden=false}
+function only(id){closeSheets();$(id).hidden=false;if(id==='sHelp')helpOpen()}
 function closeSheets(){document.querySelectorAll('.sheet').forEach(s=>s.hidden=true)}
 document.querySelectorAll('.sheet').forEach(s=>{s.addEventListener('click',e=>{if(e.target===s||e.target.closest('[data-close]'))s.hidden=true})});
 $('menuBtn').onclick=()=>{if(!busy)only('sMenu')};
@@ -674,6 +696,19 @@ $('homeLink').onclick=goHome;$('mHome').onclick=goHome;
 /* v2.2: No. 1 (Nov 2) now uses the current rules (7 normal + 3 Hard words). A No. 1 game saved under the old deal would no longer match,
    so it is cleared once (with its stats entry) and can be played again. */
 try{if(!store.get('bw-mig22','')){const d='2026-11-02';if(store.get(keyOf(d),null)!=null){localStorage.removeItem(keyOf(d));const h=hist();delete h[d];store.put('bw-hist',h)}store.set('bw-mig22','1')}}catch(e){}
+/* How to Play demo: blocks, the word BRAKE blips on, blocks, then the 4 choices and the right one lights up. Loops while the sheet is open. */
+let demoT=null,demoRun=0;
+function fitHelp(){const bx=document.querySelector('#sHelp .box2');if($('sHelp').hidden)return;bx.classList.remove('tight','tighter');if(bx.scrollHeight>bx.clientHeight+1)bx.classList.add('tight');if(bx.scrollHeight>bx.clientHeight+1)bx.classList.add('tighter')}
+addEventListener('resize',fitHelp);try{document.fonts.ready.then(fitHelp)}catch(e){}
+function helpOpen(){fitHelp();
+  const run=++demoRun,sh=$('dShow'),op=$('dOpts'),blocks='<div class="mk">'+'<i></i>'.repeat(5)+'</div>';
+  const step=(f,ms)=>new Promise(r=>{demoT=setTimeout(()=>{if(run!==demoRun||$('sHelp').hidden)return;f();r()},ms)});
+  (async function loop(){op.classList.remove('rev');op.querySelectorAll('div').forEach(d=>d.classList.remove('tap'));op.style.opacity='.35';sh.innerHTML='<span class="q">Tap Flash…</span>';
+    await step(()=>sh.innerHTML=blocks,900);await step(()=>sh.textContent='BRAKE',700);await step(()=>sh.innerHTML=blocks,450);
+    await step(()=>{sh.innerHTML='<span class="q">Which word was it?</span>';op.style.opacity='1'},300);
+    await step(()=>op.querySelector('[data-ok="1"]').classList.add('tap'),1300);await step(()=>op.classList.add('rev'),500);
+    await step(()=>{},2200);if(run===demoRun&&!$('sHelp').hidden)loop()})();
+}
 /* ---------- Start ---------- */
 dmApply();sndApply();spdSegApply();load(today());HOME=true;draw();
 if(!agreed())only('sHelp');else checkIn('open');
