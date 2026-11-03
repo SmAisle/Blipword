@@ -31,7 +31,9 @@ html,body{height:100%;margin:0;touch-action:manipulation;-webkit-text-size-adjus
 body{background:var(--paper);color:var(--ink);font-family:var(--body);-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;overscroll-behavior:none}
 button{font:inherit;color:inherit;touch-action:manipulation;cursor:pointer}
 #app{max-width:520px;margin:0 auto;height:100vh;height:100dvh;overflow:hidden;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 10px)}
-#dailyBar{display:block;margin:0 -16px;padding:8px 16px;background:var(--card);border-bottom:2px solid var(--line);color:var(--ink);font:800 12px var(--sans);text-decoration:none;letter-spacing:.01em}
+/* Way back to smAisle Daily: the yellow button shows on the home screen only; during play the way back is the menu row (Jeff, Nov 3). */
+body:not(.home) #dailyBar{display:none}
+#dailyBar{flex:none;align-self:flex-start;display:block;height:30px;margin:6px 0 0 -4px;padding:4px 10px;background:#ffe27a;color:#1a1814;border:2px solid #1a1814;border-radius:4px;font:800 13px/18px var(--sans);letter-spacing:.06em;text-decoration:none;white-space:nowrap}
 #top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;border-bottom:3px double var(--line)}
 #top .no{font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);min-width:70px}
 #top h1{margin:0;font:900 30px/1 var(--head);letter-spacing:-.01em}
@@ -106,9 +108,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 .hcard .go2{font:800 14px var(--sans);letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
 #home .links{margin:14px 0 0;font:800 12px var(--sans);letter-spacing:.06em;text-transform:uppercase}
 #home .links button{background:none;border:0;text-decoration:underline;font:inherit;padding:6px 4px;color:var(--ink)}
-#home .foot{border-top:2px solid var(--line);margin-top:16px;padding-top:10px;display:flex;flex-direction:column;gap:2px;font:800 13px var(--sans)}
-#home .foot a{color:var(--ink);text-decoration:none;padding:5px} #home .foot i{font:italic 13px var(--body);color:var(--ink2);font-weight:400;margin-left:6px}
-#home .hv{font:600 11px var(--sans);color:var(--fade);margin-top:8px}
+#home .hv{font:600 11px var(--sans);color:var(--fade);margin-top:14px}#home .hv a{color:inherit}
 .fit1 #home .ttl h1{font-size:44px}.fit2 #home .tag{margin-bottom:6px}.fit2 #home .lbl{margin:8px 0 4px}.fit3 #home .ttl h1{font-size:38px}.fit3 .hcard{padding:10px 12px}.fit3 .hcard b{font-size:22px}.spdseg button{padding:8px 2px;font-size:12.5px}
 .fit3 .spdseg{margin-top:8px}.fit3 .spdseg button{padding:6px 2px}
 .ver{font:600 12px var(--sans);color:var(--fade);text-align:center;margin-top:14px}
@@ -134,9 +134,9 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 #toast.on{opacity:1}
 /* Fit levels: fit() adds fit1..fit4 until the whole game fits on one screen with no scrolling. */
 .fit1 #win{height:104px}.fit1 .opt{padding:9px 10px;font-size:15px;margin:6px 0}.fit1 .go{padding:11px;margin-top:12px}.fit1 .ask{margin:12px 0 2px}.fit1 #pips{margin:8px 0 6px}
-.fit2 #top{padding:6px 0 5px}.fit2 #top h1{font-size:25px}.fit2 #dailyBar{padding:6px 16px}.fit2 .pip{height:28px}.fit2 #win{height:88px}.fit2 #win .wd,.fit2 #win .mask,.fit2 #win .rev{font-size:30px}.fit2 .opt{padding:7px 9px;font-size:14px;margin:5px 0}.fit2 .small{margin-top:8px}
+.fit2 #top{padding:6px 0 5px}.fit2 #top h1{font-size:25px}.fit2 .pip{height:28px}.fit2 #win{height:88px}.fit2 #win .wd,.fit2 #win .mask,.fit2 #win .rev{font-size:30px}.fit2 .opt{padding:7px 9px;font-size:14px;margin:5px 0}.fit2 .small{margin-top:8px}
 .fit3 .opt{font-size:13px;line-height:1.3;padding:6px 8px;box-shadow:2px 2px 0 var(--shadow)}.fit3 .opt .n{flex-basis:20px;height:20px}.fit3 #win{height:76px}.fit3 .meta{margin:0 0 5px}.fit3 .go{padding:9px;font-size:14px}.fit3 #result .big{font-size:48px;margin:4px 0 0}.fit3 #result{padding:10px}
-.fit4 #dailyBar{display:none}.fit4 .pip{height:24px;font-size:11px}.fit4 #win{height:66px}.fit4 #win .wd,.fit4 #win .mask,.fit4 #win .rev{font-size:26px}.fit4 .ask{display:none}.fit4 .opt{margin:4px 0}
+.fit4 .pip{height:24px;font-size:11px}.fit4 #win{height:66px}.fit4 #win .wd,.fit4 #win .mask,.fit4 #win .rev{font-size:26px}.fit4 .ask{display:none}.fit4 .opt{margin:4px 0}
 .fit5 #top h1{font-size:22px}.fit5 #pips{margin:5px 0 4px;gap:3px}.fit5 .pip{height:22px}.fit5 #win{height:56px}.fit5 .opt{font-size:12.5px;padding:5px 7px;margin:3px 0}.fit5 .go{margin-top:8px;padding:8px}.fit5 #result .big{font-size:40px}.fit5 #result .msg{font-size:14px}.fit5 .countdown{font-size:17px}.fit5 #result .sq{font-size:16px}.fit5 .opt .w{font-size:9px;letter-spacing:.03em}.fit5 .opt{line-height:1.2}.fit5 .meta{margin:0 0 3px}.fit5 #top{padding:4px 0 3px}
 
 /* How to Play: compact so it fits an iPhone without scrolling, with a looping demo (v2.3) */
@@ -247,7 +247,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.7',VDATE='Nov 3',GAME='bw';
+const VERSION='2.9',VDATE='Nov 3',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -719,9 +719,8 @@ function drawHome(){
     <button class="hcard" id="hPlay"><span><b>No. ${dnum(t)}</b><small>${st}</small></span><span class="go2">${go}</span></button>
     <div class="lbl">Speed</div>
     ${spdSegHtml().replace('seg spdseg','seg spdseg" style="margin:0')}
-    <div class="links"><button id="hArch">${pv?'🔒 ':''}Archive</button> · <button id="hPrac">${pv?'🔒 ':''}Practice</button> · <button id="hStats">Stats</button> · <button id="hHelp">How to Play</button></div>
-    <div class="foot"><a href="https://smaisle.app/daily/">‹ smAisle Daily<i>Back to today’s games</i></a><a href="https://smaisle.app/">‹ smAisle Home<i>More games by smAisle</i></a></div>
-    <div class="hv">Blipword · v${VERSION} · ${VDATE}</div>
+    <div class="links"><button id="hArch">${pv?'🔒 ':''}Archive</button> · <button id="hStats">Stats</button> · <button id="hHelp">How to Play</button> · <button id="hPrac">${pv?'🔒 ':''}Practice</button></div>
+    <div class="hv"><a href="https://smaisle.app/">smAisle Home</a> · v${VERSION} · ${VDATE}</div>
   </div>`;
   $('hPlay').onclick=()=>{HOME=false;load(today());draw()};
   $('hArch').onclick=showArchive;$('hPrac').onclick=startPractice;$('hStats').onclick=showStats;$('hHelp').onclick=()=>only('sHelp');
