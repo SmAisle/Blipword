@@ -31,7 +31,8 @@ html,body{height:100%;margin:0;touch-action:manipulation;-webkit-text-size-adjus
 body{background:var(--paper);color:var(--ink);font-family:var(--body);-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;overscroll-behavior:none}
 button{font:inherit;color:inherit;touch-action:manipulation;cursor:pointer}
 #app{max-width:520px;margin:0 auto;height:100vh;height:100dvh;overflow:hidden;display:flex;flex-direction:column;padding:env(safe-area-inset-top) 16px calc(env(safe-area-inset-bottom) + 10px)}
-/* Way back to smAisle Daily: same yellow button, same spot, on the home screen and in the game (Jeff, Nov 3). */
+/* Way back to smAisle Daily: the yellow button shows on the home screen only; during play the way back is the menu row (Jeff, Nov 3). */
+body:not(.home) #dailyBar{display:none}
 #dailyBar{flex:none;align-self:flex-start;display:block;height:30px;margin:6px 0 0 -4px;padding:4px 10px;background:#ffe27a;color:#1a1814;border:2px solid #1a1814;border-radius:4px;font:800 13px/18px var(--sans);letter-spacing:.06em;text-decoration:none;white-space:nowrap}
 #top{display:flex;align-items:center;justify-content:space-between;padding:10px 0 8px;border-bottom:3px double var(--line)}
 #top .no{font:700 12px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2);min-width:70px}
@@ -246,7 +247,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.8',VDATE='Nov 3',GAME='bw';
+const VERSION='2.9',VDATE='Nov 3',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */

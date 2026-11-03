@@ -68,3 +68,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.8 (Nov 3)
 - One way home (navigation standard): the yellow ‹ smAisle Daily button sits top left in the same spot on the home screen and in the game, and no longer hides on short screens. It replaces the white bar and the footer rows. smAisle Home is now a small link on the version line. Home links run Archive · Stats · How to Play · Practice.
+
+## v2.9 (Nov 3)
+- Correction from Jeff: the yellow ‹ smAisle Daily button shows on the home screen only, never during play. During play the way back is the ‹ smAisle Daily row in the menu. The results screen keeps its row.
