@@ -71,3 +71,7 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.9 (Nov 3)
 - Correction from Jeff: the yellow ‹ smAisle Daily button shows on the home screen only, never during play. During play the way back is the ‹ smAisle Daily row in the menu. The results screen keeps its row.
+
+## v2.10 (Nov 3)
+- Menu standard (Jeff): the menu now matches Straight Down Spell. Top to bottom: Menu, Back to game (new), then the two-column grid, Home Screen and ‹ smAisle Daily side by side, Settings, version.
+- The ⭐ Plus row shows only in the preview and opens the Plus sheet. Plus players and the plain website don't see it.
