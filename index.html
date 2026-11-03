@@ -59,7 +59,7 @@ button{font:inherit;color:inherit;touch-action:manipulation;cursor:pointer}
 #win .rev{font:900 clamp(26px,8.5vw,40px)/1 var(--head);letter-spacing:.02em}
 .stamp{position:absolute;right:10px;top:10px;font:800 12px var(--sans);letter-spacing:.12em;text-transform:uppercase;padding:3px 7px;border:2.5px solid currentColor;transform:rotate(-8deg)}
 .stamp.ok{color:var(--green)} .stamp.bad{color:var(--red)}
-.ask{font:700 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin:18px 0 4px}
+.ask{font:700 12px var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin:18px 0 4px;display:flex;align-items:center;gap:8px}.ask .lb{flex:none}#tTrack{flex:1;height:8px;border:1.5px solid var(--ink);border-radius:3px;overflow:hidden;background:var(--card)}#tBar{height:100%;width:100%;background:var(--ink);transform-origin:left}#tBar.low{background:var(--red)}#tSec{flex:none;font-variant-numeric:tabular-nums;font-weight:800;color:var(--ink);min-width:2ch;text-align:right}
 .opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;margin:8px 0;padding:12px 12px;border:2px solid var(--line);background:var(--card);font:16px/1.4 var(--body);box-shadow:3px 3px 0 var(--shadow);animation:rise .25s ease-out both}
 .opt:nth-child(2){animation-delay:.04s}.opt:nth-child(3){animation-delay:.08s}.opt:nth-child(4){animation-delay:.12s}
 @keyframes rise{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
@@ -210,7 +210,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
   </div>
   <ol class="hsteps">
     <li>Tap <b>Flash</b>. A word blips on for a split second.</li>
-    <li>Pick its <b>meaning</b> from 4 look-alikes.</li>
+    <li>Pick its <b>meaning</b> from 4 look-alikes. You get <b>15 seconds</b>.</li>
     <li>10 words a day, each faster. The last 3 are <b>Hard</b>.</li>
     <li>Pick 🐢 <b>Slow</b>, ⚡ <b>Normal</b> or 🔥 <b>Fast</b>.</li>
   </ol>
@@ -247,7 +247,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.6',VDATE='Nov 2',GAME='bw';
+const VERSION='2.7',VDATE='Nov 3',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -474,7 +474,7 @@ function drawTop(){
 function draw(){drawInner();fit()}
 /* Practice only, for now (Jeff, v1.7): tap a number at the top to jump to that word and play it again. */
 $('pips').addEventListener('click',e=>{const d=e.target.closest('.pip');if(!d||!PRAC||busy)return;const i=+d.dataset.i;
-  G.r=i;G.done=false;G.seen=false;G.pick=G.pick.slice(0,i);draw()});
+  G.r=i;G.done=false;G.seen=false;G.dl=0;G.pick=G.pick.slice(0,i);draw()});
 function fit(){const b=document.body,L=['fit1','fit2','fit3','fit4','fit5'];b.classList.remove(...L);const app=$('app');
   for(const c of L){if(app.scrollHeight<=app.clientHeight+1)break;b.classList.add(c)}}
 addEventListener('resize',fit);try{document.fonts.ready.then(fit)}catch(e){}
@@ -489,9 +489,9 @@ function drawInner(){
   if(picked){const ok=right(G,i);win=`<div class="rev" style="${fsz(word(i).length)}">${cap(word(i))}</div>`}
   else if(G.seen)win=`<div class="gone">The word is gone. Which one was it?</div>`;
   else win=`<div class="tap"><b>Tap to flash</b>Word ${i+1} · ${secs(spd(i))}</div>`;
-  $('stage').innerHTML=`<div class="meta"><span>Word ${i+1} of ${ROUNDS}${picked?(right(G,i)?' · <b style="color:var(--green)">Got it ✓</b>':' · <b style="color:var(--red)">Missed ✕</b>'):''}</span><span class="spd">${SPEEDS[curSpeed()].icon} ${isHard(i)?'Hard · ':''}${secs(spd(i))}</span></div>
+  $('stage').innerHTML=`<div class="meta"><span>Word ${i+1} of ${ROUNDS}${picked?(right(G,i)?' · <b style="color:var(--green)">Got it ✓</b>':G.pick[i]===-1?' · <b style="color:var(--red)">Time’s up ✕</b>':' · <b style="color:var(--red)">Missed ✕</b>'):''}</span><span class="spd">${SPEEDS[curSpeed()].icon} ${isHard(i)?'Hard · ':''}${secs(spd(i))}</span></div>
   <div id="win" class="${picked?(right(G,i)?'ok':'bad'):''}">${win}</div>
-  ${G.seen?`<div class="ask">${picked?'The choices':'Pick the definition'}</div><div id="opts">${R.o.map((k,n)=>{
+  ${G.seen?`<div class="ask"><span class="lb">${picked?'The choices':'Pick the definition'}</span>${!picked&&!PRAC?`<span id="tTrack"><span id="tBar" style="display:block"></span></span><span id="tSec">${PICK_SECS}</span>`:''}</div><div id="opts">${R.o.map((k,n)=>{
       const cls=picked?(k===R.a?'right':k===G.pick[i]?'wrong':'dim'):'';
       return `<button class="opt ${cls}" data-k="${k}"${picked?' disabled':''}><span class="n">${n+1}</span><span class="d">${grp[k][1]}.</span>${picked?`<span class="w">${grp[k][0]}</span>`:''}</button>`}).join('')}</div>`
     :`${(i===0&&!G.pick.length)||PRAC?spdSegHtml():''}<button class="go" id="flashBtn">Flash ${SPEEDS[curSpeed()].icon}</button><div class="small">${PRAC?'Practice: tap a number at the top to jump to that word.':PAST?'Archive game: it won’t change your streak.':'Each word flashes only once. Eyes on the box.'}</div>`}
@@ -499,30 +499,43 @@ function drawInner(){
   if(!G.seen){$('flashBtn').onclick=flash;$('win').onclick=flash}
   else if(!picked)document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.k));
   if(picked)$('nextBtn').onclick=next;
+  if(G.seen&&!picked&&!PRAC)runTimer();
 }
+
+/* ---------- Pick timer: 15 seconds per word, starting when the definitions appear. The deadline is saved,
+   so leaving or reloading doesn't stop the clock. Time running out counts as a miss (pick = -1). Practice has no timer. ---------- */
+const PICK_SECS=15;let timerT=null,lastTick=0;
+function stopTimer(){clearInterval(timerT);timerT=null}
+function runTimer(){stopTimer();if(!G.dl){G.dl=Date.now()+PICK_SECS*1000;save()}lastTick=0;
+  const tick=()=>{const bar=$('tBar'),sec=$('tSec');if(!bar||G.done||G.pick[G.r]!=null){stopTimer();return}
+    const left=G.dl-Date.now();if(left<=0){stopTimer();choose(-1);return}
+    const n=Math.ceil(left/1000);bar.style.transform=`scaleX(${left/(PICK_SECS*1000)})`;bar.classList.toggle('low',n<=3);sec.textContent=n;
+    if(n<=3&&n!==lastTick){lastTick=n;sfx('tick')}};
+  tick();if(G.pick[G.r]==null&&!G.done)timerT=setInterval(tick,100)}
 
 /* ---------- The flash: solid blocks the length of the word, the word for spd(i) ms, then the blocks again so it can't linger on screen. ---------- */
 function waitMs(ms){return new Promise(res=>{const t0=performance.now();(function f(t){if(t-t0>=ms-8)res();else requestAnimationFrame(f)})(t0)})}
 async function flash(){
   if(busy||G.seen||G.done)return;busy=true;
   const i=G.r,w=word(i),win=$('win'),btn=$('flashBtn');if(btn){btn.disabled=true;btn.style.visibility='hidden'}
-  G.seen=true;if(!G.spd)G.spd=curSpeed();save();
+  G.seen=true;G.dl=0;if(!G.spd)G.spd=curSpeed();save();
   const ml=Math.max(...GROUPS[PZ[i].g].map(x=>x[0].length)),mask=`<div class="mask" style="${fsz(ml)}">${'<i></i>'.repeat(ml)}</div>`; // solid blocks before and after, as long as the group's longest word so they don't give away the length
   win.innerHTML=mask;await waitMs(650);
   sfx('blink');win.innerHTML=`<div class="wd" style="${fsz(Math.max(...GROUPS[PZ[i].g].map(x=>x[0].length)))}">${w}</div>`;
   await new Promise(r=>requestAnimationFrame(()=>r()));await waitMs(spd(i));
   win.innerHTML=mask;
   await waitMs(300);
+  G.dl=Date.now()+PICK_SECS*1000;save();
   busy=false;draw();
 }
 function choose(k){
   if(busy||G.done)return;const i=G.r;if(G.pick[i]!=null)return;
-  G.pick[i]=k;save();const ok=k===PZ[i].a;sfx(ok?(i+1>=ROUNDS?'win':'ok'):'bad');
+  stopTimer();G.pick[i]=k;save();const ok=k===PZ[i].a;sfx(ok?(i+1>=ROUNDS?'win':'ok'):'bad');
   if(!ok&&navigator.vibrate)try{navigator.vibrate(100)}catch(e){}
   draw();
   if(i+1>=ROUNDS){G.done=true;save();if(!PRAC&&!PAST){recordDay();markDone();checkIn('play')}}
 }
-function next(){if(G.done){draw();return}G.r++;G.seen=false;save();draw()}
+function next(){if(G.done){draw();return}G.r++;G.seen=false;G.dl=0;save();draw()}
 document.addEventListener('keydown',e=>{
   if(e.metaKey||e.ctrlKey||e.altKey||document.querySelector('.sheet:not([hidden])'))return;
   if(/^[1-4]$/.test(e.key)){const b=document.querySelectorAll('.opt:not([disabled])')[+e.key-1];if(b)b.click()}
@@ -548,7 +561,7 @@ function drawResult(){
   $('resDaily').onclick=goDaily;
   $('wordsHd').textContent=(PRAC||PAST?'The':'Today’s')+' words';
   $('wordsBody').innerHTML=`${PZ.map((R,i)=>{const g=GROUPS[R.g],ok=right(G,i),p=G.pick[i];
-    return `<div class="wl ${ok?'w':'l'}"><span class="ms">${secs(spd(i))}</span><b>${cap(g[R.a][0])}</b>${!ok&&p!=null?` <span style="font:700 12px var(--sans);color:var(--red)">you picked ${cap(g[p][0])}</span>`:''}<div>${g[R.a][1]}.</div></div>`}).join('')}`;
+    return `<div class="wl ${ok?'w':'l'}"><span class="ms">${secs(spd(i))}</span><b>${cap(g[R.a][0])}</b>${!ok&&p!=null?` <span style="font:700 12px var(--sans);color:var(--red)">${p===-1?'time ran out':'you picked '+cap(g[p][0])}</span>`:''}<div>${g[R.a][1]}.</div></div>`}).join('')}`;
   $('wordsBtn').onclick=()=>only('sWords');
   if($('shareBtn'))$('shareBtn').onclick=share;
   if($('pracAgain'))$('pracAgain').onclick=startPractice;
@@ -628,6 +641,7 @@ function tone(f,t0,dur,type,vol){const o=ac.createOscillator(),g=ac.createGain()
   g.gain.linearRampToValueAtTime(vol||.15,ac.currentTime+t0+.01);g.gain.exponentialRampToValueAtTime(.0001,ac.currentTime+t0+dur);o.connect(g);g.connect(ac.destination);o.start(ac.currentTime+t0);o.stop(ac.currentTime+t0+dur+.05)}
 function sfx(k){if(!soundOn()||!ac)return;try{
   if(k==='blink')tone(1320,0,.05,'sine',.08);
+  else if(k==='tick')tone(880,0,.05,'square',.05);
   else if(k==='ok'){tone(660,0,.1,'triangle');tone(990,.09,.18,'triangle')}
   else if(k==='bad'){tone(160,0,.35,'sawtooth',.12);tone(120,.12,.4,'sawtooth',.1)}
   else if(k==='win'){[523,659,784,1047].forEach((f,i)=>tone(f,i*.11,.3,'triangle'))}}catch(e){}}
