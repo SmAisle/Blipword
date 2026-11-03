@@ -65,3 +65,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.6 (Nov 2)
 - Cleaner menu (change list #21): Dark mode, Speed and Sound moved to a new Settings screen.
+
+## v2.8 (Nov 3)
+- One way home (navigation standard): the yellow ‹ smAisle Daily button sits top left in the same spot on the home screen and in the game, and no longer hides on short screens. It replaces the white bar and the footer rows. smAisle Home is now a small link on the version line. Home links run Archive · Stats · How to Play · Practice.
