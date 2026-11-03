@@ -88,6 +88,12 @@ body:not(.home) #dailyBar{display:none}
 .sheet h2{margin:0 0 4px;font:900 26px var(--head)} .sheet h3{margin:16px 0 6px;font:800 13px var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink2)}
 .sheet p,.sheet li{font:15px/1.55 var(--body)} .sheet ul{padding-left:20px;margin:6px 0}
 .x{float:right;background:none;border:0;font:700 24px/1 var(--sans);padding:0 2px;color:var(--ink2)}
+/* Menu standard, same as Straight Down Spell (Jeff, Nov 3). An odd last row spans both columns. */
+.mback{display:block;width:100%;margin:10px 0 0;padding:12px;border:2px solid var(--line);background:var(--btn);color:var(--btn-ink);font:800 16px var(--sans);letter-spacing:.08em;text-transform:uppercase}
+.mgrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.mpair{display:flex;gap:8px;margin-top:10px}.mpair .mbtn{flex:1}
+.mgrid .mbtn,.mpair .mbtn,.mbtn.mset{margin:0;padding:9px 4px;text-align:center;font-size:12px;letter-spacing:.08em;text-transform:uppercase}
+.mbtn.mset{margin-top:10px;padding:12px;font-size:16px}#mDaily{text-transform:none}
+.mgrid>:not([hidden]):nth-last-child(1 of :not([hidden])):nth-child(odd of :not([hidden])){grid-column:1/-1}
 .mbtn{display:block;width:100%;text-align:left;margin:8px 0;padding:13px 14px;border:2px solid var(--line);background:var(--card);font:800 15px var(--sans);letter-spacing:.03em}
 .mbtn.y{background:var(--hi);color:var(--hi-ink)}
 .seg{display:flex;border:2px solid var(--line);margin:6px 0 10px}
@@ -178,13 +184,16 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <div class="sheet" id="sMenu" hidden><div class="box2">
   <button class="x" data-close>×</button><h2>Menu</h2>
-  <button class="mbtn" id="mHome">Home</button>
-  <button class="mbtn" id="mHelp">How to Play</button>
-  <button class="mbtn" id="mArch">Archive</button>
-  <button class="mbtn" id="mPrac">Practice</button>
-  <button class="mbtn" id="mStats">Stats</button>
-  <button class="mbtn y" id="mDaily">‹ smAisle Daily</button>
-  <button class="mbtn" id="mSet">Settings</button>
+  <button class="mback" data-close id="mBack">Back to game</button>
+  <div class="mgrid">
+    <button class="mbtn" id="mArch">Archive</button>
+    <button class="mbtn" id="mStats">Stats</button>
+    <button class="mbtn" id="mHelp">How to Play</button>
+    <button class="mbtn" id="mPlus" hidden>⭐ Plus</button>
+    <button class="mbtn" id="mPrac">Practice</button>
+  </div>
+  <div class="mpair"><button class="mbtn" id="mHome">Home Screen</button><button class="mbtn y" id="mDaily">‹ smAisle Daily</button></div>
+  <button class="mbtn mset" id="mSet">Settings</button>
   <div class="ver" id="menuVer"></div>
 </div></div>
 
@@ -247,7 +256,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.9',VDATE='Nov 3',GAME='bw';
+const VERSION='2.10',VDATE='Nov 3',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -611,7 +620,7 @@ function showArchive(){
 function only(id){closeSheets();$(id).hidden=false;if(id==='sHelp')helpOpen()}
 function closeSheets(){document.querySelectorAll('.sheet').forEach(s=>s.hidden=true)}
 document.querySelectorAll('.sheet').forEach(s=>{s.addEventListener('click',e=>{if(e.target===s||e.target.closest('[data-close]'))s.hidden=true})});
-$('menuBtn').onclick=()=>{if(!busy)only('sMenu')};
+$('menuBtn').onclick=()=>{if(busy)return;$('mPlus').hidden=!preview();only('sMenu')};$('mPlus').onclick=()=>showPlus();
 $('mSet').onclick=()=>only('sSet');$('setBack').onclick=()=>only('sMenu');
 $('mHelp').onclick=()=>only('sHelp');$('mArch').onclick=showArchive;$('mStats').onclick=showStats;
 $('mPrac').onclick=()=>{closeSheets();startPractice()};
