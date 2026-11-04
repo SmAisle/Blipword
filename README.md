@@ -75,3 +75,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 ## v2.10 (Nov 3)
 - Menu standard (Jeff): the menu now matches Straight Down Spell. Top to bottom: Menu, Back to game (new), then the two-column grid, Home Screen and ‹ smAisle Daily side by side, Settings, version.
 - The ⭐ Plus row shows only in the preview and opens the Plus sheet. Plus players and the plain website don't see it.
+
+## v2.12 (Nov 4)
+- One demo for every game (change list #30): Try it with a coach. The old looping demo in How to Play is gone. "Try the demo" is in How to Play and on the home screen. Three real moves (Flash, pick the meaning, Next word) on a practice word with the clock off, using the shared demo frame (inlined). Nothing is saved or counted.
