@@ -257,7 +257,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.11',VDATE='Nov 4',GAME='bw';
+const VERSION='2.12',VDATE='Nov 4',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -402,6 +402,3029 @@ SESQUIPEDALIAN|Fond of very long words;SEQUESTER|To isolate or set apart;SESQUIC
 QUINTESSENTIAL|The most perfect example of something;QUINQUENNIAL|Happening every five years;QUINTUPLET|One of five babies born at once;QUIESCENT|Quiet and inactive
 DEMAGOGUE|A leader who stirs up people's fears;DEMIURGE|A creator god in ancient philosophy;DEMITASSE|A small cup for strong coffee;DEMOGRAPHIC|A group within a population
 UBIQUITOUS|Found everywhere;INIQUITOUS|Very wicked;ANTIQUITY|Ancient times;INEQUITABLE|Unfair`;
+/* ---------- Word bank (v2.12): single words, WORD|definition, by tier (normal = words 1-7, hard = words 8-10) and part of speech
+   (n noun, v verb, a adjective). The game picks the 3 wrong choices itself: same part of speech, looks most like the word.
+   ORDER MATTERS: every day from CUTOVER on is worked out from this list. Fixing a definition is fine; adding, removing or moving
+   words reshuffles all days from CUTOVER on, so that needs a new, later cutover date (see README). ---------- */
+const NEW_WORDS={normal:{n:`ABBEY|A building where monks or nuns live and worship
+ACROBAT|A performer who tumbles and swings at a circus
+ADAGE|An old, well-known saying
+ADMIRAL|The top commander of a navy fleet
+ADOBE|Sun-dried brick made of clay and straw
+AISLE|A walkway between rows of seats
+ALCOVE|A small recess set into the wall of a room
+ALGEBRA|Math that uses letters to stand for numbers
+ALLEY|A narrow lane behind buildings
+ALMANAC|A yearly book of calendars, tides and facts
+AMBULANCE|A vehicle that rushes sick people to the hospital
+AMULET|A charm worn to ward off bad luck
+ANCHOR|A heavy weight that keeps a ship in place
+ANECDOTE|A short, amusing true story
+ANGLER|A person who fishes with a rod
+ANTENNA|A rod or wire that picks up radio signals
+ANTLER|A branching horn on a deer
+ANVIL|A heavy iron block used by blacksmiths
+APOSTROPHE|A punctuation mark that shows possession
+APPRENTICE|A beginner learning a trade from an expert
+APRON|A cloth worn to keep clothes clean while cooking
+AQUARIUM|A glass tank for keeping fish
+ARCADE|A place full of coin-operated games
+ARCHER|A person who shoots with a bow
+ARCHIPELAGO|A chain of islands
+ARMADA|A large fleet of warships
+AROMA|A pleasant smell, often of food
+ARTERY|A vessel that carries blood away from the heart
+ARTIFACT|An old object made by people long ago
+ASPHALT|The black material used to pave roads
+ASTEROID|A rocky body that orbits the sun
+ATHLETE|A person trained in sports
+ATLAS|A book of maps
+ATTIC|A room just under the roof of a house
+AUCTION|A sale where people bid against each other
+AUDIENCE|The people watching a show
+AURORA|Colored lights in the night sky near the poles
+AUTUMN|The season between summer and winter
+AVALANCHE|A sudden slide of snow down a mountain
+AVENUE|A wide street in a city
+AVIATOR|A pilot of an aircraft
+AWARD|A prize given for an achievement
+AWNING|A fabric shelter over a window or storefront
+AXLE|The rod that wheels turn on
+BADGE|A small sign of rank or membership worn on a shirt
+BAILIFF|A court officer who keeps order
+BALCONY|A platform that juts out from an upper floor
+BALLAD|A slow song that tells a story
+BALLOT|A paper used to cast a vote
+BAMBOO|A tall, woody grass with hollow stems
+BANDAGE|A strip of cloth wrapped around a wound
+BANISTER|The handrail along a staircase
+BANJO|A round-bodied string instrument used in bluegrass
+BANNER|A long strip of cloth with a message on it
+BANQUET|A large, formal meal for many guests
+BARBECUE|An outdoor meal cooked over a grill
+BARGAIN|Something bought for less than it is worth
+BARLEY|A cereal grain used in soup and brewing
+BAROMETER|An instrument that measures air pressure
+BARRACKS|Housing for soldiers
+BARREL|A round wooden container with curved sides
+BARRIER|A fence or wall that blocks the way
+BASEMENT|The floor of a house below ground
+BASIN|A wide, shallow bowl for water
+BASSOON|A long, low-pitched woodwind instrument
+BAZAAR|A market with many small stalls
+BEACON|A bright light that guides or warns
+BEAGLE|A small hound with long ears
+BEAVER|A river animal that builds dams
+BEETLE|An insect with hard, shiny wing cases
+BELLOWS|A device that blows air on a fire
+BENCH|A long seat for several people
+BEVERAGE|Any drink
+BICYCLE|A two-wheeled vehicle you pedal
+BILLBOARD|A huge roadside advertising sign
+BINOCULARS|A handheld device for seeing far away with both eyes
+BIOGRAPHY|The story of a person's life
+BISCUIT|A small, soft, flaky bread
+BISHOP|A senior member of the Christian clergy
+BISON|A shaggy wild ox of the American plains
+BLANKET|A large cloth that keeps you warm in bed
+BLIZZARD|A severe snowstorm with strong winds
+BLOSSOM|A flower on a fruit tree
+BLUEPRINT|A detailed plan for a building
+BONFIRE|A large outdoor fire
+BONNET|A hat tied under the chin
+BORDER|The line between two countries
+BOULDER|A very large rock
+BOULEVARD|A broad city street, often lined with trees
+BOUQUET|A bunch of flowers
+BOUTIQUE|A small shop selling stylish goods
+BRACELET|A piece of jewelry worn around the wrist
+BROCHURE|A small booklet of information or advertising
+BRONZE|A metal made of copper and tin
+BROOCH|A decorative pin worn on clothing
+BROOM|A long-handled brush for sweeping
+BRUISE|A dark mark on the skin from a bump
+BUFFALO|A large, horned wild ox
+BUFFET|A meal where guests serve themselves
+BUGLE|A brass horn used to signal soldiers
+BULLDOZER|A heavy tractor that pushes dirt
+BULLETIN|A short official news report
+BUNGALOW|A small one-story house
+BUREAU|A government office or department
+BURGLAR|A person who breaks into homes to steal
+BUZZARD|A large, soaring bird of prey
+CABIN|A small wooden house in the woods
+CABINET|A cupboard with shelves and doors
+CACTUS|A spiny desert plant
+CADDIE|A person who carries a golfer's clubs
+CALENDAR|A chart showing the days of the year
+CAMPUS|The grounds of a college
+CANARY|A small yellow songbird
+CANDIDATE|A person running for office
+CANINE|Any animal of the dog family
+CANOPY|A cloth cover hung over a bed or throne
+CANTEEN|A small flask for carrying water
+CANVAS|Strong cloth that artists paint on
+CANYON|A deep valley with steep sides
+CAPSULE|A small case of medicine you swallow
+CAPTAIN|The leader of a ship or team
+CARAVAN|A group traveling together across a desert
+CARDIGAN|A knitted sweater that buttons down the front
+CARGO|Goods carried by a ship or plane
+CARNIVAL|A traveling fair with rides and games
+CAROUSEL|A merry-go-round
+CARPENTER|A person who builds with wood
+CARRIAGE|A wheeled vehicle pulled by horses
+CASCADE|A small waterfall
+CASHEW|A curved, buttery nut
+CASHIER|A person who takes payment in a store
+CASINO|A place for gambling
+CASSEROLE|A hearty dish baked slowly in the oven
+CASTLE|A fortified home of a medieval lord
+CATALOG|A book listing items for sale
+CATERPILLAR|The wormlike young of a butterfly
+CATHEDRAL|A large, important church
+CAULDRON|A large metal pot used over a fire
+CAVERN|A large underground chamber
+CEDAR|A tall evergreen with fragrant wood
+CEILING|The upper surface of a room
+CELLAR|An underground room for storage
+CEMENT|A powder that hardens to bind bricks
+CENSUS|An official count of the population
+CENTAUR|A mythical creature, half man and half horse
+CENTURY|A period of 100 years
+CERAMICS|Art made of fired clay
+CHAMPION|The winner of a contest
+CHANDELIER|A fancy hanging light with many branches
+CHARIOT|A two-wheeled horse cart used in ancient races
+CHARITY|A group that helps people in need
+CHAUFFEUR|A person hired to drive a car
+CHECKERS|A board game played with round flat pieces
+CHESTNUT|A glossy brown nut roasted in winter
+CHIMNEY|A passage that carries smoke out of a house
+CHISEL|A sharp-edged tool for carving
+CHORUS|A group of singers
+CHRONICLE|A record of events in time order
+CIDER|A drink pressed from apples
+CINEMA|A movie theater
+CIRCUIT|A closed path for electricity
+CITADEL|A fortress that overlooks a city
+CITIZEN|A legal member of a country
+CLARINET|A black woodwind with a single reed
+CLASSIC|A book or film of lasting quality
+CLERGY|Priests, ministers and other religious leaders
+CLIFF|A high, steep face of rock
+CLINIC|A place for outpatient medical care
+CLOAK|A loose, sleeveless outer garment
+CLOSET|A small room for hanging clothes
+CLOVER|A low plant with three leaflets
+COACH|A person who trains a team
+COASTER|A small mat that goes under a drink
+COBBLER|A person who repairs shoes
+COCKPIT|The place where a pilot sits
+COCOON|The silky case spun by a young moth
+COFFIN|A box for burial
+COLLAR|The part of a shirt around the neck
+COLLEAGUE|A person you work with
+COLONEL|A senior army officer
+COLONY|A settlement ruled by a distant country
+COMEDIAN|A person who tells jokes on stage
+COMET|An icy body with a glowing tail
+COMMUTER|A person who travels regularly to work
+COMPASS|A device with a needle that points north
+COMPOSER|A person who writes music
+CONDUCTOR|The person who leads an orchestra
+CONFETTI|Bits of colored paper thrown at celebrations
+CONGRESS|The lawmaking body of the United States
+CONSCIENCE|The inner sense of right and wrong
+CONSTELLATION|A named pattern of stars
+CONTEST|A competition for a prize
+CONTINENT|One of Earth's seven great landmasses
+CONVOY|A group of vehicles traveling together for safety
+COTTAGE|A small house in the country
+COUGAR|A large, tawny wild cat
+COUNCIL|A group elected to run a town
+COURIER|A person who delivers packages
+COURTYARD|An open space surrounded by walls
+COUSIN|The child of your aunt or uncle
+COYOTE|A wild dog of western North America
+CRADLE|A small bed for a baby that rocks
+CRATER|A bowl-shaped hole left by an impact
+CRAYON|A colored wax stick for drawing
+CRESCENT|The curved shape of a thin moon
+CREVICE|A narrow crack in rock
+CRICKET|A chirping insect that hops
+CROCODILE|A large reptile with powerful jaws
+CROSSBOW|A weapon that fires short bolts
+CROUTON|A small cube of toasted bread for salad
+CRUMB|A tiny piece of bread
+CUCKOO|A bird that lays eggs in other birds' nests
+CULVERT|A drain that carries water under a road
+CUPBOARD|A cabinet for dishes or food
+CURFEW|A rule to be home by a certain hour
+CURRENCY|The money used in a country
+CURTAIN|Fabric hung across a window
+CUSHION|A soft pad for sitting on
+CUSTARD|A sweet, creamy egg dessert
+CUSTODIAN|A person who cleans and looks after a building
+CUTLERY|Knives, forks and spoons
+CYCLONE|A violent, spinning storm
+CYLINDER|A solid shape like a can
+CYMBAL|A brass plate that is crashed in a drum kit
+DAGGER|A short knife used as a weapon
+DANDELION|A yellow weed with a fluffy seed head
+DATABASE|An organized collection of computer records
+DECADE|A period of ten years
+DECREE|An official order from a ruler
+DEED|A legal paper showing who owns land
+DELEGATE|A person chosen to represent others
+DELTA|Flat land at the mouth of a river
+DENTIST|A doctor who treats teeth
+DEPOSIT|Money put into a bank
+DEPUTY|An assistant to a sheriff
+DERBY|A horse race for young horses
+DETECTIVE|A person who solves crimes
+DETOUR|A longer route around a blocked road
+DIAGRAM|A simple drawing that explains something
+DIALECT|A regional form of a language
+DIAMOND|A very hard, clear gemstone
+DIPLOMA|A paper awarded on graduating
+DINGHY|A small open boat
+DINOSAUR|An extinct reptile of long ago
+DIPLOMAT|A person who represents a country abroad
+DISCIPLE|A devoted follower of a teacher
+DISPATCHER|A person who sends out taxis or police cars
+DITCH|A long, narrow trench beside a road
+DOCK|A platform where ships tie up
+DOLPHIN|A smart sea mammal with a curved fin
+DOME|A rounded roof
+DONKEY|A long-eared animal related to the horse
+DOORBELL|A button you press to announce a visit
+DORMITORY|A building where college students sleep
+DRAGONFLY|A long-bodied insect with four clear wings
+DRAWBRIDGE|A castle crossing that can be raised
+DRIFTWOOD|Timber washed ashore by the sea
+DRIZZLE|Very light rain
+DROUGHT|A long time without rain
+DUMPLING|A ball of boiled dough
+DUNGEON|A dark prison under a castle
+DYNASTY|A line of rulers from one family
+EAGLE|A large bird of prey with a hooked beak
+EASEL|A stand that holds an artist's painting
+ECLIPSE|When one heavenly body blocks another
+EDITOR|A person who corrects and prepares writing
+ELEVATOR|A moving box that carries people between floors
+EMBASSY|The office of a foreign country's ambassador
+EMBER|A glowing bit of coal in a dying fire
+EMBLEM|A symbol that stands for a group
+EMERALD|A bright green gemstone
+EMPIRE|A group of nations under one ruler
+ENAMEL|The hard, shiny coating on teeth
+ENCORE|An extra song after the concert ends
+ENGINEER|A person who designs machines or bridges
+ENTREE|The main course of a meal
+ENZYME|A protein that speeds up a reaction in the body
+EPIDEMIC|A fast-spreading outbreak of disease
+EQUATOR|An imaginary line around the middle of Earth
+ERRAND|A short trip to do a task
+ESCALATOR|A moving staircase
+ESSAY|A short piece of writing on a topic
+ESTATE|A large house with extensive grounds
+EVERGREEN|A tree that keeps its leaves all year
+EXHIBIT|A public display in a museum
+EXPLORER|A person who travels into unknown lands
+FABRIC|Woven cloth
+FAUCET|A device that controls water from a pipe
+FERRET|A small, slinky animal related to the weasel
+FIDDLE|Another name for a violin
+FIGURINE|A small statue
+FJORD|A long sea inlet between steep cliffs
+FLANNEL|A soft, warm cotton cloth
+FLEET|A group of ships
+FLUTE|A slim woodwind played by blowing across a hole
+FORECAST|A prediction of the weather
+FOREHEAD|The part of the face above the eyes
+FORTRESS|A strong military stronghold
+FOSSIL|The stone remains of ancient life
+FOUNTAIN|A spout of water in a park
+FRACTION|A part of a whole, such as one half
+FRECKLE|A small brown spot on the skin
+FREIGHT|Goods carried by truck or train
+FRONTIER|The far edge of settled land
+FURNACE|A big heater in a building
+GALAXY|A huge system of billions of stars
+GALLERY|A room where art is shown
+GALLON|A liquid measure equal to four quarts
+GARGOYLE|A carved monster on a church roof
+GARLAND|A wreath of flowers worn or hung
+GARMENT|A piece of clothing
+GAZEBO|An open-sided garden shelter
+GAZELLE|A small, swift African antelope
+GELATIN|A clear substance that makes desserts wiggle
+GENERATOR|A machine that makes electricity
+GEYSER|A hot spring that shoots water into the air
+GLACIER|A slow-moving river of ice
+GLADIATOR|A Roman fighter in the arena
+GLIDER|An aircraft with no engine
+GOBLET|A drinking glass with a stem
+GOBLIN|An ugly, mischievous creature in folk tales
+GOGGLES|Tight-fitting glasses that protect the eyes
+GONDOLA|A long, narrow boat in Venice
+GOPHER|A burrowing rodent with cheek pouches
+GORILLA|The largest of the great apes
+GOURMET|A person who knows and loves fine food
+GOVERNOR|The elected leader of a state
+GRAVEL|Small loose stones
+GRAVITY|The force that pulls things toward Earth
+GRIDDLE|A flat metal plate for cooking pancakes
+GUITAR|A six-stringed instrument you strum
+GUTTER|A channel that carries rain from a roof
+GYMNAST|An athlete who performs on bars and beams
+HABITAT|The natural home of an animal
+HAMMOCK|A bed of netting hung between two trees
+HAMSTER|A small pet rodent with cheek pouches
+HANDCUFFS|Metal rings that lock around a prisoner's wrists
+HANGAR|A large shed for airplanes
+HARBOR|A sheltered place for ships
+HARMONICA|A small mouth organ
+HARNESS|Straps used to control a horse
+HARPOON|A spear used to hunt whales
+HARVEST|The gathering of ripe crops
+HATCHET|A small ax
+HAZELNUT|A round, sweet nut often paired with chocolate
+HEADLINE|The title of a news story
+HEDGEHOG|A small, prickly animal that rolls into a ball
+HELMET|A hard hat that protects the head
+HEMISPHERE|Half of the Earth
+HERALD|A messenger who brings news
+HERB|A plant used for flavor
+HERITAGE|Traditions passed down from earlier generations
+HERMIT|A person who lives alone, away from others
+HIGHWAY|A main road between cities
+HOBBY|An activity done for fun
+HOCKEY|A team sport played on ice with sticks
+HOLSTER|A case for carrying a pistol
+HORIZON|The line where the sky meets the land
+HORNET|A large stinging wasp
+HOSTAGE|A person held until demands are met
+HOSTEL|A cheap place for travelers to stay
+HURDLE|A frame that runners jump over
+HURRICANE|A huge tropical storm
+HYDRANT|A street pipe that firefighters use
+HYENA|A laughing African scavenger
+ICEBERG|A floating mass of frozen water at sea
+ICICLE|A hanging spike of frozen water
+IGLOO|A dome-shaped house of snow
+IGUANA|A large tropical lizard
+INCENSE|A substance burned for its sweet smell
+INCH|One twelfth of a foot
+INFANT|A very young baby
+INFERNO|A huge, raging fire
+INLET|A narrow bay along the coast
+INSECT|A small six-legged creature
+INSTINCT|A natural behavior that isn't learned
+INTERVIEW|A meeting to question a job applicant
+INVOICE|A bill for goods or services
+ISLAND|Land with water all around it
+ISTHMUS|A narrow strip of land joining two larger ones
+ITINERARY|A planned route for a trip
+IVORY|The hard white substance of elephant tusks
+JACKAL|A wild dog of Africa and Asia
+JACKET|A short coat
+JAGUAR|A large spotted cat of the Americas
+JAVELIN|A light spear thrown in track events
+JELLYFISH|A soft sea creature that stings
+JERSEY|A shirt worn by a sports team
+JETTY|A pier built out into the water
+JIGSAW|A puzzle made of interlocking pieces
+JOCKEY|A person who rides racehorses
+JOURNAL|A daily written record
+JOURNEY|A long trip
+JUDGE|The official who runs a courtroom
+JUGGLER|A performer who keeps several objects in the air
+JUKEBOX|A coin-operated music player
+JUNGLE|A dense tropical forest
+JUROR|A member of a panel that gives a verdict
+KANGAROO|A large hopping animal of Australia
+KAYAK|A narrow, covered boat with a double paddle
+KENNEL|A shelter for dogs
+KERNEL|A single grain of corn
+KETTLE|A pot with a spout for boiling water
+KEYBOARD|A set of buttons for typing
+KIOSK|A small booth selling newspapers or snacks
+KITTEN|A young cat
+KNAPSACK|A bag carried on the back
+KNIGHT|A medieval soldier in armor
+KOALA|A tree-dwelling, eucalyptus-eating animal of Australia
+LABEL|A tag that gives information about an item
+LABORATORY|A room for scientific experiments
+LABYRINTH|A maze
+LACROSSE|A team game played with netted sticks
+LAGOON|A shallow body of water behind a reef
+LANDLORD|A person who rents out property
+LANDMARK|A prominent, easily seen feature of a place
+LANTERN|A portable light with a protective case
+LARVA|A newly hatched insect, like a grub
+LASER|A narrow, intense beam of light
+LASSO|A long rope with a loop for catching cattle
+LATTICE|A crisscross frame of wood strips
+LAUNDRY|Clothes that need washing
+LAUREL|An evergreen shrub whose leaves crowned victors
+LAVA|Melted rock from a volcano
+LAWYER|A person trained to give legal advice
+LECTERN|A stand that holds a speaker's notes
+LEDGE|A narrow shelf of rock
+LEDGER|A book of financial accounts
+LEGEND|A traditional story from the past
+LENTIL|A small, round, flat seed of the pea family
+LEOPARD|A large spotted cat of Africa and Asia
+LEVER|A bar used to lift something heavy
+LIBRARY|A place where you can borrow books
+LIFEGUARD|A person who watches over swimmers
+LIGHTHOUSE|A tower with a beam that warns ships
+LIMERICK|A funny five-line poem
+LIMOUSINE|A long, luxurious car
+LINEN|Cloth made from flax
+LOBBY|The entrance hall of a hotel
+LOBSTER|A large sea creature with big claws
+LOCKET|A small pendant that holds a photo
+LOCOMOTIVE|An engine that pulls a train
+LOCUST|A grasshopper that swarms and eats crops
+LODGE|A small country house for hunters or skiers
+LOFT|An open upper room
+LOTION|A creamy liquid for the skin
+LOTTERY|A game of chance with numbered tickets
+LOUNGE|A comfortable waiting room
+LULLABY|A gentle song that puts a baby to sleep
+LUMBER|Wood cut into boards
+LYNX|A wild cat with tufted ears
+LYRIC|A line of words in a song
+MACARONI|Small, curved tubes of pasta
+MAGAZINE|A glossy weekly or monthly publication
+MAGICIAN|A performer of tricks
+MAGNET|A metal object that attracts iron
+MAILBOX|A container for letters at a house
+MAJESTY|Royal dignity and grandeur
+MALLET|A wooden hammer
+MAMMAL|A warm-blooded animal that nurses its young
+MAMMOTH|An extinct, shaggy elephant
+MANATEE|A slow, gentle sea cow
+MANDOLIN|A small lute-like instrument with paired strings
+MANICURE|A beauty treatment for the fingernails
+MANSION|A very large, expensive house
+MANTEL|The shelf above a fireplace
+MANUSCRIPT|A book or paper written by hand
+MAPLE|A tree whose sap makes a sweet syrup
+MARATHON|A footrace of about 26 miles
+MARBLE|A polished stone used in statues
+MARGARINE|A butter substitute made from vegetable oil
+MARIONETTE|A puppet worked by strings
+MARKET|A place where goods are sold
+MARMALADE|A jam made from oranges
+MAROON|A dark brownish-red color
+MARSHAL|A federal officer who carries out court orders
+MARSUPIAL|An animal that carries its young in a pouch
+MASCOT|A team's lucky animal or character
+MASON|A person who builds with stone
+MATADOR|A bullfighter
+MATINEE|A daytime performance
+MATTRESS|The soft, thick part of a bed
+MAYOR|The elected head of a city
+MEADOW|A grassy field
+MEDLEY|A mix of songs played together
+MELODY|A sequence of notes that forms a tune
+MEMOIR|A written account of your own life
+MENAGERIE|A collection of wild animals on show
+MERMAID|A mythical sea woman with a fish's tail
+METEOR|A streak of light from a space rock
+MICROSCOPE|An instrument for seeing tiny things
+MIGRAINE|A severe, throbbing headache
+MILITIA|Citizens trained to fight in emergencies
+MILLENNIUM|A period of 1,000 years
+MINERAL|A natural solid like quartz or salt
+MINNOW|A very small freshwater fish
+MINSTREL|A medieval singer and musician
+MIRAGE|An optical illusion seen in the desert
+MISCHIEF|Playful bad behavior
+MISSILE|A rocket-powered weapon
+MITTEN|A hand covering with one section for all fingers
+MOAT|A water-filled ditch around a castle
+MOLLUSK|A soft-bodied animal such as a snail or clam
+MONARCH|A king or queen
+MONASTERY|A home for monks
+MONSOON|A seasonal wind that brings heavy rain
+MONUMENT|A statue built in memory of someone
+MOOSE|A huge deer with broad antlers
+MORTGAGE|A loan used to buy a house
+MOSAIC|A picture made of small colored tiles
+MOSQUE|A Muslim house of worship
+MOTTO|A short phrase that sums up a belief
+MUFFIN|A small, sweet, cup-shaped cake
+MURAL|A large painting on a wall
+MUSTANG|A wild horse of the American West
+MUSTARD|A yellow, tangy hot dog topping
+MUTINY|A rebellion by a ship's crew
+MYTH|An ancient story about gods and heroes
+NACHO|A cheese-covered tortilla chip
+NANNY|A person hired to care for children
+NAPKIN|A piece of cloth for wiping your mouth
+NARRATOR|The person who tells a story
+NAUTILUS|A sea creature with a spiral shell
+NAVIGATOR|The person who plots a ship's course
+NECTAR|The sweet liquid that bees collect
+NEIGHBOR|A person who lives next door
+NEPHEW|The son of your brother or sister
+NEWT|A small amphibian with a tail
+NICKEL|A coin worth five cents
+NIECE|The daughter of your brother or sister
+NOMAD|A person who wanders with no fixed home
+NOODLE|A long, thin strip of pasta
+NOSTRIL|An opening in the nose
+NOTARY|An official who certifies signatures
+NOVELIST|A person who writes long fiction
+NOZZLE|The spout at the end of a hose
+NUGGET|A small lump of gold
+OASIS|A fertile spot in a desert
+OATMEAL|A hot breakfast porridge
+OBELISK|A tall, four-sided stone pillar
+OBOE|A high woodwind with a double reed
+OBSERVATORY|A building with telescopes for studying the sky
+OCTAGON|A shape with eight sides
+OCTOPUS|A sea animal with eight arms
+ODOMETER|A dashboard device that counts miles driven
+OMELET|Beaten eggs folded over a filling
+OPERA|A drama set to music
+OPOSSUM|An American marsupial that plays dead
+ORBIT|The path of a planet around the sun
+ORCHARD|A place where fruit trees are grown
+ORCHESTRA|A large group of musicians
+ORCHID|A showy tropical flower
+ORGAN|A large keyboard instrument with pipes
+ORIGAMI|The Japanese art of paper folding
+ORNAMENT|A decoration hung on a tree
+ORPHAN|A child whose parents have died
+OSTRICH|A huge bird that can't fly
+OTTER|A playful, fish-eating river mammal
+OUTLAW|A person on the run from the law
+OUTPOST|A small, far-off military camp
+OVEN|A kitchen box for baking
+OVERALLS|Loose work pants with a bib
+OYSTER|A shellfish that can make a pearl
+PACEMAKER|A device that keeps the heart beating regularly
+PADDLE|A short oar used in a canoe
+PAGODA|A many-tiered tower in Asia
+PAJAMAS|Loose clothes worn to bed
+PALACE|The grand home of a king
+PALETTE|A board on which a painter mixes colors
+PALM|The inner surface of the hand
+PAMPHLET|A thin, unbound booklet
+PANCAKE|A flat griddle cake
+PANDA|A black-and-white bear from China
+PANEL|A flat section of a door or wall
+PANTHER|A large black leopard
+PANTRY|A small room for storing food
+PAPAYA|A tropical melon-like fruit with black seeds
+PARABLE|A simple story that teaches a religious lesson
+PARACHUTE|A fabric canopy that slows a fall
+PARADE|A public march with bands and floats
+PARAGRAPH|A section of writing on one idea
+PARAKEET|A small, colorful pet bird
+PARCEL|A wrapped package
+PARKA|A hooded winter coat
+PARLOR|A sitting room for guests
+PARSLEY|A leafy green garnish
+PARSNIP|A pale root vegetable related to the carrot
+PASSENGER|A person riding in a vehicle
+PASSPORT|A document for travel between countries
+PASTRY|A flaky baked treat
+PASTURE|Grassy land for grazing
+PATROL|A group of guards on the move
+PATTERN|A repeated decorative design
+PAVEMENT|A hard surface of a road
+PAVILION|A large decorated tent at a fair
+PEACOCK|A male bird with a huge fanned tail
+PEASANT|A poor farmer of olden times
+PEBBLE|A small, smooth stone
+PEDESTAL|The base of a statue
+PELICAN|A water bird with a large throat pouch
+PENDANT|A hanging jewel on a necklace
+PENDULUM|A swinging weight in a clock
+PENGUIN|A black-and-white seabird that cannot fly
+PENINSULA|Land with water on three sides
+PEPPER|A spicy seasoning ground from small berries
+PERCUSSION|Drums and other instruments that are struck
+PERFUME|A liquid that smells of flowers
+PERISCOPE|A tube a submarine uses to see above water
+PETAL|One of the colored parts of a flower
+PETITION|A written request signed by many people
+PHARMACY|A shop that fills prescriptions
+PHEASANT|A long-tailed game bird
+PHOTOGRAPH|A picture taken with a camera
+PHYSICIAN|A medical doctor
+PICCOLO|A tiny, high-pitched flute
+PICKLE|A cucumber preserved in brine
+PILGRIM|A person who journeys to a holy place
+PILLAR|A tall upright support
+PILLOW|A soft rest for the head
+PISTACHIO|A small green nut
+PITCHER|A jug for pouring
+PIZZA|An Italian pie with cheese and tomato sauce
+PLACARD|A poster carried at a protest
+PLAID|A pattern of crossing stripes on cloth
+PLANK|A long, flat piece of timber
+PLAQUE|A flat metal sign on a wall
+PLATEAU|A high, flat area of land
+PLATFORM|The raised area where you wait for a train
+PLATYPUS|An egg-laying mammal with a duck's bill
+PLAZA|A public square in a city
+PLUMBER|A person who fixes pipes
+POACHER|A person who illegally hunts animals
+PODIUM|A small platform for a speaker
+POLLEN|Fine yellow powder from flowers
+PONCHO|A blanket-like cloak with a hole for the head
+PORCELAIN|Fine white china
+PORCUPINE|A large rodent with sharp quills
+PORTRAIT|A painting of a person
+POSTCARD|A card with a picture for mailing
+POSTAGE|The cost of mailing a letter
+POTTERY|Dishes and pots made of clay
+PRETZEL|A knotted, salted snack
+PRIMATE|A member of the ape and monkey family
+PRINCIPAL|The head of a school
+PRISM|A wedge of glass that splits light into colors
+PRISON|A place where criminals are kept
+PROFESSOR|A college teacher
+PROFILE|A side view of a face
+PROMENADE|A paved walkway along a seashore
+PROPELLER|A spinning blade that drives a plane
+PROPHET|A person who claims to speak for God
+PROTEIN|A nutrient found in meat, eggs and beans
+PROVERB|A short, wise saying
+PUDDLE|A small pool of rainwater
+PULLEY|A wheel and rope for lifting a load
+PULSE|The beat of the heart felt at the wrist
+PUMPKIN|A large orange squash
+PUPIL|A student
+PUPPET|A doll moved by the hands
+PYRAMID|An ancient Egyptian royal tomb
+PYTHON|A large snake that squeezes its prey
+QUAIL|A small, plump ground bird
+QUARRY|A pit from which stone is cut
+QUARTER|One of four equal parts
+QUARTZ|A hard, clear mineral
+QUILL|A feather used as a pen
+QUIVER|A case for holding arrows
+QUOTA|A fixed share or number
+RABBIT|A small, long-eared burrowing animal
+RACCOON|A masked, ring-tailed night animal
+RACKET|A netted paddle used in tennis
+RADAR|A system that locates planes using radio waves
+RADISH|A small, red, peppery root
+RAFT|A flat floating platform
+RAILROAD|A track for trains
+RAINBOW|An arch of colors in the sky
+RAISIN|A dried grape
+RANCHER|A person who raises cattle
+RANSOM|Money demanded to free a captive
+RATTLESNAKE|A poisonous reptile with a noisy tail
+RAVINE|A deep, narrow gorge
+RAZOR|A sharp tool for shaving
+REBEL|A person who fights against those in power
+RECEIPT|A slip showing you paid
+RECIPE|Instructions for cooking a dish
+RECITAL|A solo music performance
+REFEREE|An official who enforces the rules of a game
+REFUGEE|A person forced to flee their country
+REGATTA|A series of boat races
+REINDEER|An Arctic deer that pulls a sleigh in stories
+REPORTER|A person who gathers news
+REPTILE|A cold-blooded, scaly animal
+REPUBLIC|A nation with elected leaders
+RESERVOIR|A lake used to store drinking water
+RESUME|A summary of your work history
+RETINA|The light-sensitive layer at the back of the eye
+RHINOCEROS|A huge animal with a horn on its nose
+RHUBARB|A tart red stalk used in pies
+RHYME|Matching sounds at the ends of lines
+RIBBON|A narrow strip of decorative cloth
+RIDDLE|A puzzling question
+RIFLE|A long-barreled gun
+RIVAL|A person competing for the same thing
+ROBIN|A songbird with a reddish-orange chest
+RODENT|A gnawing animal such as a mouse or rat
+RODEO|A cowboy show with bucking broncos
+ROOSTER|A male chicken
+ROTUNDA|A round building with a dome
+RUBY|A deep red gemstone
+RUDDER|The steering blade at the back of a ship
+RULER|A straight strip for measuring length
+RUMOR|An unproven story passed around
+RUNWAY|A long strip where planes take off
+SADDLE|A leather seat for riding a horse
+SAFARI|An expedition to see African wildlife
+SAFFRON|An expensive yellow spice from crocus flowers
+SAILOR|A person who works on a ship
+SALAMANDER|A lizard-like amphibian
+SALON|A shop for hair styling
+SANDAL|An open shoe held on with straps
+SAPLING|A young tree
+SAPPHIRE|A clear blue gemstone
+SARDINE|A tiny fish packed in cans
+SATCHEL|A shoulder bag for school books
+SATELLITE|An object that orbits a planet
+SATIRE|Writing that makes fun of foolishness
+SAUNA|A hot, steamy room for relaxing
+SAVANNA|A tropical grassland with few trees
+SAXOPHONE|A curved brass instrument used in jazz
+SCAFFOLD|A temporary framework for builders
+SCALPEL|A surgeon's small knife
+SCARECROW|A dummy in a field that frightens birds
+SCEPTER|A rod carried by a king
+SCHOLAR|A person of great learning
+SCHOONER|A sailing ship with two or more masts
+SCOOTER|A small two-wheeled vehicle you push
+SCORPION|A desert creature with a stinger on its tail
+SCRIBE|A person who copied documents by hand
+SCROLL|A roll of parchment
+SCULPTOR|An artist who carves statues
+SEAGULL|A noisy white and gray shore bird
+SEAHORSE|A small upright fish with a curled tail
+SEASHELL|The hard outer case of a sea creature
+SEASON|One of four parts of the year
+SENATOR|A member of the upper house of Congress
+SENTRY|A soldier who stands guard
+SEQUEL|A book or film that continues a story
+SEQUIN|A small shiny disk sewn on a dress
+SERENADE|A song sung under a lover's window
+SERGEANT|A noncommissioned army officer
+SERPENT|A snake
+SHERIFF|The top law officer in a county
+SHIPWRECK|The sunken remains of a boat
+SHOELACE|A cord that ties up footwear
+SHOVEL|A tool for digging
+SHRIMP|A small, curled shellfish
+SHUTTER|A hinged cover for a window
+SHUTTLE|A vehicle that travels back and forth
+SIBLING|A brother or sister
+SIDEWALK|A paved path beside a street
+SIEVE|A mesh strainer
+SIGNAL|A light or sound that gives a message
+SILHOUETTE|A dark outline against a light background
+SILO|A tall tower for storing grain
+SKELETON|The framework of bones in the body
+SKILLET|A frying pan
+SKIPPER|The captain of a boat
+SKYLIGHT|A window in a roof
+SKYSCRAPER|A very tall city building
+SLALOM|A zigzag ski race
+SLED|A vehicle that slides over snow
+SLEEVE|The part of a shirt that covers the arm
+SLEIGH|A horse-drawn vehicle for snow
+SLIPPER|A soft indoor shoe
+SLOTH|A slow-moving animal that hangs from trees
+SLOGAN|A catchy advertising phrase
+SNORKEL|A breathing tube for swimmers
+SNOWFLAKE|A six-sided ice crystal
+SOFA|A long, soft couch
+SOLO|A piece performed by one musician
+SOMBRERO|A wide-brimmed Mexican hat
+SONATA|A musical piece for one or two instruments
+SONNET|A poem of 14 lines
+SOUFFLE|A light, puffy baked egg dish
+SOUVENIR|Something kept to remember a trip
+SPANIEL|A dog with long, drooping ears
+SPARROW|A small brown bird
+SPATULA|A flat tool for flipping food
+SPECTATOR|A person who watches an event
+SPHERE|A perfectly round solid shape
+SPHINX|An Egyptian statue with a lion's body
+SPINACH|A leafy dark-green vegetable
+SPIRE|A tall, pointed tower on a church
+SPONGE|A soft, absorbent cleaning pad
+SPRUCE|A cone-bearing tree with short needles
+SQUADRON|A unit of military aircraft
+SQUASH|A vegetable that grows on a vine
+SQUID|A sea animal with ten arms that sprays ink
+SQUIRREL|A bushy-tailed rodent that gathers nuts
+STADIUM|A big arena for sports
+STAGECOACH|A horse-drawn vehicle of the Old West
+STAIRWELL|The vertical shaft around a flight of steps
+STALACTITE|An icy-looking rock spike hanging from a cave roof
+STALLION|An adult male horse
+STAMPEDE|A sudden rush of frightened cattle
+STAPLER|An office tool that fastens papers
+STARFISH|A five-armed sea creature
+STATUE|A carved or cast figure of a person
+STATUTE|A written law
+STENCIL|A cut-out sheet used to paint letters
+STETHOSCOPE|A doctor's tool for listening to the chest
+STEWARD|A person who looks after passengers
+STILTS|Long poles that make you walk tall
+STIRRUP|A loop that holds a rider's foot
+STOCKADE|A defensive wall of upright logs
+STORK|A tall bird with long legs and a long bill
+STOVE|A kitchen appliance with burners
+STOWAWAY|A person hiding on a ship for a free ride
+STRAIT|A narrow channel between two seas
+STRAWBERRY|A red fruit with seeds on its skin
+STREAM|A small river
+STRETCHER|A bed for carrying the injured
+STUDIO|An artist's workroom
+STURGEON|A large fish prized for caviar
+SUBMARINE|An underwater ship
+SUBWAY|An underground train
+SUBURB|A residential area outside a city
+SUITCASE|A bag with a handle for travel
+SUMMIT|The top of a mountain
+SUNDIAL|A device that tells time by a shadow
+SUNFLOWER|A tall plant with a huge yellow head
+SUPPER|An evening meal
+SURGEON|A doctor who operates
+SURNAME|A family name
+SWAMP|A low, wet, spongy area of land
+SWAN|A large white bird with a long neck
+SWEATER|A knitted top
+SYLLABLE|A unit of sound in a word
+SYMBOL|A sign that stands for something
+SYNAGOGUE|A Jewish house of worship
+SYRUP|A thick, sweet liquid
+TABLET|A small pill
+TACO|A folded tortilla with a filling
+TADPOLE|A young frog
+TAILOR|A person who makes and alters suits
+TALON|The sharp claw of a bird of prey
+TAMBOURINE|A small hand drum with jingles
+TANGERINE|A small, sweet, easily peeled citrus fruit
+TAPESTRY|A heavy cloth with a woven picture
+TARIFF|A tax on imported goods
+TARTAN|A Scottish plaid pattern
+TAVERN|An old-fashioned inn serving drinks
+TELESCOPE|An instrument for viewing distant stars
+TEMPLE|A building for worship
+TENANT|A person who rents a home
+TENDON|A cord that joins muscle to bone
+TERMINAL|A building at an airport
+TERMITE|An insect that eats wood
+TERRACE|A raised, flat outdoor area
+TERRAIN|The physical features of land
+THERMOMETER|An instrument for reading temperature
+THERMOSTAT|A device that controls room temperature
+THICKET|A dense group of shrubs
+THIMBLE|A small cap that protects a sewing finger
+THISTLE|A prickly purple-flowered weed
+THORN|A sharp point on a rose stem
+THRIFT|Careful use of money
+THRONE|The ceremonial seat of a queen
+THUMB|The short, thick digit on your hand
+TIARA|A jeweled, crown-like headpiece
+TICKET|A paper that lets you into a show
+TIMBER|Wood for building
+TOASTER|A kitchen appliance that browns bread
+TOBOGGAN|A long, flat sled with a curved front
+TODDLER|A young child just learning to walk
+TOMAHAWK|A light ax used by Native Americans
+TORNADO|A violent, funnel-shaped windstorm
+TORCH|A burning stick used as a light
+TORTOISE|A slow land reptile with a shell
+TOURIST|A person traveling for pleasure
+TOURNAMENT|A series of games to find a champion
+TOWEL|A cloth for drying off
+TRACTOR|A farm vehicle that pulls plows
+TRADEMARK|A protected brand name or logo
+TRAMPOLINE|A springy canvas for jumping
+TREADMILL|An exercise machine for running in place
+TREASURE|Hidden gold and jewels
+TREATY|A formal agreement between nations
+TRELLIS|A garden frame for climbing plants
+TRENCH|A long, deep ditch
+TRIBE|A group of families with a shared culture
+TRIBUTE|An act that shows respect or thanks
+TRICYCLE|A three-wheeled kid's vehicle
+TRIDENT|A spear with three prongs
+TRILOGY|A set of three related books
+TROLLEY|A streetcar running on rails
+TROMBONE|A brass instrument with a sliding tube
+TROPHY|A cup given to the winner
+TROUT|A freshwater fish related to salmon
+TROWEL|A small garden tool for digging
+TRUCE|An agreement to stop fighting for a time
+TRUMPET|A brass instrument with three valves
+TUBA|The largest and lowest brass instrument
+TUGBOAT|A small, powerful vessel that pulls ships
+TUITION|The fee charged for school
+TULIP|A cup-shaped spring flower from Holland
+TUNDRA|A vast, frozen, treeless Arctic plain
+TUNNEL|A passage through a mountain
+TURBAN|A long cloth wound around the head
+TURBINE|A machine turned by moving water or air
+TURKEY|A big bird served on Thanksgiving
+TURNIP|A round white root vegetable
+TURQUOISE|A blue-green gemstone
+TURTLE|A reptile with a hard shell that swims
+TUTOR|A private teacher
+TUXEDO|A man's formal black suit
+TWEEZERS|Small pincers for plucking
+TWILIGHT|The soft light just after sunset
+TYPHOON|A Pacific hurricane
+TYRANT|A cruel, absolute ruler
+UKULELE|A small, four-stringed Hawaiian instrument
+UMBRELLA|A folding canopy that keeps off rain
+UMPIRE|The official who calls balls and strikes
+UNICORN|A mythical white horse with one horn
+UNIFORM|Matching clothes worn by a group
+UNIVERSE|All of space and everything in it
+UTENSIL|A tool for eating or cooking
+VACCINE|A shot that protects against disease
+VACUUM|A machine that sucks up dirt
+VALLEY|Low land between hills
+VAMPIRE|A mythical night creature that drinks blood
+VANILLA|A sweet flavoring from an orchid bean
+VASE|A container for flowers
+VAULT|A secure room in a bank
+VEGETABLE|A plant grown for food, such as a carrot
+VEHICLE|A machine for transport, such as a car
+VELVET|A soft fabric with a thick, smooth pile
+VENDOR|A person selling things on the street
+VERANDA|A long, roofed porch
+VERDICT|A jury's decision
+VERSE|A section of a song or poem
+VEST|A sleeveless garment worn over a shirt
+VETERAN|A person who served in the armed forces
+VIADUCT|A long bridge of arches over a valley
+VICAR|A parish priest in the Church of England
+VICTIM|A person harmed by a crime
+VINEYARD|A place where grapes are grown
+VINEGAR|A sour liquid used in salad dressing
+VIOLIN|A four-stringed instrument played with a bow
+VIPER|A poisonous snake
+VISOR|The part of a cap that shades the eyes
+VITAMIN|A nutrient needed in small amounts
+VOLLEYBALL|A game of hitting a ball over a high net
+VOUCHER|A slip that can be traded for goods
+VOYAGE|A long trip by sea
+VULTURE|A bald-headed bird that feeds on dead animals
+WAFFLE|A crisp, grid-patterned breakfast cake
+WAGON|A four-wheeled cart
+WAITER|A person who serves food at a restaurant
+WALLABY|A small kangaroo
+WALLET|A folding case for money
+WALNUT|A wrinkled, brain-shaped nut
+WALRUS|A big Arctic animal with long tusks
+WAND|A thin stick used by a magician
+WARDROBE|A tall cabinet for clothes
+WAREHOUSE|A big building for storing goods
+WARRIOR|A brave, experienced fighter
+WASP|A slender stinging insect
+WATERFALL|A river dropping over a cliff
+WEASEL|A small, slender, meat-eating animal
+WEAVER|A person who makes cloth on a loom
+WEDGE|A piece shaped like a slice of pie
+WEED|An unwanted garden plant
+WHARF|A landing place for ships
+WHEAT|A grain used for flour
+WHEELBARROW|A one-wheeled garden cart
+WHISKER|A long, stiff hair on a cat's face
+WHISTLE|A small device that makes a shrill sound
+WICKET|One of the small wire hoops in croquet
+WIDGET|An unnamed small gadget
+WIGWAM|A domed dwelling of some Native Americans
+WILLOW|A tree with long, drooping branches
+WINDMILL|A tower with sails that grinds grain
+WINDSHIELD|The front glass of a car
+WIZARD|A man with magical powers
+WOLF|A wild pack animal that howls
+WOMBAT|A burrowing Australian marsupial
+WOODPECKER|A bird that drills into trees
+WORKSHOP|A room where things are built or repaired
+WREATH|A circle of flowers or leaves
+WRECK|The remains of a crashed ship
+WRENCH|A tool for turning bolts
+WRESTLER|An athlete who grapples with an opponent
+YACHT|A large luxury sailboat
+YOGURT|A tangy, creamy food made from milk
+YOLK|The yellow part of an egg
+ZEBRA|An African wild horse with black and white stripes
+ZEPPELIN|A rigid airship
+ZIPPER|A fastener with interlocking teeth
+ZODIAC|The twelve signs of astrology
+ZUCCHINI|A long, green summer squash`,v:`ABANDON|To leave behind for good
+ABSORB|To soak up a liquid
+ACCELERATE|To go faster
+ACCOMPANY|To go along with someone
+ACCUMULATE|To gather a growing pile over time
+ACQUIRE|To come to own something
+ADAPT|To change to suit new conditions
+ADJOURN|To end a meeting until a later time
+ADMIRE|To regard with respect
+ADOPT|To legally take a child as your own
+ADVERTISE|To promote a product to the public
+ALLOCATE|To set aside for a purpose
+AMEND|To make small changes to a law
+AMUSE|To make someone smile
+ANALYZE|To study something in detail
+ANTICIPATE|To expect and prepare for
+APOLOGIZE|To say you are sorry
+APPLAUD|To clap your hands in approval
+APPOINT|To choose someone for a job
+APPRAISE|To estimate the value of
+ASSEMBLE|To put the parts together
+ASSIGN|To give out as a task
+ASSIST|To give help
+ASTONISH|To surprise greatly
+ATTACH|To fasten on
+ATTEMPT|To try
+BALANCE|To keep steady without falling
+BANISH|To force out of a country
+BARTER|To trade goods without using money
+BEWILDER|To confuse completely
+BLEND|To mix together smoothly
+BLUSH|To turn red from embarrassment
+BOAST|To talk with too much pride
+BORROW|To take with a promise to return
+BOUNCE|To spring back after hitting the ground
+BROADCAST|To send out on radio or TV
+BROWSE|To look through casually
+BUDGET|To plan how you'll spend money
+BUNDLE|To tie several things together
+CALCULATE|To work out with numbers
+CAMOUFLAGE|To hide by blending in
+CANCEL|To call off
+CAPTURE|To take prisoner
+CARESS|To touch lovingly
+CELEBRATE|To mark a happy occasion
+CHALLENGE|To invite to a contest
+CHATTER|To talk fast about small things
+CHERISH|To hold dear
+CHUCKLE|To laugh quietly
+CLARIFY|To make easier to understand
+COLLAPSE|To fall down suddenly
+COLLIDE|To crash into each other
+COMFORT|To ease someone's sadness
+COMMUTE|To travel to and from work
+COMPETE|To try to win
+COMPLAIN|To say you are unhappy about something
+COMPOSE|To write music
+CONCEAL|To keep hidden
+CONCENTRATE|To focus your attention
+CONCLUDE|To bring to an end
+CONFESS|To admit you did wrong
+CONFIRM|To show that something is true
+CONQUER|To defeat and take over by force
+CONSIDER|To think carefully about
+CONSULT|To ask an expert for advice
+CONVINCE|To talk someone into believing something
+COOPERATE|To work together
+CRAWL|To move on hands and knees
+CRITICIZE|To point out faults
+CRUMBLE|To break into tiny bits
+CULTIVATE|To prepare land and grow crops
+DANGLE|To hang loosely
+DAWDLE|To waste time by moving slowly
+DECAY|To rot
+DECEIVE|To trick by lying
+DECIPHER|To work out the meaning of a code
+DECLARE|To state openly and firmly
+DECORATE|To make prettier with ornaments
+DEDICATE|To devote time to a cause
+DEFEAT|To beat in a contest
+DEFEND|To protect from attack
+DELAY|To put off until later
+DELIVER|To bring to a person's door
+DEMOLISH|To tear down a building
+DEMONSTRATE|To show how something works
+DEPART|To leave on a trip
+DEPICT|To show in a picture
+DESCRIBE|To tell what something is like
+DESIGN|To plan how something will look
+DESPISE|To look down on with hatred
+DETECT|To discover the presence of
+DETERMINE|To find out exactly
+DEVOUR|To eat hungrily
+DIAGNOSE|To identify an illness
+DICTATE|To speak words for someone to write
+DIGEST|To break down food in the stomach
+DILUTE|To thin with water
+DISAPPEAR|To vanish from sight
+DISCARD|To throw away
+DISCOVER|To find for the first time
+DISCUSS|To talk over
+DISGUISE|To change your looks to hide who you are
+DISMISS|To send away
+DISPERSE|To scatter in different directions
+DISPLAY|To put on show
+DISSOLVE|To melt into a liquid
+DISTRIBUTE|To hand out
+DISTURB|To interrupt someone's peace
+DIVIDE|To split into parts
+DODGE|To quickly step out of the way
+DONATE|To give to a charity
+DOODLE|To scribble absent-mindedly
+DOZE|To nap lightly
+DRENCH|To soak thoroughly
+DRIBBLE|To bounce a basketball while moving
+DWINDLE|To shrink slowly
+EAVESDROP|To secretly listen in
+ELECT|To choose by voting
+ELIMINATE|To get rid of
+EMBARK|To board a ship
+EMBRACE|To hug
+EMERGE|To come out into view
+EMIGRATE|To leave your country for good
+EMPHASIZE|To stress as important
+EMPLOY|To give a job to
+ENCOURAGE|To give hope and support
+ENDURE|To put up with something painful
+ENFORCE|To make sure a rule is obeyed
+ENGRAVE|To cut letters into metal
+ENHANCE|To improve the quality of
+ENLARGE|To make bigger
+ENROLL|To sign up for a class
+ENTERTAIN|To amuse an audience
+ENVY|To resent another's luck
+ERASE|To rub out
+ERUPT|To burst out violently
+ESCAPE|To get free
+ESTABLISH|To set up an organization
+ESTIMATE|To make a rough guess of an amount
+EVACUATE|To leave a dangerous place
+EVALUATE|To judge the worth of
+EVAPORATE|To turn from liquid to gas
+EXAGGERATE|To make something sound bigger than it is
+EXAMINE|To look at closely
+EXCHANGE|To swap
+EXCLAIM|To cry out suddenly
+EXCUSE|To forgive a small fault
+EXHALE|To breathe out
+EXPAND|To grow larger
+EXPEL|To force a student to leave school
+EXPLODE|To blow up
+EXPLORE|To travel through an unknown place
+EXPORT|To send goods to another country
+EXPOSE|To uncover
+EXTEND|To make longer
+EXTINGUISH|To put out a fire
+EXTRACT|To pull out
+FABRICATE|To make up a false story
+FASTEN|To attach securely
+FIDGET|To move restlessly
+FLATTER|To praise too much
+FLEE|To run away
+FLINCH|To jerk back in pain or fear
+FLOURISH|To grow and do well
+FORBID|To order someone not to do something
+FORFEIT|To give up as a penalty
+FORGIVE|To stop being angry at someone
+FROLIC|To play and skip happily
+FUMBLE|To handle clumsily
+GALLOP|To run like a fast horse
+GARGLE|To rinse the throat
+GASP|To catch your breath in surprise
+GIGGLE|To laugh in a silly way
+GLANCE|To look briefly
+GLEAM|To shine softly
+GLIDE|To move smoothly and silently
+GNAW|To chew at steadily
+GOBBLE|To eat quickly
+GOSSIP|To spread personal talk about others
+GRASP|To hold firmly
+GRAZE|To feed on grass
+GREET|To say hello
+GRIEVE|To feel deep sorrow
+GRUMBLE|To complain quietly
+GUARANTEE|To promise firmly
+HESITATE|To pause before acting
+HIBERNATE|To sleep through the winter
+HOARD|To store up in secret
+HOBBLE|To walk with a painful limp
+HOVER|To stay in one place in the air
+HUDDLE|To crowd together
+HURL|To throw with force
+IGNITE|To set on fire
+IGNORE|To pay no attention to
+ILLUSTRATE|To add pictures to a book
+IMAGINE|To form a mental picture
+IMITATE|To copy
+IMMIGRATE|To come to live in a new country
+IMPORT|To bring in goods from abroad
+IMPROVISE|To make something up as you go
+INHALE|To breathe in
+INHERIT|To receive from someone who has died
+INJECT|To force in with a syringe
+INQUIRE|To ask for information
+INSPECT|To look over carefully
+INSPIRE|To fill with the urge to create
+INSTALL|To put in place for use
+INSTRUCT|To teach
+INSULT|To say something rude to
+INTERRUPT|To break in while someone is talking
+INTRODUCE|To present one person to another
+INVADE|To enter with an army
+INVENT|To create something new
+INVESTIGATE|To look into a crime
+INVITE|To ask to come along
+IRRIGATE|To supply farmland with water
+JOSTLE|To push roughly in a crowd
+JUGGLE|To keep several things in the air
+JUSTIFY|To give a good reason for
+KNEEL|To rest on bent legs
+LAUNCH|To send a rocket into the air
+LINGER|To stay longer than needed
+LOITER|To stand around with no purpose
+LURK|To lie in wait out of sight
+MAGNIFY|To make look larger
+MAINTAIN|To keep in good condition
+MANUFACTURE|To make in a factory
+MARCH|To walk in step
+MARVEL|To be filled with wonder
+MEANDER|To wind along like a slow river
+MEASURE|To find the size of
+MEDITATE|To think deeply in silence
+MEMORIZE|To learn by heart
+MEND|To repair
+MIGRATE|To move from one region to another with the seasons
+MIMIC|To copy someone's speech
+MINGLE|To mix with people at a party
+MISPLACE|To put in the wrong spot and lose
+MOISTEN|To make slightly wet
+MUMBLE|To speak indistinctly
+MURMUR|To speak very softly
+MUTTER|To speak in a low, unhappy voice
+NAVIGATE|To plot the course of a ship
+NEGOTIATE|To bargain toward an agreement
+NIBBLE|To take tiny bites
+NOMINATE|To propose for an office
+NOURISH|To feed so as to keep healthy
+NUDGE|To push gently with an elbow
+OBEY|To do as you are told
+OBSERVE|To watch carefully
+OBTAIN|To get
+OCCUPY|To live in or fill
+OFFEND|To hurt someone's feelings
+OPERATE|To run a machine
+OPPOSE|To argue against
+ORGANIZE|To put in order
+OUTWIT|To defeat by being clever
+OVERLOOK|To fail to notice
+OVERTAKE|To catch up with and pass
+PARDON|To officially forgive a crime
+PARTICIPATE|To take part
+PAUSE|To stop briefly
+PERFORM|To act on stage
+PERSIST|To keep going despite problems
+PERSUADE|To win someone over by reasoning
+PLEAD|To beg earnestly
+PLUMMET|To drop straight down fast
+PLUNGE|To dive in
+PONDER|To think about carefully
+POUNCE|To leap on suddenly
+PREDICT|To say what will happen
+PREFER|To like better
+PRESERVE|To keep from spoiling
+PREVENT|To stop from happening
+PROCLAIM|To announce officially
+PROCRASTINATE|To keep putting things off
+PROHIBIT|To ban by law
+PROLONG|To make last longer
+PROPOSE|To ask someone to marry you
+PROTECT|To keep safe
+PROTEST|To speak out against
+PROVIDE|To supply
+PRUNE|To trim branches
+PUBLISH|To print and sell a book
+PURCHASE|To buy
+PURSUE|To chase
+QUARREL|To argue angrily
+QUENCH|To satisfy thirst
+RAMBLE|To walk with no goal
+RANSACK|To search a place and leave it a mess
+REASSURE|To calm someone's fears
+RECITE|To say aloud from memory
+RECKON|To work out by adding
+RECOGNIZE|To know from before
+RECOMMEND|To suggest as good
+RECOVER|To get well again
+RECRUIT|To sign up new members
+RECYCLE|To use waste material again
+REDUCE|To make smaller
+REFLECT|To throw back light
+REFUSE|To say no
+REGRET|To feel sorry about
+REHEARSE|To practice for a performance
+REINFORCE|To make stronger
+REJECT|To turn down
+REJOICE|To feel great joy
+RELAX|To rest and unwind
+RELEASE|To set free
+RELY|To depend on
+REMAIN|To stay
+REMIND|To cause to remember
+RENEW|To extend a library book's loan
+RENOVATE|To restore an old house
+REPAIR|To fix
+REPEAT|To do or say again
+REPLACE|To put a new one in the old one's spot
+REPLY|To answer
+REQUEST|To ask for politely
+RESCUE|To save from danger
+RESEMBLE|To look like
+RESERVE|To book in advance
+RESIGN|To quit a job
+RESIST|To fight against
+RESPOND|To react
+RESTORE|To bring back to original condition
+RESTRAIN|To hold back
+RETIRE|To stop working for good
+RETREAT|To back away from a fight
+RETRIEVE|To get back
+REVEAL|To make known
+REVISE|To edit and improve
+REVIVE|To bring back to life
+REWARD|To give a prize
+RINSE|To wash lightly with water
+RIPPLE|To form small waves
+RUMMAGE|To dig through a pile
+SACRIFICE|To give up for someone else's sake
+SALVAGE|To save from a wreck
+SANITIZE|To make free of germs
+SAUNTER|To stroll in a relaxed way
+SAVOR|To enjoy a taste slowly
+SCAMPER|To run with quick, light steps
+SCATTER|To throw in all directions
+SCOLD|To tell off angrily
+SCOWL|To frown angrily
+SCRAMBLE|To climb quickly using hands and feet
+SCRAPE|To rub with something sharp
+SCRIBBLE|To write hastily
+SCRUB|To clean by rubbing hard
+SCURRY|To hurry with short steps
+SEIZE|To grab suddenly
+SHATTER|To break into many pieces
+SHIVER|To shake from cold
+SHRIVEL|To dry up and wrinkle
+SHUDDER|To tremble from fear
+SIMMER|To cook just below boiling
+SKID|To slide out of control
+SLITHER|To slide like a snake
+SLOUCH|To sit in a lazy, drooping way
+SMOLDER|To burn slowly without flame
+SMOTHER|To cover so as to cut off air
+SNATCH|To grab quickly
+SNEER|To smile scornfully
+SNEEZE|To blow air out of the nose suddenly
+SNICKER|To laugh in a sly way
+SNORE|To breathe noisily while sleeping
+SOAR|To fly high
+SPARKLE|To shine with tiny flashes
+SPONSOR|To pay for an event for publicity
+SPRAWL|To lie with limbs spread out
+SPRINKLE|To scatter small drops
+SQUABBLE|To argue noisily over nothing
+SQUEAL|To make a high-pitched cry
+SQUINT|To look with eyes partly closed
+STAGGER|To walk unsteadily
+STAMMER|To speak with pauses and repeats
+STARTLE|To frighten suddenly
+STERILIZE|To kill all the germs in
+STIMULATE|To excite to action
+STITCH|To sew
+STROLL|To walk leisurely
+STRUGGLE|To try hard against difficulty
+STUMBLE|To trip while walking
+SUBMERGE|To put under water
+SUBSCRIBE|To sign up to get a magazine regularly
+SUBTRACT|To take away a number
+SUGGEST|To put forward an idea
+SUMMARIZE|To give the main points
+SUPERVISE|To oversee workers
+SURRENDER|To give up to an enemy
+SURROUND|To form a circle around
+SURVEY|To look over a wide area
+SURVIVE|To stay alive
+SUSPECT|To believe someone is guilty without proof
+SUSPEND|To hang from above
+SWAGGER|To walk with an arrogant strut
+SWALLOW|To gulp down
+SWAY|To move slowly back and forth
+SWERVE|To turn sharply aside
+TACKLE|To bring down a runner in football
+TAMPER|To meddle with something
+TANGLE|To twist into a knot
+TAUNT|To tease cruelly
+TEASE|To make fun of playfully
+TESTIFY|To give evidence in court
+THAW|To go from frozen to soft
+THRASH|To move wildly about
+THRIVE|To grow strong
+THUMP|To hit with a dull sound
+TIPTOE|To walk very quietly
+TOLERATE|To allow something you don't like
+TOPPLE|To fall over
+TRANSFER|To move from one place to another
+TRANSLATE|To put into another language
+TRANSMIT|To send out a signal
+TRANSPORT|To carry from one place to another
+TREMBLE|To shake with fear
+TRUDGE|To walk slowly with heavy steps
+TWIRL|To spin around
+TWITCH|To jerk suddenly
+UNITE|To bring together as one
+UNRAVEL|To undo twisted threads
+UPROOT|To pull up a plant
+VANISH|To disappear suddenly
+VENTURE|To dare to go somewhere risky
+VERIFY|To check that something is true
+VIBRATE|To shake rapidly
+WADDLE|To walk like a duck
+WANDER|To roam with no destination
+WARBLE|To sing with trills like a bird
+WEAVE|To make cloth on a loom
+WHIMPER|To cry softly
+WHISPER|To speak under your breath
+WHITTLE|To carve wood with a knife
+WIGGLE|To squirm from side to side
+WINCE|To make a pained face
+WITHDRAW|To take money out of the bank
+WOBBLE|To rock unsteadily
+WRESTLE|To grapple with an opponent
+WRIGGLE|To twist and turn the body
+YEARN|To long for
+YODEL|To sing while switching to a high falsetto`,a:`ABRUPT|Sudden and unexpected
+ABSENT|Not present
+ABSURD|Wildly unreasonable
+ABUNDANT|Existing in large amounts
+ACCURATE|Exactly correct
+ADEQUATE|Good enough
+ADORABLE|Very cute
+ADVENTUROUS|Eager to try risky new things
+AFFECTIONATE|Showing warm love
+AGGRESSIVE|Ready to attack
+AGILE|Able to move quickly and easily
+AMBITIOUS|Eager to succeed
+AMPLE|More than enough
+ANCIENT|Very old
+ANONYMOUS|Of unknown name
+ANXIOUS|Nervous about what may happen
+APPARENT|Clear to see
+ARCTIC|Extremely cold
+ARID|Very dry
+AROMATIC|Having a strong, pleasant smell
+ARROGANT|Having too high an opinion of yourself
+ARTIFICIAL|Made by people, not nature
+ASHAMED|Feeling guilty and embarrassed
+ATHLETIC|Physically strong and fit
+ATTENTIVE|Listening and watching closely
+AUTHENTIC|Real, not fake
+AVERAGE|Typical or ordinary
+AWKWARD|Clumsy and uncomfortable
+BARREN|Unable to grow crops
+BASHFUL|Shy and easily embarrassed
+BENEFICIAL|Producing good results
+BIZARRE|Very strange
+BLUNT|Not sharp
+BOISTEROUS|Noisy and full of energy
+BRILLIANT|Extremely bright
+BRISK|Quick and energetic
+BRITTLE|Hard but easily broken
+BULKY|Large and hard to carry
+BUOYANT|Able to float
+CAPABLE|Having the ability to do something
+CAUTIOUS|Careful to avoid danger
+CEREMONIAL|Used in formal rituals
+CHARMING|Delightful and pleasing
+CHILLY|Unpleasantly cold
+CHUBBY|Plump and round
+CIVIL|Polite and courteous
+CLUMSY|Likely to trip and drop things
+COARSE|Rough in texture
+COLOSSAL|Extremely large
+COMICAL|Funny
+COMPACT|Small and neatly packed
+COMPETENT|Able to do a job well
+COMPLEX|Having many connected parts
+CONFIDENT|Sure of yourself
+CONSIDERATE|Thoughtful about others' feelings
+CONSPICUOUS|Very easy to notice
+CONSTANT|Never stopping
+CONTENT|Happy with what you have
+CONTRARY|Opposite
+CONVENIENT|Easy to use or reach
+CORDIAL|Warm and friendly
+COURTEOUS|Very polite
+COZY|Warm and snug
+CRAFTY|Clever at tricking others
+CRIMSON|Deep red
+CRISP|Firm and crunchy
+CROOKED|Bent, not straight
+CRUCIAL|Extremely important
+CRUEL|Taking pleasure in others' pain
+CUNNING|Sly and clever
+CURIOUS|Eager to learn
+DAMP|Slightly wet
+DAINTY|Small and delicate
+DAZZLING|So bright it blinds
+DECENT|Morally good
+DECISIVE|Able to make choices quickly
+DEFICIENT|Lacking something needed
+DELICATE|Easily broken
+DELICIOUS|Tasting very good
+DELIGHTED|Very pleased
+DENSE|Closely packed
+DEPENDABLE|Able to be trusted
+DESOLATE|Empty and lonely
+DESPERATE|Having lost hope
+DESTITUTE|Extremely poor
+DETERMINED|Firmly set on a goal
+DEVOUT|Deeply religious
+DIM|Not bright
+DIPLOMATIC|Tactful with people
+DISCREET|Careful not to reveal secrets
+DISLOYAL|Not faithful to a friend
+DISMAL|Gloomy and depressing
+DISTANT|Far away
+DISTINCT|Clearly different
+DOCILE|Easy to manage or train
+DOMESTIC|Relating to the home
+DORMANT|Sleeping or inactive
+DRAB|Dull and colorless
+DRASTIC|Extreme and severe
+DREARY|Dull and gray
+DROWSY|Sleepy
+DUBIOUS|Doubtful
+DURABLE|Long-lasting
+DUSKY|Somewhat dark in color
+EAGER|Very keen to do something
+ECCENTRIC|Odd in a harmless way
+ECONOMICAL|Careful about saving money
+ELABORATE|Very detailed and fancy
+ELASTIC|Able to stretch and spring back
+ELDERLY|Old
+ELEGANT|Graceful and stylish
+ELIGIBLE|Qualified to take part
+ELOQUENT|Fluent and persuasive in speech
+EMINENT|Famous and respected
+ENERGETIC|Full of pep
+ENORMOUS|Huge
+ENVIOUS|Jealous of what others have
+ESSENTIAL|Absolutely necessary
+ETERNAL|Lasting forever
+ETHICAL|Morally right
+EVIDENT|Obvious
+EXACT|Precise
+EXCESSIVE|Too much
+EXOTIC|Foreign and unusual
+EXPENSIVE|Costing a lot
+EXQUISITE|Extremely beautiful
+EXTINCT|No longer in existence
+EXTRAVAGANT|Spending too much
+FAINT|Hard to see or hear
+FAITHFUL|Loyal
+FAMISHED|Very hungry
+FANCIFUL|Imaginative but unrealistic
+FATAL|Causing death
+FEASIBLE|Able to be done
+FEEBLE|Physically weak
+FELINE|Catlike
+FERTILE|Good for growing crops
+FICKLE|Changing your mind often
+FIERCE|Violent and aggressive
+FILTHY|Very dirty
+FLAWLESS|Perfect
+FLEXIBLE|Bending easily
+FLIMSY|Thin and easily broken
+FLUENT|Able to speak a language smoothly
+FOOLISH|Lacking good sense
+FORLORN|Sad and alone
+FORMAL|Following strict rules of dress and manners
+FORTUNATE|Lucky
+FRAGILE|Easily damaged
+FRAGRANT|Sweet-smelling
+FRAIL|Thin and weak from age
+FRANTIC|Wildly worried
+FREQUENT|Happening often
+FRIGID|Bitterly cold
+FRUGAL|Careful not to waste money
+FURIOUS|Extremely angry
+FUTILE|Pointless
+GALLANT|Brave and polite
+GAUDY|Showy in a tasteless way
+GAUNT|Thin and bony
+GENEROUS|Happy to give
+GENUINE|Truly what it seems
+GIGANTIC|Very, very big
+GLOOMY|Dark and sad
+GLOSSY|Smooth and shiny
+GRACIOUS|Kind and courteous
+GRADUAL|Slow and steady
+GRATEFUL|Feeling thankful
+GREEDY|Wanting more than your share
+GRIM|Stern and forbidding
+GROTESQUE|Ugly and distorted
+GULLIBLE|Easily fooled
+HAGGARD|Looking tired and worn
+HANDSOME|Good-looking, usually said of a man
+HARDY|Able to endure tough conditions
+HARMONIOUS|Getting along well
+HARSH|Unpleasantly rough
+HASTY|Done too quickly
+HAUGHTY|Proud and looking down on others
+HAZARDOUS|Dangerous
+HAZY|Misty
+HEARTY|Warm and enthusiastic
+HECTIC|Very busy and rushed
+HIDEOUS|Very ugly
+HILARIOUS|Very funny
+HOSTILE|Unfriendly
+HUGE|Very large
+IDENTICAL|Exactly the same
+IDLE|Doing nothing
+ILLEGAL|Against the law
+ILLEGIBLE|Impossible to read
+IMMACULATE|Perfectly clean
+IMMENSE|Vast
+IMPERIAL|Relating to an empire
+IMPOLITE|Rude
+IMPRESSIVE|Inspiring admiration
+INACTIVE|Not moving
+INCREDIBLE|Hard to believe
+INDIFFERENT|Not caring either way
+INDIGNANT|Angry at something unfair
+INDUSTRIOUS|Always busy working
+INEVITABLE|Certain to happen
+INFAMOUS|Well known for something bad
+INFINITE|Without end
+INGENIOUS|Very clever and inventive
+INNOCENT|Not guilty
+INSISTENT|Demanding firmly
+INTENSE|Very strong
+INTRICATE|Having many tiny details
+INVISIBLE|Impossible to see
+IRATE|Very mad
+IRRITABLE|Easily annoyed
+JAGGED|Having sharp, uneven points
+JAUNTY|Lively and self-confident
+JEALOUS|Wanting what someone else has
+JOLLY|Cheerful
+JOVIAL|Merry and friendly
+JOYOUS|Very happy
+KEEN|Sharp
+KINDLY|Warm and gentle
+LANKY|Tall and thin
+LAVISH|Rich and generous
+LAWFUL|Allowed by rules
+LAZY|Unwilling to work
+LEGAL|Allowed by law
+LEGIBLE|Clear enough to read
+LENIENT|Not strict
+LETHAL|Deadly
+LETHARGIC|Sluggish and lacking energy
+LIMBER|Able to bend easily
+LIMP|Not stiff
+LITERATE|Able to read and write
+LIVELY|Full of life
+LOATHSOME|Disgusting
+LOFTY|Very tall
+LOGICAL|Based on clear reasoning
+LONELY|Sad from having no company
+LUCID|Easy to understand
+LUCRATIVE|Producing a lot of money
+LUMINOUS|Glowing
+LUSH|Thick with green plants
+MAJESTIC|Grand and impressive
+MALICIOUS|Wanting to hurt others
+MANDATORY|Required
+MARVELOUS|Wonderful
+MASSIVE|Very large and heavy
+MATURE|Fully grown
+MEAGER|Very small in amount
+MEEK|Quiet and obedient
+MELLOW|Soft and smooth
+MERCIFUL|Showing forgiveness
+MERRY|Happy
+METICULOUS|Extremely careful about detail
+MIGHTY|Very powerful
+MILD|Gentle
+MINIATURE|Very small
+MISERABLE|Very unhappy
+MISTY|Covered in fine rain
+MOBILE|Able to move
+MODERATE|Not extreme
+MODEST|Not boastful
+MONOTONOUS|Dull and unchanging
+MOODY|Changing feelings quickly
+MUGGY|Warm and sticky
+MURKY|Dark and hard to see through
+MUSTY|Smelling stale and moldy
+MYSTERIOUS|Hard to explain
+NAIVE|Too trusting
+NARROW|Not wide
+NASTY|Mean
+NAUTICAL|Having to do with ships
+NECESSARY|Needed
+NEGLECTFUL|Failing to take care of
+NIMBLE|Quick and light in movement
+NOCTURNAL|Active at night
+NOISY|Loud
+NOTABLE|Worth noticing
+NOTORIOUS|Famous for bad deeds
+NOVEL|New and unusual
+NUMB|Without feeling
+NUMEROUS|Many
+NUTRITIOUS|Good for your health
+OBEDIENT|Doing as told
+OBLONG|Longer than wide
+OBSOLETE|No longer used
+OBSTINATE|Refusing to change your mind
+OBVIOUS|Easy to see
+OCCASIONAL|Happening now and then
+ODD|Strange
+OFFENSIVE|Rude or insulting
+OFFICIAL|Approved by authority
+OMINOUS|Suggesting something bad will happen
+OPAQUE|Not see-through
+OPTIMISTIC|Hopeful about the future
+OPULENT|Rich and showy
+ORDINARY|Normal
+ORNATE|Heavily decorated
+OUTGOING|Friendly and sociable
+OUTRAGEOUS|Shocking
+OVERCAST|Cloudy
+OVERJOYED|Extremely happy
+PALE|Light in color
+PALTRY|Very small and worthless
+PARCHED|Very thirsty
+PARTIAL|Not complete
+PASSIVE|Not active
+PATHETIC|Sad and weak
+PECULIAR|Strange
+PEEVISH|Cranky
+PERILOUS|Very dangerous
+PERMANENT|Lasting forever
+PERSISTENT|Refusing to give up
+PESKY|Annoying
+PETITE|Small and slim
+PETTY|Trivial
+PLACID|Calm
+PLAUSIBLE|Seeming likely
+PLAYFUL|Fun-loving
+PLEASANT|Nice
+PLENTIFUL|In great supply
+PLUMP|Pleasantly round
+POLISHED|Smooth from rubbing
+POMPOUS|Self-important
+PORTABLE|Easy to carry
+POSH|Fancy
+POTENT|Very powerful
+PRACTICAL|Useful and sensible
+PRECARIOUS|Dangerously unsteady
+PRECIOUS|Of great value
+PRECISE|Exactly right
+PREDICTABLE|Easy to see coming
+PREPOSTEROUS|Ridiculous
+PRESTIGIOUS|Having high status
+PRICKLY|Covered with sharp points
+PRIMARY|Main
+PRIMITIVE|Very simple or crude
+PROMINENT|Important and well known
+PROMPT|On time
+PROSPEROUS|Wealthy and successful
+PROUD|Pleased with an achievement
+PRUDENT|Wisely careful
+PUNY|Small and weak
+PURE|Not mixed with anything
+QUAINT|Charmingly old-fashioned
+QUEASY|Feeling sick
+QUIRKY|Odd in a likable way
+RADIANT|Shining brightly
+RAGGED|Torn and frayed
+RAMBUNCTIOUS|Wild and unruly
+RAMPANT|Spreading out of control
+RANCID|Smelling of spoiled fat
+RANDOM|Happening by chance
+RAPID|Very fast
+RARE|Hard to find
+RASH|Acting without thinking
+RASPY|Harsh and grating
+RAVENOUS|Starving
+REALISTIC|True to life
+RECKLESS|Careless about danger
+REGAL|Royal
+REGULAR|Happening at fixed times
+RELIABLE|Trustworthy
+RELUCTANT|Unwilling
+REMARKABLE|Unusual and worthy of notice
+REMOTE|Far from anything
+RENOWNED|Well known and praised
+RESILIENT|Able to bounce back
+RESOURCEFUL|Good at finding ways to solve problems
+RESPECTFUL|Showing honor to others
+RESPONSIBLE|Answerable for something
+RESTLESS|Unable to stay still
+RIGID|Stiff
+RICKETY|Likely to fall apart
+ROBUST|Strong and healthy
+ROTUND|Round in shape
+ROWDY|Noisy and rough
+ROYAL|Of a king or queen
+RUGGED|Rough and uneven
+RURAL|In the countryside
+RUSTIC|Simple and country-style
+RUTHLESS|Having no pity
+SANITARY|Clean and germ-free
+SARCASTIC|Mocking with cutting remarks
+SAVAGE|Fierce and wild
+SCARCE|In short supply
+SCENIC|Having beautiful views
+SCRAWNY|Thin and bony
+SCRUFFY|Messy and shabby
+SEASONAL|Happening at a certain time of year
+SECLUDED|Hidden away from people
+SECURE|Safe
+SEDATE|Calm and dignified
+SELFISH|Thinking only of yourself
+SERENE|Peaceful
+SEVERE|Very bad
+SHABBY|Worn out
+SHALLOW|Not deep
+SHEEPISH|Embarrassed
+SHEER|Very thin and see-through
+SHREWD|Sharp in judgment
+SHRILL|High-pitched and piercing
+SHY|Timid around people
+SIGNIFICANT|Important
+SIMPLE|Easy
+SINCERE|Honest and meant
+SKEPTICAL|Doubting
+SKILLFUL|Very good at something
+SLEEK|Smooth and shiny
+SLENDER|Slim
+SLIPPERY|Hard to grip
+SLOPPY|Messy
+SLUGGISH|Slow-moving
+SMUG|Too pleased with yourself
+SNUG|Tight and comfortable
+SOBER|Serious
+SOLAR|Of the sun
+SOLEMN|Serious and dignified
+SOLID|Firm
+SOOTHING|Calming
+SOPHISTICATED|Worldly and refined
+SPARSE|Thinly scattered
+SPACIOUS|Roomy
+SPECTACULAR|Stunning to see
+SPEECHLESS|Unable to talk from shock
+SPICY|Hot in flavor
+SPITEFUL|Wanting to annoy or hurt
+SPLENDID|Excellent
+SPONTANEOUS|Happening without planning
+SPOTLESS|Perfectly clean
+SPRIGHTLY|Lively, especially for an old person
+STAGNANT|Not flowing
+STATELY|Grand and dignified
+STEADFAST|Firm and unwavering
+STEALTHY|Moving quietly and secretly
+STEEP|Sharply sloped
+STERILE|Free of germs
+STERN|Strict
+STICKY|Gluey
+STINGY|Unwilling to spend
+STRAIGHTFORWARD|Honest and direct
+STRENUOUS|Requiring great effort
+STRICT|Demanding that rules be obeyed
+STRIKING|Very noticeable
+STUBBORN|Unwilling to change
+STUDIOUS|Devoted to reading and learning
+STURDY|Strongly built
+STYLISH|Fashionable
+SUBTLE|Not obvious
+SUCCESSFUL|Achieving your goals
+SUFFICIENT|Enough
+SULLEN|Silent and bad-tempered
+SULTRY|Hot and humid
+SUPERB|First-rate
+SUPERIOR|Better
+SUPPLE|Easily bent
+SUPREME|Highest in rank
+SURLY|Rude and unfriendly
+SUSPICIOUS|Distrustful
+SWIFT|Fast
+SYMPATHETIC|Showing that you care
+TACTFUL|Careful not to offend
+TALKATIVE|Fond of chatting
+TAME|Not wild
+TANGY|Sharp in taste
+TARDY|Late
+TART|Sour
+TATTERED|Old and torn
+TAUT|Pulled tight
+TEDIOUS|Long and boring
+TEMPORARY|Lasting a short time
+TENDER|Soft and gentle
+TENSE|Stretched tight
+TEPID|Lukewarm
+TERRIFIC|Very good
+THOUGHTFUL|Kind and caring
+THRIFTY|Good at saving money
+THUNDEROUS|Very loud
+TIDY|Neat
+TIMID|Easily frightened
+TIRESOME|Annoying
+TOXIC|Poisonous
+TRAGIC|Very sad
+TRANQUIL|Calm and quiet
+TRANSPARENT|See-through
+TREACHEROUS|Likely to betray
+TREMENDOUS|Very great
+TRENDY|In style
+TRIM|Neat and slim
+TRIVIAL|Unimportant
+TROPICAL|Hot and humid, as near the equator
+TRUSTY|Dependable
+TYPICAL|Normal for its kind
+ULTIMATE|Final
+UNCANNY|Strange and eerie
+UNEASY|Worried
+UNEVEN|Not level
+UNIQUE|One of a kind
+UNIVERSAL|Applying to everyone
+UNKEMPT|Messy
+UNRULY|Hard to control
+UNSTABLE|Likely to fall
+UPRIGHT|Standing straight
+URBAN|Of a city
+URGENT|Needing immediate action
+VACANT|Empty
+VAGUE|Not clear
+VAIN|Too proud of your looks
+VALIANT|Brave
+VALID|Based on truth
+VALUABLE|Worth a lot
+VAST|Extremely wide
+VIBRANT|Bright and lively
+VICIOUS|Violently cruel
+VICTORIOUS|Having won
+VIGILANT|Keeping careful watch
+VIGOROUS|Strong and active
+VISIBLE|Able to be seen
+VITAL|Essential to life
+VIVACIOUS|Lively and attractive
+VIVID|Bright and clear
+VOCAL|Outspoken
+VOLATILE|Likely to change suddenly
+VOLUNTARY|Done by choice
+VORACIOUS|Very hungry
+VULNERABLE|Open to harm
+WARY|On your guard
+WEARY|Very tired
+WHIMSICAL|Playfully odd
+WHOLESOME|Good for your health
+WICKED|Evil
+WILY|Full of clever tricks
+WIRY|Lean and tough
+WISTFUL|Sadly longing
+WITTY|Clever and funny
+WOBBLY|Shaky
+WOEFUL|Full of sorrow
+WONDROUS|Amazing
+WORTHY|Deserving respect
+WRETCHED|Very unhappy
+YEARLY|Happening once every 365 days
+ZANY|Amusingly crazy
+ZEALOUS|Full of passion for a cause`},hard:{n:`ABERRATION|A departure from what is normal
+ABEYANCE|A state of temporary suspension
+ACOLYTE|A devoted follower or assistant
+ACUMEN|Keen insight in practical matters
+ADVERSARY|An enemy or opponent
+AFFIDAVIT|A sworn written statement
+ALACRITY|Brisk, cheerful readiness
+ALCHEMY|The medieval pursuit of turning lead into gold
+ALLEGORY|A story with a hidden moral meaning
+AMBIGUITY|Uncertainty of meaning
+AMBROSIA|The food of the Greek gods
+AMNESTY|An official pardon for a group
+ANATHEMA|Something intensely disliked
+ANIMOSITY|Strong hostility
+ANTAGONIST|The main opponent of a story's hero
+ANTIPATHY|A deep-seated dislike
+ANTITHESIS|The direct opposite
+APHORISM|A pithy observation of a general truth
+APOTHEOSIS|The highest point of glory
+APPARITION|A ghostly figure
+APPELLATION|A name or title
+AQUEDUCT|A channel built to carry water over a valley
+ARBITER|A person who settles a dispute
+ARCHETYPE|An original model or typical example
+ARMISTICE|An agreement to stop a war
+ASSEMBLAGE|A gathering of people or things
+ATTRITION|Gradual wearing down
+AUTONOMY|The right to govern yourself
+AVARICE|Extreme greed for wealth
+AVERSION|A strong feeling of dislike
+BASTION|A strongly defended place
+BEHEMOTH|A huge creature
+BIBLIOPHILE|A person who loves books
+BLANDISHMENT|Flattery meant to persuade
+BONHOMIE|Cheerful friendliness
+BRAVADO|A show of boldness meant to impress
+BREVITY|Shortness of speech or time
+BUREAUCRACY|Government by many officials and rigid rules
+CABAL|A secret group of plotters
+CACOPHONY|A harsh mixture of sounds
+CADENCE|The rhythm of a voice
+CALAMITY|A terrible event
+CAMARADERIE|Trust among friends
+CANDOR|Open honesty
+CARTOGRAPHER|A person who makes maps
+CATALYST|Something that speeds up a change
+CATHARSIS|Release of strong emotions
+CAVEAT|A warning
+CHARLATAN|A person who falsely claims expertise
+CHICANERY|Clever trickery
+CHIMERA|A wild, impossible dream
+CLAIRVOYANT|A person who claims to see the future
+CLEMENCY|Mercy shown by a judge
+CODICIL|An added section of a will
+COGNOSCENTI|People well informed about a subject
+COLLOQUIALISM|An informal word or phrase
+COMMISERATION|Shared sympathy
+COMPENDIUM|A concise collection of information
+CONJECTURE|An opinion based on incomplete facts
+CONNOISSEUR|An expert judge of fine things
+CONSORTIUM|An association of companies
+CONUNDRUM|A difficult problem
+COTERIE|A small, exclusive circle of friends
+CRESCENDO|A gradual increase in loudness
+CRITERION|A standard for judging
+CURMUDGEON|A bad-tempered old person
+DEBACLE|A sudden, humiliating failure
+DECORUM|Proper, dignified behavior
+DELUGE|A great flood
+DEMEANOR|Outward behavior
+DENIZEN|An inhabitant of a place
+DENOUEMENT|The final part of a story
+DESPOT|A ruler with total power
+DETRITUS|Loose waste and debris
+DIATRIBE|A long, angry verbal attack
+DICHOTOMY|A division into two contrasting parts
+DILEMMA|A hard choice between two options
+DIRGE|A mournful funeral song
+DISCREPANCY|A difference between things that should match
+DISPARITY|A great difference
+DOPPELGANGER|An exact double of a living person
+DOSSIER|A collection of papers on a person
+DOYEN|The most respected older member of a group
+EBULLIENCE|Bubbly joy
+EFFIGY|A rough model of a person
+ELEGY|A sad poem for the dead
+EMISSARY|A person sent on a diplomatic mission
+EMPATHY|The ability to share others' feelings
+ENCOMIUM|A speech of high praise
+ENIGMA|A person or thing hard to understand
+ENNUI|Listless boredom
+ENTOURAGE|A group of attendants around an important person
+ENTREPRENEUR|A person who starts a business
+EPHEMERA|Items of short-lived use or interest
+EPICURE|A lover of fine food and drink
+EPIPHANY|A sudden moment of insight
+EPITHET|A descriptive nickname
+EPITOME|A perfect example
+EQUILIBRIUM|A state of balance
+EQUINOX|The day when night and day are equally long
+ERUDITION|Deep learning from books
+EULOGY|A speech praising someone who has died
+EUPHEMISM|A mild word used in place of a harsh one
+EUPHORIA|A feeling of intense happiness
+EXIGENCY|An urgent need
+EXODUS|A mass departure
+FACADE|The front of a building
+FACSIMILE|An exact copy
+FALLACY|A mistaken belief
+FARRAGO|A confused mixture
+FIASCO|A complete, embarrassing failure
+FIDUCIARY|A person trusted to manage another's money
+FILIBUSTER|A long speech to delay a Senate vote
+FLOTILLA|A small fleet of ships
+FOIBLE|A minor weakness of character
+FORBEARANCE|Patient self-control
+FORTITUDE|Courage in the face of pain
+FRACAS|A noisy quarrel
+GAMBIT|An opening move that risks something to gain an advantage
+GAMUT|The complete range
+GAUNTLET|A strong protective glove
+GERRYMANDER|A voting district drawn to favor a party
+GOURMAND|A person who loves to eat
+GUILE|Sly cunning
+HEGEMONY|Dominance of one nation over others
+HERESY|A belief against official church teaching
+HIERARCHY|A ranking of levels of power
+HUBRIS|Excessive pride
+HYPERBOLE|Deliberate exaggeration
+ICONOCLAST|A person who attacks cherished ideas
+IDIOSYNCRASY|A strange personal habit
+IDYLL|A peaceful, happy scene
+IMPASSE|A deadlock
+IMPETUS|A driving force
+IMPRESARIO|A manager of concerts or operas
+INCUMBENT|The current holder of an office
+INDICTMENT|A formal charge of a serious crime
+INERTIA|Resistance to change or motion
+INFRASTRUCTURE|The basic systems of a country, such as roads
+INGENUE|An innocent young woman in a play
+INNUENDO|An indirect hint, usually unkind
+INSURGENT|A rebel fighting a government
+INTEGRITY|Honesty and strong moral principles
+INTERLOCUTOR|A person taking part in a conversation
+INTERMEZZO|A short musical piece between acts
+INVENTORY|A complete list of goods in stock
+INVECTIVE|Abusive language
+JARGON|Special words used by one profession
+JEREMIAD|A long, mournful complaint
+JUGGERNAUT|A massive, unstoppable force
+JUNTA|A military group that rules after a coup
+KALEIDOSCOPE|A tube of mirrors showing changing patterns
+LACUNA|A blank space or missing part
+LAMPOON|A piece of writing that ridicules someone
+LARGESSE|Generosity in giving money
+LASSITUDE|Physical or mental weariness
+LEGERDEMAIN|Skillful sleight of hand
+LEITMOTIF|A recurring musical theme
+LEVIATHAN|A sea monster
+LEXICON|The vocabulary of a language
+LIBRETTO|The text of an opera
+LITANY|A long, repetitive list
+LODESTAR|A guiding principle
+LOGISTICS|The detailed organization of an operation
+MACHINATION|A crafty plot
+MAELSTROM|A powerful whirlpool
+MAGNATE|A wealthy, powerful businessperson
+MALADY|An illness
+MALAISE|A vague feeling of unease
+MALAPROPISM|Comic misuse of a word
+MANTRA|A word repeated during meditation
+MAVERICK|An independent-minded nonconformist
+MAXIM|A short statement of a general truth
+MEMENTO|An object kept as a reminder
+MENTOR|A wise, trusted guide
+METAMORPHOSIS|A complete change of form
+METAPHOR|A figure of speech calling one thing another
+MICROCOSM|A small world that reflects a bigger one
+MILIEU|A person's social surroundings
+MINUTIAE|Small, trifling details
+MISCREANT|A wrongdoer
+MISNOMER|A wrong or inaccurate name
+MODICUM|A small amount
+MONOLITH|A single huge stone
+MONOLOGUE|A long speech by one actor
+MORATORIUM|A temporary ban
+MORES|The customs of a society
+MOTIF|A recurring decorative theme
+MYRIAD|A countless number
+NADIR|The lowest point
+NEMESIS|A long-standing enemy
+NEOLOGISM|A newly coined word
+NEOPHYTE|A beginner
+NEXUS|A connection or central link
+NIHILIST|A person who believes in nothing
+NOSTRUM|A questionable remedy
+NUANCE|A subtle difference in meaning
+OBLIVION|The state of being forgotten
+OLIGARCHY|Rule by a small group
+OMBUDSMAN|An official who investigates complaints
+OMEN|A sign of something to come
+ONOMATOPOEIA|A word that sounds like what it names
+OPPROBRIUM|Public disgrace
+ORACLE|A person who gives wise advice from the gods
+ORDINANCE|A local law
+OXYMORON|A phrase that joins two opposite words
+PALADIN|A heroic champion
+PALINDROME|A word that reads the same backward
+PANACEA|A cure for all ills
+PANACHE|Stylish flair
+PANDEMONIUM|Wild, noisy chaos
+PANEGYRIC|A public speech of praise
+PANTHEON|All the gods of a people
+PARADIGM|A typical example or pattern
+PARADOX|A statement that seems to contradict itself
+PARAGON|A model of excellence
+PARAMETER|A limit that defines a range
+PARIAH|An outcast
+PARITY|Equality
+PARODY|A funny imitation
+PARSIMONY|Extreme stinginess
+PASTICHE|A work imitating another's style
+PATHOS|A quality that arouses pity
+PATINA|A green film on old bronze
+PATRIARCH|The male head of a family
+PATRONAGE|Support given by a wealthy backer
+PAUCITY|A scarcity
+PEDAGOGUE|A strict teacher
+PEDIGREE|A record of ancestors
+PENCHANT|A strong liking
+PENUMBRA|The lighter edge of a shadow
+PERORATION|The closing part of a speech
+PERSPICACITY|Clear-sighted understanding
+PHILANTHROPIST|A person who gives money to good causes
+PHILISTINE|A person hostile to art and culture
+PHOENIX|A mythical bird reborn from ashes
+PINNACLE|The highest point
+PITTANCE|A very small amount of money
+PLACEBO|A fake pill given in a test
+PLAGIARISM|Passing off another's writing as your own
+PLATITUDE|A tired, overused remark
+PLETHORA|An excess
+POLYGLOT|A person who speaks many languages
+PRECEDENT|An earlier event used as an example
+PRECIPICE|A very steep cliff
+PREDECESSOR|A person who held a job before you
+PREMONITION|A strong feeling that something is going to happen
+PREROGATIVE|An exclusive right
+PROCLIVITY|A natural tendency
+PRODIGY|A young person with exceptional talent
+PROLETARIAT|The working class
+PROPAGANDA|Biased information meant to spread a view
+PROTAGONIST|The main character of a story
+PROTEGE|A person guided by an older expert
+PROTOCOL|A formal set of rules
+PROVENANCE|The record of where something came from
+PROXY|A person authorized to act for another
+PSEUDONYM|A false name used by an author
+PURVIEW|The range of someone's authority
+QUAGMIRE|A soft, muddy bog
+QUANDARY|A state of being unsure what to do
+QUARANTINE|Isolation to prevent spreading disease
+QUIBBLE|A petty objection
+QUINTESSENCE|The purest form of something
+QUORUM|The minimum number of members for a meeting
+RACONTEUR|A skilled storyteller
+RAMIFICATION|A consequence of an action
+RANCOR|Long-lasting bitterness
+RAPPORT|A friendly bond
+RAPPROCHEMENT|A return to friendly relations
+RECLUSE|A person who avoids others
+RECONNAISSANCE|Military observation of an area
+RECOMPENSE|Payment for loss
+RECTITUDE|Moral uprightness
+REFERENDUM|A direct public vote
+REGIMEN|A set plan of diet and exercise
+REMUNERATION|Pay for work done
+RENDEZVOUS|A meeting at a set time and place
+RENAISSANCE|A rebirth of art and learning
+REPARTEE|Quick, witty conversation
+REPERTOIRE|All the pieces a performer knows
+REQUIEM|A mass for the dead
+RESPITE|A short rest from something hard
+RETINUE|A group of attendants
+REVERIE|A daydream
+RHETORIC|The art of persuasive speaking
+RIGMAROLE|A long, complicated procedure
+SABOTAGE|Deliberate damage to hurt an enemy
+SACRILEGE|Disrespect toward holy things
+SAGACITY|Wisdom
+SALUTATION|A greeting
+SANCTUARY|A place of safety
+SANGFROID|Coolness under pressure
+SARCOPHAGUS|A stone coffin
+SAVANT|A learned person
+SCHADENFREUDE|Pleasure at another's misfortune
+SCINTILLA|A tiny trace
+SCION|A descendant of a notable family
+SCOURGE|A cause of great suffering
+SCRUPLE|A moral doubt
+SEMBLANCE|An outward appearance
+SERENDIPITY|Finding something good by accident
+SINECURE|A paid job with little work
+SKIRMISH|A short fight
+SOBRIQUET|A nickname
+SOLACE|Comfort in sadness
+SOLILOQUY|A speech given alone on stage
+SOPHISTRY|Clever but false reasoning
+SOVEREIGN|A supreme ruler
+SPECTER|A ghost
+SPECTRUM|The band of colors in a rainbow
+STALEMATE|A contest that neither side can win
+STATESMAN|A wise and respected political leader
+STIGMA|A mark of shame
+STIPEND|A fixed regular payment
+STOICISM|Enduring hardship without complaining
+STRATAGEM|A clever plan to trick an enemy
+SUBTERFUGE|A trick to hide your purpose
+SUCCOR|Help in a time of need
+SUFFRAGE|The right to vote
+SURFEIT|Too much of something
+SURROGATE|A substitute
+SYMBIOSIS|Living together for mutual benefit
+SYNDICATE|A group of companies working together
+SYNOPSIS|A brief summary
+TABLEAU|A striking scene
+TALISMAN|A lucky object
+TAUTOLOGY|Saying the same thing twice in different words
+TENET|A central belief
+TENURE|Holding a job for a long time
+TERMINUS|The end of a railway line
+THESPIAN|An actor
+TIRADE|A long, angry speech
+TOME|A large, heavy book
+TRIBULATION|Great trouble
+TREPIDATION|Fear of what might happen
+TRAJECTORY|The path of a moving object
+TRAVESTY|A ridiculous imitation
+TRIUMVIRATE|A group of three in power
+ULTIMATUM|A final demand
+UMBRAGE|Offense or annoyance
+UTOPIA|An imaginary perfect place
+VAGARY|An unexpected change
+VALEDICTORIAN|The top student who speaks at graduation
+VANGUARD|The leading position in a movement
+VENDETTA|A long, bitter feud
+VENEER|A thin decorative layer
+VERNACULAR|The everyday language of a region
+VESTIGE|A trace of something gone
+VIGNETTE|A brief, charming scene
+VIRTUOSO|A person with masterly skill in music
+VITRIOL|Cruel and bitter criticism
+VORTEX|A whirling mass of air or water
+WANDERLUST|A strong desire to travel
+WHEREWITHAL|The money needed for a purpose
+WHIMSY|Playful, odd humor
+WINDFALL|Money you didn't expect
+ZEITGEIST|The spirit of the times
+ZENITH|The highest point in the sky
+ZEPHYR|A gentle breeze`,v:`ABATE|To become less intense
+ABDICATE|To give up a throne
+ABHOR|To regard with disgust
+ABJURE|To solemnly give up a belief
+ABNEGATE|To renounce or reject
+ABROGATE|To repeal or do away with a law
+ABSCOND|To leave secretly to avoid arrest
+ABSOLVE|To free from blame
+ACCEDE|To agree to a demand
+ACCLIMATE|To become used to new conditions
+ACCOST|To approach and speak to boldly
+ADJUDICATE|To make a formal judgment on a dispute
+ADMONISH|To warn or scold gently
+ADULATE|To praise too much
+ADVOCATE|To publicly support
+AGGRANDIZE|To make seem greater
+AGGRAVATE|To make worse
+ALLEVIATE|To make less severe
+ALLUDE|To refer to indirectly
+AMALGAMATE|To combine into one
+AMELIORATE|To make better
+ANNIHILATE|To destroy completely
+ANNOTATE|To add notes to a text
+APPEASE|To calm by giving in
+APPRISE|To inform
+ARROGATE|To claim without right
+ARTICULATE|To express clearly
+ASCERTAIN|To find out for sure
+ASSUAGE|To make an unpleasant feeling less intense
+ATONE|To make up for a wrong
+ATTENUATE|To weaken or thin out
+AUGMENT|To increase
+AVER|To state positively
+BANTER|To exchange teasing remarks
+BEGUILE|To charm, often deceitfully
+BELABOR|To explain in too much detail
+BELEAGUER|To surround and trouble constantly
+BERATE|To scold angrily and at length
+BESEECH|To beg urgently
+BESMIRCH|To damage someone's reputation
+BEMOAN|To express grief over
+BEQUEATH|To leave in a will
+BIFURCATE|To split into two branches
+BOLSTER|To support or strengthen
+BURGEON|To grow rapidly
+BUTTRESS|To strengthen with a support
+CAJOLE|To coax with flattery
+CAPITULATE|To stop resisting
+CASTIGATE|To scold severely
+CAVORT|To jump around excitedly
+CENSURE|To express formal disapproval
+CHASTISE|To criticize harshly
+COALESCE|To come together as one
+COERCE|To force by threats
+COGITATE|To think deeply
+COLLABORATE|To work jointly on a project
+COMMANDEER|To take for military use
+COMMEMORATE|To honor the memory of
+COMMISERATE|To express sympathy
+CONCEDE|To admit defeat
+CONCILIATE|To stop someone from being angry
+CONDONE|To overlook a wrong
+CONFLATE|To merge two ideas into one
+CONFOUND|To surprise and confuse
+CONJURE|To make appear as if by magic
+CONSECRATE|To make holy
+CONSTRUE|To interpret
+CONTRAVENE|To violate a rule
+CONTRIVE|To cleverly arrange
+CONVENE|To call a group together
+CORROBORATE|To confirm with evidence
+COUNTERMAND|To cancel an order
+CULMINATE|To reach a climax
+CURTAIL|To cut short
+DEBILITATE|To make very weak
+DEBUNK|To expose as false
+DECIMATE|To kill a large part of
+DECRY|To publicly denounce
+DEDUCE|To figure out by reasoning
+DEIGN|To do something you think beneath you
+DELINEATE|To describe precisely
+DELIBERATE|To think over slowly
+DELUDE|To mislead
+DEMUR|To raise objections
+DENIGRATE|To unfairly criticize
+DENOUNCE|To publicly condemn
+DEPLORE|To strongly disapprove of
+DERIDE|To mock
+DESCRY|To catch sight of
+DESECRATE|To treat a holy place with disrespect
+DETER|To discourage from acting
+DIGRESS|To wander off the subject
+DISABUSE|To show that a belief is mistaken
+DISAVOW|To deny any link with
+DISCERN|To recognize with difficulty
+DISCLOSE|To make secret information known
+DISDAIN|To treat as unworthy
+DISPARAGE|To speak of as worthless
+DISSEMINATE|To spread widely
+DISSUADE|To talk out of an action
+DIVULGE|To reveal a secret
+DUPE|To fool
+EDIFY|To improve morally or mentally
+EFFACE|To wipe out
+ELICIT|To draw out a response
+ELUCIDATE|To make clear
+EMANCIPATE|To set free from slavery
+EMBELLISH|To add decorative details
+EMBEZZLE|To steal money trusted to you
+EMULATE|To imitate in order to match
+ENCROACH|To gradually intrude
+ENERVATE|To drain of energy
+ENGENDER|To give rise to
+ENTHRALL|To captivate
+ENTREAT|To ask earnestly
+ENUMERATE|To list one by one
+ENUNCIATE|To pronounce clearly
+ERADICATE|To get rid of completely
+ESPOUSE|To support a cause
+EXCORIATE|To denounce harshly
+EXCULPATE|To clear of blame
+EXACERBATE|To make a bad situation worse
+EXASPERATE|To annoy intensely
+EXECRATE|To detest and curse
+EXHORT|To strongly urge
+EXONERATE|To officially clear of a charge
+EXPEDITE|To speed up
+EXPIATE|To make amends
+EXPLICATE|To explain in detail
+EXPOUND|To explain at length
+EXPUNGE|To erase from a record
+EXTOL|To praise highly
+EXTRAPOLATE|To estimate by extending known facts
+EXTRICATE|To free from a difficulty
+EXUDE|To give off
+FACILITATE|To make easier
+FATHOM|To understand deeply
+FERMENT|To turn sugar into alcohol
+FEIGN|To pretend
+FESTOON|To decorate with garlands
+FILCH|To steal something small
+FLABBERGAST|To astonish
+FLAUNT|To show off
+FLOUT|To openly disobey
+FOMENT|To stir up trouble
+FORAGE|To search for food
+FORESTALL|To prevent by acting first
+FORSWEAR|To give up under oath
+FORTIFY|To strengthen
+FRUSTRATE|To prevent from succeeding
+GALVANIZE|To shock into action
+GARNER|To gather
+GERMINATE|To begin to grow from a seed
+GESTICULATE|To wave your arms when talking
+GLEAN|To gather bit by bit
+GLOAT|To be cruelly pleased at another's loss
+GORGE|To eat greedily
+GROVEL|To act humbly to win favor
+HAMSTRING|To cripple the efforts of
+HARANGUE|To lecture at length in an angry way
+HARASS|To annoy repeatedly
+HECTOR|To bully
+HOODWINK|To trick
+IMPEDE|To get in the way of
+IMPEL|To drive forward
+IMPINGE|To have an effect
+IMPLICATE|To show someone's involved in a crime
+IMPLORE|To beg desperately
+IMPUGN|To call into question
+INCAPACITATE|To make unable to act
+INCARCERATE|To put in prison
+INCITE|To stir up
+INCULCATE|To teach by repeating
+INDOCTRINATE|To teach a biased belief
+INDUCE|To bring about
+INFER|To conclude from evidence
+INFILTRATE|To secretly enter a group
+INGRATIATE|To work to win someone's favor
+INHIBIT|To hold back
+INSTIGATE|To start something
+INSINUATE|To hint at something unpleasant
+INTERJECT|To throw in a remark
+INTERROGATE|To question closely
+INTIMATE|To suggest indirectly
+INUNDATE|To flood
+INURE|To harden to something unpleasant
+IRK|To irritate
+JETTISON|To throw overboard
+KOWTOW|To act too submissive
+LACERATE|To cut or tear deeply
+LAMBASTE|To criticize harshly
+LAMENT|To express sorrow
+LANGUISH|To grow weak
+LIONIZE|To treat as a celebrity
+LIQUIDATE|To sell off to pay debts
+LOATHE|To feel intense dislike for
+LOLLYGAG|To fool around
+MALIGN|To speak badly of
+MALINGER|To pretend to be sick to skip work
+MANIPULATE|To control in a clever, unfair way
+MASTICATE|To chew
+MELD|To blend
+MILITATE|To work against
+MITIGATE|To make less harsh
+MOLLIFY|To soften someone's anger
+MOLLYCODDLE|To treat too protectively
+MONOPOLIZE|To keep all to yourself
+MORTIFY|To embarrass deeply
+MUSTER|To gather troops
+NULLIFY|To make legally void
+OBSTRUCT|To block
+OPINE|To state what you think
+ORCHESTRATE|To arrange carefully behind the scenes
+OSCILLATE|To swing back and forth
+OVERHAUL|To take apart and repair
+OVERWHELM|To defeat by greater force
+PALLIATE|To ease without curing
+PANDER|To cater to low tastes
+PARLAY|To turn a small gain into something bigger
+PARLEY|To talk terms with an enemy
+PARRY|To ward off a blow
+PERMEATE|To spread throughout
+PERPETRATE|To commit a crime
+PERPETUATE|To make last indefinitely
+PERPLEX|To completely baffle
+PERSEVERE|To continue despite difficulty
+PERVADE|To be present throughout
+PILFER|To steal in small amounts
+PILLAGE|To rob violently in wartime
+PLACATE|To calm an angry person
+PLAGIARIZE|To copy and pass off as your own
+PONTIFICATE|To talk in a pompous way
+PORTEND|To be a warning of
+POSTULATE|To assume as a basis for reasoning
+PRECIPITATE|To bring about suddenly
+PRECLUDE|To make impossible
+PREDOMINATE|To be the strongest
+PREVARICATE|To dodge telling the truth
+PROCURE|To obtain with care
+PROMULGATE|To make known publicly
+PROPAGATE|To spread and multiply
+PROSCRIBE|To forbid
+PROTRACT|To drag out
+PURLOIN|To steal
+PURPORT|To claim to be
+QUASH|To put an end to
+QUELL|To put down a riot
+RATIFY|To officially approve
+RATIONALIZE|To explain away
+RAZE|To tear down completely
+REBUFF|To reject bluntly
+REBUKE|To sharply scold
+REBUT|To prove false
+RECANT|To take back something said
+RECOIL|To jump back in shock
+RECONCILE|To make friendly again
+RECOUNT|To tell a story
+RECTIFY|To put right
+RECUPERATE|To get better after an illness
+REDRESS|To set right a wrong
+REFUTE|To prove wrong
+REGALE|To entertain with stories
+REIMBURSE|To pay back
+REITERATE|To say again
+RELEGATE|To send to a lower rank
+RELINQUISH|To give up
+REMONSTRATE|To protest forcefully
+RENEGE|To go back on a promise
+RENOUNCE|To formally give up
+REPATRIATE|To send back to your home country
+REPUDIATE|To reject completely
+RESCIND|To cancel officially
+RESONATE|To echo
+RESURRECT|To bring back from the dead
+REVERBERATE|To echo repeatedly
+REVILE|To abuse verbally
+RIDICULE|To make fun of
+RUE|To bitterly regret
+RUMINATE|To think deeply and at length
+SANCTION|To approve officially
+SATIATE|To fill beyond any more desire
+SCAPEGOAT|To unfairly blame
+SCRUTINIZE|To examine very closely
+SKULK|To hide in a cowardly way
+SLAKE|To satisfy thirst
+SOLICIT|To ask for money
+STULTIFY|To make dull
+STYMIE|To block or thwart
+SUBJUGATE|To bring under control
+SUBSUME|To include in a larger group
+SUBVERT|To undermine authority
+SUCCUMB|To give in
+SUPERSEDE|To take the place of
+SUPPLANT|To replace by force
+SURMISE|To guess
+SURMOUNT|To overcome an obstacle
+SUSTAIN|To keep up over time
+SWINDLE|To cheat out of money
+TANTALIZE|To tease with something out of reach
+TEMPORIZE|To stall for time
+TERMINATE|To bring to an end
+THWART|To stop a plan from working
+TRANSCEND|To go beyond
+TRANSGRESS|To break a moral rule
+TRAVERSE|To cross a wide area
+TRUNCATE|To shorten by cutting
+UNDERMINE|To secretly weaken
+UNDERSCORE|To emphasize
+USURP|To seize power by force
+VACILLATE|To waver between choices
+VALIDATE|To prove sound
+VANQUISH|To thoroughly defeat
+VAUNT|To brag about
+VENERATE|To regard with great respect
+VEX|To irritate
+VILIFY|To speak about with abuse
+VINDICATE|To clear of suspicion
+WAIVE|To give up a right
+WANE|To grow smaller, like the moon
+WAVER|To hesitate
+WHEEDLE|To coax by flattery
+WIELD|To handle a weapon
+WRANGLE|To argue noisily
+WREAK|To cause damage
+WRITHE|To squirm in pain
+YOKE|To join two oxen`,a:`ABJECT|Utterly hopeless and miserable
+ACERBIC|Sharp and biting in tone
+ADAMANT|Refusing to be persuaded
+ADROIT|Skillful and clever with hands or mind
+AFFABLE|Easy to talk to and good-natured
+ALTRUISTIC|Unselfishly concerned for others
+AMBIVALENT|Having mixed feelings
+AMENABLE|Willing to go along
+AMORPHOUS|Without a clear shape
+ANACHRONISTIC|Out of its proper time
+ANALOGOUS|Similar in some respect
+ANOMALOUS|Departing from what is normal
+APATHETIC|Showing no interest or concern
+APOCRYPHAL|Of doubtful truth
+APOPLECTIC|Overcome with rage
+ARCANE|Known only to a few
+ARDENT|Burning with enthusiasm
+ARDUOUS|Very hard and tiring
+ASCETIC|Giving up pleasure for strict self-denial
+ASSIDUOUS|Showing constant, careful effort
+ASTUTE|Quick to size up a situation
+ATAVISTIC|Reverting to something ancestral
+AUDACIOUS|Bold and daring
+AUSPICIOUS|Promising future success
+AUSTERE|Severely plain
+AVARICIOUS|Extremely greedy for wealth
+AXIOMATIC|Self-evidently true
+BELLICOSE|Eager for war
+BENEVOLENT|Kind and wishing to do good
+BENIGN|Harmless and gentle
+BOMBASTIC|Puffed up and showy in speech
+BUCOLIC|Pleasantly rural
+BUMPTIOUS|Annoyingly self-assertive
+BYZANTINE|Excessively complicated
+CACOPHONOUS|Harsh and jarring in sound
+CALLOUS|Unfeeling toward others
+CAPRICIOUS|Given to sudden changes of mood
+CAPTIOUS|Quick to find small faults
+CAUSTIC|Able to burn, or bitingly critical
+CAVALIER|Offhand about serious matters
+CENSORIOUS|Severely critical
+CEREBRAL|Intellectual rather than emotional
+CHIMERICAL|Wildly unrealistic and imaginary
+CHURLISH|Rude and mean-spirited
+CIRCUITOUS|Taking an indirect route
+CLANDESTINE|Done in secret
+COGENT|Clear and convincing
+COLLEGIAL|Respectful among coworkers
+COMPLACENT|Satisfied and unaware of danger
+CONCILIATORY|Trying to make peace
+CONCOMITANT|Naturally going along with something
+CONGENIAL|Pleasantly suited to you
+CONSUMMATE|Showing the highest skill
+CONTEMPTUOUS|Showing open scorn
+CONTENTIOUS|Causing or likely to cause arguments
+CONTRITE|Feeling deep remorse
+CONVIVIAL|Cheerful and fond of company
+CONVOLUTED|Very twisted and hard to follow
+COPIOUS|Produced in great quantity
+CREDULOUS|Too ready to believe
+CRYPTIC|Having a hidden meaning
+CULPABLE|Deserving blame
+CURSORY|Hasty and not thorough
+DAUNTLESS|Fearless
+DEBONAIR|Stylish and charmingly confident
+DECIDUOUS|Shedding leaves every fall
+DEFERENTIAL|Showing polite respect
+DELETERIOUS|Causing harm
+DEMONSTRATIVE|Openly showing feelings
+DEMURE|Reserved and modest
+DERELICT|Abandoned and run-down
+DESULTORY|Lacking a plan or purpose
+DESPONDENT|Downcast and without hope
+DEXTEROUS|Skillful with the hands
+DIAPHANOUS|Light, delicate and nearly see-through
+DIDACTIC|Intended to teach
+DISCONSOLATE|Unable to be cheered up
+DISINGENUOUS|Pretending to know less than you do
+DISPARATE|Very different in kind
+DISPUTATIOUS|Fond of arguing
+DOGMATIC|Laying down opinions as unquestionably true
+DOLOROUS|Full of grief
+DUPLICITOUS|Two-faced and deceitful
+EBULLIENT|Bubbling over with enthusiasm
+EFFICACIOUS|Producing the desired result
+EFFERVESCENT|Fizzy
+EFFUSIVE|Gushing with emotion
+EGREGIOUS|Outstandingly bad
+ELEGIAC|Mournful, as for something lost
+ELUSIVE|Hard to find or catch
+EMPHATIC|Forceful and definite
+ENIGMATIC|Mysterious and puzzling
+EQUANIMOUS|Staying calm under stress
+EQUITABLE|Fair to all sides
+EQUIVOCAL|Open to more than one meaning
+ERUDITE|Having great knowledge from study
+ESOTERIC|Understood by a small inner circle
+EUPHORIC|Intensely happy
+EVANESCENT|Quickly fading from sight
+EXACTING|Making severe demands
+EXEMPLARY|Serving as a model of excellence
+EXIGENT|Needing urgent attention
+EXORBITANT|Far beyond a fair price
+EXPEDIENT|Convenient, if not strictly proper
+EXTEMPORANEOUS|Spoken without preparation
+EXTRANEOUS|Not relevant
+FACETIOUS|Joking at the wrong time
+FACTIOUS|Causing division within a group
+FALLACIOUS|Based on a mistaken belief
+FASTIDIOUS|Very fussy about details
+FATUOUS|Silly and pointless
+FECUND|Very fertile
+FELICITOUS|Well chosen and apt
+FERVENT|Showing strong, intense feeling
+FLAGRANT|Openly and obviously bad
+FLAMBOYANT|Showy and colorful
+FLORID|Red-faced, or overly fancy in style
+FORBEARING|Patiently holding back
+FORTHRIGHT|Direct and outspoken
+FORTUITOUS|Happening by lucky chance
+FRACTIOUS|Irritable and hard to control
+FRAUDULENT|Obtained by trickery
+FULSOME|Excessive in flattery
+FURTIVE|Sneaky, trying not to be noticed
+GERMANE|Relevant to the subject
+GLIB|Smooth-talking but insincere
+GRANDIOSE|Impressive in an overdone way
+GRATUITOUS|Done without good reason
+GREGARIOUS|Fond of company
+GUILELESS|Innocent and without deceit
+HACKNEYED|Overused and stale
+HALCYON|Calm and happily peaceful
+HAPLESS|Unlucky
+HARROWING|Extremely distressing
+HEDONISTIC|Living for pleasure
+HEINOUS|Shockingly evil
+HERETICAL|Going against accepted religious beliefs
+HETEROGENEOUS|Made up of unlike parts
+HISTRIONIC|Overly theatrical
+HOMOGENEOUS|All of the same kind
+ICONOCLASTIC|Attacking cherished beliefs
+IDIOSYNCRATIC|Peculiar to one person
+IDYLLIC|Charmingly peaceful and picturesque
+IGNOMINIOUS|Publicly shameful
+ILLUSTRIOUS|Highly distinguished
+IMMUTABLE|Unable to be changed
+IMPASSIVE|Showing no emotion
+IMPERTINENT|Rude to someone in charge
+IMPERTURBABLE|Unable to be upset
+IMPERVIOUS|Not letting anything through
+IMPLACABLE|Unable to be calmed
+IMPLAUSIBLE|Hard to believe
+IMPORTUNATE|Annoyingly persistent
+IMPUDENT|Cheeky and disrespectful
+INADVERTENT|Not done on purpose
+INANE|Empty and silly
+INCESSANT|Continuing without a pause
+INCHOATE|Just begun and not fully formed
+INCISIVE|Sharp and direct in thinking
+INCONGRUOUS|Out of place
+INCORRIGIBLE|Unable to be reformed
+INDEFATIGABLE|Never getting tired
+INDELIBLE|Unable to be removed
+INDIGENOUS|Native to a place
+INDOLENT|Wanting to avoid activity
+INEPT|Lacking skill
+INEXORABLE|Impossible to stop
+INGENUOUS|Innocent and unsuspecting
+INIMICAL|Unfriendly or harmful
+INNOCUOUS|Not harmful or offensive
+INSCRUTABLE|Impossible to figure out
+INSIDIOUS|Gradually and secretly harmful
+INSIPID|Lacking flavor
+INTREPID|Fearless in the face of danger
+INVETERATE|Having a long-standing habit
+IRASCIBLE|Easily angered
+IRREVERENT|Lacking proper respect
+ITINERANT|Traveling from place to place
+JOCULAR|Fond of joking
+JUDICIOUS|Showing good judgment
+KINETIC|Relating to motion
+LABYRINTHINE|Twisting like a maze
+LACONIC|Using very few words
+LACKADAISICAL|Lacking enthusiasm
+LAMBENT|Softly flickering
+LANGUID|Slow and relaxed
+LAUDABLE|Worthy of praise
+LISSOME|Slim and graceful
+LITIGIOUS|Quick to go to court
+LOQUACIOUS|Very talkative
+MALEVOLENT|Wishing evil on others
+MALLEABLE|Easily shaped
+MAUDLIN|Weepy and overly sentimental
+MELLIFLUOUS|Sweet and smooth to the ear
+MIRTHFUL|Full of laughter
+MISANTHROPIC|Disliking humankind
+MORDANT|Sharply sarcastic
+MORIBUND|Close to dying
+MOROSE|Sullen and gloomy
+MULTIFARIOUS|Of many different kinds
+MUNDANE|Dull and everyday
+MUNIFICENT|Lavishly generous
+MYOPIC|Nearsighted
+NASCENT|Just coming into being
+NEBULOUS|Hazy and unclear
+NEFARIOUS|Wicked and criminal
+NEGLIGENT|Failing to take proper care
+NONCHALANT|Coolly unconcerned
+NOSTALGIC|Longing for the past
+NOXIOUS|Poisonous or very unpleasant
+OBLIQUE|Slanted or indirect
+OBLIVIOUS|Totally unaware
+OBTUSE|Slow to understand
+ODIOUS|Extremely unpleasant
+OFFICIOUS|Offering unwanted help or advice
+ONEROUS|Heavy and burdensome
+PALATABLE|Pleasant to taste
+PALPABLE|So strong it can be felt
+PANORAMIC|Giving a wide view
+PARAMOUNT|Most important of all
+PAROCHIAL|Narrow in outlook
+PEDANTIC|Overly concerned with fine points of learning
+PEDESTRIAN|Dull and uninspired
+PELLUCID|Crystal clear
+PENSIVE|Deep in serious thought
+PENURIOUS|Extremely poor
+PERCEPTIVE|Showing keen insight
+PEREMPTORY|Commanding and expecting no argument
+PETULANT|Childishly sulky
+PHLEGMATIC|Calm and hard to excite
+PITHY|Short and full of meaning
+PLATITUDINOUS|Full of tired remarks
+PLAINTIVE|Sounding sad
+PLENTEOUS|Abundantly supplied
+POIGNANT|Deeply touching
+POLEMICAL|Strongly attacking an opinion
+PONDEROUS|Slow and heavy
+PORTENTOUS|Giving a sign of something momentous
+PRAGMATIC|Dealing with things in a realistic way
+PRECIPITOUS|Dangerously steep
+PRECOCIOUS|Unusually advanced for one's age
+PREDATORY|Living by hunting
+PRESCIENT|Able to see what's coming
+PRESUMPTUOUS|Overstepping what is proper
+PRETENTIOUS|Trying to seem more important than you are
+PRETERNATURAL|Beyond what is normal
+PRISTINE|Unspoiled
+PRODIGAL|Wastefully extravagant
+PRODIGIOUS|Enormous and impressive
+PROFLIGATE|Recklessly wasteful
+PROFOUND|Very deep in meaning
+PROLIFIC|Producing many works
+PROTEAN|Able to change form easily
+PROVINCIAL|Unsophisticated
+PROVOCATIVE|Causing a strong reaction
+PUERILE|Childishly silly
+PUGNACIOUS|Eager to fight
+PUNCTILIOUS|Careful about etiquette
+PUNGENT|Having a sharply strong smell
+QUIXOTIC|Foolishly idealistic
+QUOTIDIAN|Happening every day
+RANCOROUS|Characterized by long-lasting bitterness
+RAPACIOUS|Greedy and grasping
+RAUCOUS|Loud and harsh
+RECONDITE|Little known and obscure
+REDOLENT|Strongly reminiscent
+REDOUBTABLE|Causing fear or awe
+REFRACTORY|Hard to manage
+RELENTLESS|Never easing up
+REMISS|Careless about your duty
+REPUGNANT|Causing strong dislike
+RESOLUTE|Firmly decided
+RESPLENDENT|Dazzling in appearance
+RETICENT|Reluctant to share thoughts
+REVERENT|Showing deep respect
+RUBICUND|Having a healthy red color
+SACROSANCT|Too important to be changed
+SAGACIOUS|Wise with sharp judgment
+SALIENT|Most noticeable
+SARDONIC|Grimly mocking
+SATURNINE|Slow and gloomy
+SCRUPULOUS|Careful about doing what is right
+SCURRILOUS|Making scandalous claims
+SEDENTARY|Spending much time sitting
+SEDULOUS|Diligent and persevering
+SENTENTIOUS|Given to moralizing
+SINUOUS|Curving and winding
+SONOROUS|Deep and full in sound
+SOPORIFIC|Causing sleepiness
+SPECIOUS|Seeming true but actually false
+SPURIOUS|Fake
+STENTORIAN|Very loud and powerful, of a voice
+STOIC|Enduring pain without complaint
+STRIDENT|Loud and harsh
+STUPENDOUS|Astonishingly great
+SUBSERVIENT|Too willing to obey
+SUCCINCT|Briefly and clearly expressed
+SUMPTUOUS|Splendid and costly
+SUPERCILIOUS|Coolly disdainful
+SUPERFLUOUS|More than is needed
+SURREPTITIOUS|Done by stealth
+SYBARITIC|Devoted to luxury
+SYCOPHANTIC|Flattering to gain favor
+TACITURN|Saying little
+TANGENTIAL|Only slightly related
+TANTAMOUNT|Equal in effect
+TEMPERATE|Mild in climate
+TENACIOUS|Holding on firmly
+TENDENTIOUS|Promoting a particular cause
+TENUOUS|Very weak or slight
+TIMOROUS|Showing nervousness or fear
+TORPID|Mentally or physically inactive
+TORTUOUS|Full of twists and turns
+TRACTABLE|Easily controlled
+TRANSCENDENT|Going beyond ordinary limits
+TRANSIENT|Passing quickly
+TRENCHANT|Vigorously effective
+TRITE|Worn out by overuse
+TUMULTUOUS|Loud and confused
+TURGID|Swollen
+ULTERIOR|Hidden beyond what is stated
+UNASSAILABLE|Unable to be attacked
+UNCTUOUS|Oily and insincere
+UNEQUIVOCAL|Leaving no doubt
+UNFLAPPABLE|Staying calm in a crisis
+UNWIELDY|Hard to handle because of its size
+URBANE|Polished and courteous
+USURIOUS|Charging very high interest
+UTILITARIAN|Designed to be useful
+VACUOUS|Having no thought or intelligence
+VAINGLORIOUS|Excessively boastful
+VAPID|Dull and flat
+VARIEGATED|Marked with patches of different colors
+VEHEMENT|Showing strong feeling
+VENAL|Open to bribery
+VENERABLE|Respected because of age
+VERACIOUS|Truthful
+VERBOSE|Using too many words
+VERDANT|Green with grass or plants
+VERITABLE|Being truly so
+VERNAL|Of the spring
+VEXATIOUS|Causing annoyance
+VICARIOUS|Felt through another person's experience
+VINDICTIVE|Eager for revenge
+VIRULENT|Extremely poisonous
+VISCOUS|Thick and sticky
+VITRIOLIC|Filled with bitter criticism
+VITUPERATIVE|Bitter and abusive
+VOCIFEROUS|Shouting out loud
+VOLUBLE|Speaking easily and at length
+VOLUMINOUS|Very large or roomy
+WINSOME|Attractive in an innocent way
+WIZENED|Shriveled with age`}};
 const parseG=t=>t.split('\n').map(l=>l.split(';').map(p=>p.split('|')));
 const NORMAL_N=parseG(GROUPS_TXT).length,GROUPS=parseG(GROUPS_TXT).concat(parseG(HARD_TXT)),HARD_FROM=7; // GROUPS[NORMAL_N..] are hard
 const isHard=i=>i>=HARD_FROM;
@@ -443,25 +3466,76 @@ function toast(t){const e=$('toast');e.textContent=t;e.classList.add('on');clear
 function rng(seed){let a=seed>>>0;return()=>{a=(a+0x6D2B79F5)>>>0;let t=a;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
 function shuffle(arr,r){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
 
-/* ---------- Puzzle for a day. Groups are dealt from a shuffled deck, 10 a day, so no group repeats until the deck runs out;
-   then a new shuffle. Each round: g = group, a = answer index in the group, o = order the 4 choices are shown. ---------- */
-function deckOrder(cycle){const ids=[];for(let i=0;i<NORMAL_N;i++)ids.push(i);return shuffle(ids,rng(9001+cycle*7919))}
-function puzzleFor(n){
+/* ---------- Puzzle for a day. A round: w = the 4 [word, definition] pairs, a = answer index in w, o = order the 4 choices are shown.
+   Before CUTOVER: the original deal (legacyPuzzle), frozen so played days and their Archive stay exactly as they were.
+   From CUTOVER on: cards are dealt in order from a reshuffled deck, so every card comes up before any repeats. A card is one of the
+   original look-alike groups or one word from NEW_WORDS. A card can't be dealt while any of its words was shown within GAP days;
+   it waits in a hold pile and goes first when it's free. ---------- */
+const CUTOVER='2026-11-15',GAP=60;
+function legacyPuzzle(n){
   /* 7 normal words from the normal deck, then 3 from the hard deck; each deck reshuffles when it runs out. */
   const r=rng(n*104729+17),out=[];
   const deal=(lo,hi,count,salt)=>{const ids=[];for(let i=lo;i<hi;i++)ids.push(i);const per=Math.floor(ids.length/count),k=n-1,cycle=Math.floor(k/per),slot=k%per;
     const deck=shuffle(ids,rng(salt+cycle*7919));return deck.slice(slot*count,slot*count+count)};
-  deal(0,NORMAL_N,HARD_FROM,9001).concat(deal(NORMAL_N,GROUPS.length,ROUNDS-HARD_FROM,4242)).forEach(g=>out.push({g,a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)}));
+  deal(0,NORMAL_N,HARD_FROM,9001).concat(deal(NORMAL_N,GROUPS.length,ROUNDS-HARD_FROM,4242)).forEach(g=>out.push({g,w:GROUPS[g],a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)}));
   return out;
 }
-function puzzleV1(n){
-  const per=Math.floor(NORMAL_N/ROUNDS),cycle=Math.floor((n-1)/per),slot=(n-1)%per,deck=deckOrder(cycle),r=rng(n*104729+17);
-  const rounds=[];for(let i=0;i<ROUNDS;i++){const g=deck[slot*ROUNDS+i];rounds.push({g,a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)})}
-  return rounds;
+/* The bank: WORDS[i] = {w,d,p,t}. Card c < GROUPS.length is a group; otherwise it is word c - GROUPS.length. */
+const WORDS=[];const TIER_CARDS=[[],[]];
+GROUPS.forEach((_,g)=>TIER_CARDS[g<NORMAL_N?0:1].push(g));
+['normal','hard'].forEach((k,t)=>['n','v','a'].forEach(p=>NEW_WORDS[k][p].split('\n').forEach(l=>{const b=l.indexOf('|');
+  TIER_CARDS[t].push(GROUPS.length+WORDS.length);WORDS.push({w:l.slice(0,b),d:l.slice(b+1),p,t})})));
+const cardWords=c=>c<GROUPS.length?GROUPS[c].map(x=>x[0]):[WORDS[c-GROUPS.length].w];
+/* The schedule: SCHED[n] = the 10 cards for day n, built forward from CUTOVER. Only cards go in here, so it stays fast for any date. */
+const CUT_N=dnum(CUTOVER),SCHED=[],FLASHED=[];let SEEN=null,DECKS=null;
+function nextCards(D,count,n){
+  const free=c=>cardWords(c).every(w=>!(SEEN[w]>=n-GAP)),take=c=>{cardWords(c).forEach(w=>SEEN[w]=n);out.push(c)},out=[];
+  for(let i=0;i<D.hold.length&&out.length<count;)if(free(D.hold[i]))take(D.hold.splice(i,1)[0]);else i++;
+  while(out.length<count){
+    if(D.i>=D.deck.length){D.cycle++;D.i=0;D.deck=shuffle(TIER_CARDS[D.t].filter(c=>!D.hold.includes(c)),rng(D.salt+D.cycle*7919))}
+    const c=D.deck[D.i++];if(free(c))take(c);else D.hold.push(c)}
+  return out}
+function buildTo(n){
+  if(!SEEN){SEEN={};for(let d=1;d<CUT_N;d++)legacyPuzzle(d).forEach(R=>cardWords(R.g).forEach(w=>SEEN[w]=d));
+    DECKS=[0,1].map(t=>({t,salt:t?61813:31337,cycle:-1,i:0,deck:[],hold:[]}))}
+  for(let d=Math.max(CUT_N,SCHED.length);d<=n;d++){
+    SCHED[d]=nextCards(DECKS[0],HARD_FROM,d).concat(nextCards(DECKS[1],ROUNDS-HARD_FROM,d));
+    FLASHED[d]=SCHED[d].filter(c=>c>=GROUPS.length).map(c=>c-GROUPS.length)}
 }
-function practicePuzzle(){const r=rng((Math.random()*4294967296)>>>0),ids=GROUPS.map((_,i)=>i);
-  const norm=shuffle(ids.slice(0,NORMAL_N),r).slice(0,HARD_FROM),hard=shuffle(ids.slice(NORMAL_N),r).slice(0,ROUNDS-HARD_FROM);
-  return norm.concat(hard).map(g=>({g,a:Math.floor(r()*4),o:shuffle([0,1,2,3],r)}))}
+/* Wrong choices, picked only when a day is actually played (the Archive list needs just the score): same part of speech, spelled most like the word,
+   definition shares no key word with the answer's, no word flashed within GAP days either side of the day, and not used twice in a day. */
+const STOP=new Set('with that from into your have having being something someone person people small large very used made more than their them this what when where like kind place thing things without about long short make often part piece'.split(' '));
+const keys=d=>d.toLowerCase().split(/[^a-z]+/).filter(x=>x.length>3&&!STOP.has(x)).map(x=>x.slice(0,5));
+function lev(a,b){let p=[];for(let j=0;j<=b.length;j++)p[j]=j;
+  for(let i=1;i<=a.length;i++){const c=[i];for(let j=1;j<=b.length;j++)c[j]=Math.min(p[j]+1,c[j-1]+1,p[j-1]+(a[i-1]===b[j-1]?0:1));p=c}return p[b.length]}
+const LOOKS={};
+function lookAlikes(i){ // every same-part-of-speech word, most look-alike first
+  if(LOOKS[i])return LOOKS[i];const W=WORDS[i],sc=[];
+  WORDS.forEach((X,j)=>{if(j===i||X.p!==W.p)return;let pre=0;while(pre<W.w.length&&W.w[pre]===X.w[pre])pre++;
+    sc.push([lev(W.w,X.w)/Math.max(W.w.length,X.w.length)-Math.min(pre,4)*.05+(X.t===W.t?0:.15),j])});
+  return LOOKS[i]=sc.sort((x,y)=>x[0]-y[0]||x[1]-y[1]).map(x=>x[1])}
+function wrongFor(i,blocked,used,r){
+  const k=keys(WORDS[i].d),near=[];
+  for(const j of lookAlikes(i)){if(blocked.has(j)||used.has(j))continue;
+    if(keys(WORDS[j].d).some(x=>k.includes(x)))continue;
+    near.push(j);if(near.length>=8)break}
+  const pick=shuffle(near,r).slice(0,3);pick.forEach(j=>used.add(j));return pick}
+const groupOf=(i,wrong)=>[i].concat(wrong).map(j=>[WORDS[j].w,WORDS[j].d]);
+const DAYW={};
+function dayWrongs(n){
+  if(DAYW[n])return DAYW[n];buildTo(n+GAP);const blocked=new Set(),used=new Set();
+  for(let d=Math.max(CUT_N,n-GAP);d<=n+GAP;d++)FLASHED[d].forEach(i=>blocked.add(i));
+  return DAYW[n]=SCHED[n].map((c,x)=>c<GROUPS.length?null:groupOf(c-GROUPS.length,wrongFor(c-GROUPS.length,blocked,used,rng(n*48271+x))))}
+const PUZ={};
+function puzzleFor(n){
+  if(n<CUT_N)return legacyPuzzle(n);if(PUZ[n])return PUZ[n];buildTo(n);
+  const r=rng(n*104729+17);
+  return PUZ[n]=SCHED[n].map((c,x)=>{const a=Math.floor(r()*4),o=shuffle([0,1,2,3],r);
+    return c<GROUPS.length?{g:c,w:GROUPS[c],a,o}:{g:-1,get w(){return dayWrongs(n)[x]},a:0,o}})}
+function practicePuzzle(){const r=rng((Math.random()*4294967296)>>>0),used=new Set(),none=new Set();
+  const cards=shuffle(TIER_CARDS[0],r).slice(0,HARD_FROM).concat(shuffle(TIER_CARDS[1],r).slice(0,ROUNDS-HARD_FROM));
+  return cards.map(c=>{const o=shuffle([0,1,2,3],r);if(c<GROUPS.length)return {g:c,w:GROUPS[c],a:Math.floor(r()*4),o};
+    const i=c-GROUPS.length;return {g:-1,w:groupOf(i,wrongFor(i,none,used,r)),a:0,o}})}
 
 /* ---------- Game state. One saved record per day: r = round you're on, seen = this round's word has flashed,
    pick = choice index per round (or -1), done = game over. Saved the moment the word flashes, so a reload can't show it again. ---------- */
@@ -472,7 +3546,7 @@ function load(d){PRAC=false;DATE=d;PAST=d!==today();PZ=puzzleFor(dnum(d));G=stor
 function startPractice(){if(preview())return showPlus();HOME=false;PRAC=true;PAST=false;PZ=practicePuzzle();G=blank();draw()}
 function save(){if(!PRAC)store.put(keyOf(DATE),G)}
 const right=(g,i)=>g.pick[i]!=null&&g.pick[i]===PZ[i].a;
-const word=i=>GROUPS[PZ[i].g][PZ[i].a][0];
+const word=i=>PZ[i].w[PZ[i].a][0];
 
 /* ---------- Drawing ---------- */
 function drawTop(){
@@ -494,7 +3568,7 @@ function drawInner(){
   drawTop();
   if(G.done){drawResult();return}
   if(preview()&&!PRAC&&G.r>=PREVIEW_N){drawLock();return}
-  const i=G.r,R=PZ[i],grp=GROUPS[R.g],picked=G.pick[i]!=null;
+  const i=G.r,R=PZ[i],grp=R.w,picked=G.pick[i]!=null;
   let win;
   if(picked){const ok=right(G,i);win=`<div class="rev" style="${fsz(word(i).length)}">${cap(word(i))}</div>`}
   else if(G.seen)win=`<div class="gone">The word is gone. Which one was it?</div>`;
@@ -529,9 +3603,9 @@ async function flash(){
   if(busy||G.seen||G.done)return;busy=true;
   const i=G.r,w=word(i),win=$('win'),btn=$('flashBtn');if(btn){btn.disabled=true;btn.style.visibility='hidden'}
   G.seen=true;G.dl=0;if(!G.spd)G.spd=curSpeed();save();
-  const ml=Math.max(...GROUPS[PZ[i].g].map(x=>x[0].length)),mask=`<div class="mask" style="${fsz(ml)}">${'<i></i>'.repeat(ml)}</div>`; // solid blocks before and after, as long as the group's longest word so they don't give away the length
+  const ml=Math.max(...PZ[i].w.map(x=>x[0].length)),mask=`<div class="mask" style="${fsz(ml)}">${'<i></i>'.repeat(ml)}</div>`; // solid blocks before and after, as long as the group's longest word so they don't give away the length
   win.innerHTML=mask;await waitMs(650);
-  sfx('blink');win.innerHTML=`<div class="wd" style="${fsz(Math.max(...GROUPS[PZ[i].g].map(x=>x[0].length)))}">${w}</div>`;
+  sfx('blink');win.innerHTML=`<div class="wd" style="${fsz(ml)}">${w}</div>`;
   await new Promise(r=>requestAnimationFrame(()=>r()));await waitMs(spd(i));
   win.innerHTML=mask;
   await waitMs(300);
@@ -570,7 +3644,7 @@ function drawResult(){
   ${moreGames()}`;
   $('resDaily').onclick=goDaily;
   $('wordsHd').textContent=(PRAC||PAST?'The':'Today’s')+' words';
-  $('wordsBody').innerHTML=`${PZ.map((R,i)=>{const g=GROUPS[R.g],ok=right(G,i),p=G.pick[i];
+  $('wordsBody').innerHTML=`${PZ.map((R,i)=>{const g=R.w,ok=right(G,i),p=G.pick[i];
     return `<div class="wl ${ok?'w':'l'}"><span class="ms">${secs(spd(i))}</span><b>${cap(g[R.a][0])}</b>${!ok&&p!=null?` <span style="font:700 12px var(--sans);color:var(--red)">${p===-1?'time ran out':'you picked '+cap(g[p][0])}</span>`:''}<div>${g[R.a][1]}.</div></div>`}).join('')}`;
   $('wordsBtn').onclick=()=>only('sWords');
   if($('shareBtn'))$('shareBtn').onclick=share;

@@ -6,7 +6,7 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 - Source: index.html (single file, no build). Owner page: owner.html (Google sign-in, jgold51@gmail.com).
 - Daily: 10 words a day, day 1 = Nov 2, 2026. Each word flashes once, faster each round: 0.35, 0.3, 0.25, 0.21, 0.18, 0.15, 0.13, then the Hard words 0.32, 0.28, 0.24 sec (SPEED, since v1.5). Solid blocks (as many as the longest word in the group) show first (0.65 sec), then the word, then the blocks again (0.3 sec) so it can't linger.
-- Choices: GROUPS_TXT has 100 groups of 4 look-alike words (BRAKE/BREAK/BRAVE/BAKER), each with a definition. Each day deals 10 groups from a seeded shuffled deck (no repeats for 10 days, then a new shuffle) and picks one word per group as the answer. Add groups to make the cycle longer (keep a multiple of 10).
+- Choices: through Nov 14, GROUPS_TXT (100 look-alike groups) and HARD_TXT (40) deal as they always did. From Nov 15 (CUTOVER) see v2.12: those 140 groups plus the 3,024 words in NEW_WORDS, with wrong choices picked by the game. Do not add, remove or reorder words without a new, later cutover (see v2.12).
 - Saved per day in localStorage bw-day-YYYY-MM-DD; the flash is saved as "seen" before it shows, so a reload can't replay it.
 - Practice (menu and results screen): 10 random groups, not saved or counted.
 - Usage: collection bw_devices in aislerun-88e79 (game code bw). Fields: first, last, days, v, opens, plays, done, perfect, streak, best, terms, desk, t, o (opens per ET day), h (words right 0-10 per ET day). Website copy only (smaisle.app / github.io), after tapping Play on How to Play.
@@ -75,3 +75,11 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 ## v2.10 (Nov 3)
 - Menu standard (Jeff): the menu now matches Straight Down Spell. Top to bottom: Menu, Back to game (new), then the two-column grid, Home Screen and ‹ smAisle Daily side by side, Settings, version.
 - The ⭐ Plus row shows only in the preview and opens the Plus sheet. Plus players and the plain website don't see it.
+
+## v2.12 (Nov 4)
+- More words, no quick returns (Jeff). NEW_WORDS adds 3,024 words with original definitions: 1,982 normal, 1,042 hard, split by noun, verb and adjective. Page goes from 93 KB to 200 KB (36 KB to 83 KB gzipped).
+- Days before CUTOVER (Nov 15, 2026, No. 14) use legacyPuzzle, the old deal unchanged, so played days and the Archive stay the same. From No. 14 on, each tier deals from a seeded deck of cards (one card = one old group or one new word), so everything comes up once before any repeats (about 10 months).
+- Rule: a word can't return within 60 days (GAP). A card waits in a hold pile while any of its words was shown in the last 60 days; for an old group that means all 4 words. Days 1-13 count too.
+- Wrong choices for new words are automatic (wrongFor): same part of speech, spelled most like the word, definition shares no key word with the answer's, not flashed within 60 days either side of the day, not used twice in a day. A wrong choice can repeat within 60 days as a wrong choice.
+- To add words later: pick a new, later cutover. Changing NEW_WORDS order or size changes every day from CUTOVER on, including days already played. Fixing a definition's wording is fine.
+- Practice deals from all cards.
