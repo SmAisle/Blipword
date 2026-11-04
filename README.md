@@ -78,3 +78,6 @@ Jeff's idea (Nov 2, 2026): a word flashes on the screen quickly, then you get 4 
 
 ## v2.12 (Nov 4)
 - One demo for every game (change list #30): Try it with a coach. The old looping demo in How to Play is gone. "Try the demo" is in How to Play and on the home screen. Three real moves (Flash, pick the meaning, Next word) on a practice word with the clock off, using the shared demo frame (inlined). Nothing is saved or counted.
+
+## v2.14 (Nov 4)
+After the last word, a yellow ‹ smAisle Daily button sits beside See your result, so one tap always leaves.

@@ -293,7 +293,7 @@ function smDemo(o){
 </script>
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.13',VDATE='Nov 4',GAME='bw';
+const VERSION='2.14',VDATE='Nov 4',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -3615,10 +3615,10 @@ function drawInner(){
       const cls=picked?(k===R.a?'right':k===G.pick[i]?'wrong':'dim'):'';
       return `<button class="opt ${cls}" data-k="${k}"${picked?' disabled':''}><span class="n">${n+1}</span><span class="d">${grp[k][1]}.</span>${picked?`<span class="w">${grp[k][0]}</span>`:''}</button>`}).join('')}</div>`
     :`${(i===0&&!G.pick.length)||PRAC?spdSegHtml():''}<button class="go" id="flashBtn">Flash ${SPEEDS[curSpeed()].icon}</button><div class="small">${PRAC?'Practice: tap a number at the top to jump to that word.':PAST?'Archive game: it won’t change your streak.':'Each word flashes only once. Eyes on the box.'}</div>`}
-  ${picked?`<button class="go hi" id="nextBtn">${preview()&&!PRAC&&i+1>=PREVIEW_N?'Continue ›':i+1<ROUNDS?'Next word ›':'See your result ›'}</button>`:''}`;
+  ${picked?(preview()&&!PRAC&&i+1>=PREVIEW_N||i+1<ROUNDS?`<button class="go hi" id="nextBtn">${i+1<ROUNDS&&!(preview()&&!PRAC&&i+1>=PREVIEW_N)?'Next word ›':'Continue ›'}</button>`:`<div class="two"><button class="go hi" id="nextBtn" style="white-space:nowrap;font-size:13px;letter-spacing:.04em">See your result ›</button><button class="go hi" id="endDaily" style="text-transform:none">‹ smAisle Daily</button></div>`):''}`;
   if(!G.seen){$('flashBtn').onclick=flash;$('win').onclick=flash}
   else if(!picked)document.querySelectorAll('.opt').forEach(b=>b.onclick=()=>choose(+b.dataset.k));
-  if(picked)$('nextBtn').onclick=next;
+  if(picked)$('nextBtn').onclick=next;if($('endDaily'))$('endDaily').onclick=goDaily;
   if(G.seen&&!picked&&!PRAC)runTimer();
 }
 
