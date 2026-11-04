@@ -6,6 +6,7 @@
 var dark=m==='on'||(m==='auto'&&window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches);
 if(dark)document.documentElement.setAttribute('data-mode','navy')})();</script>
 <meta charset="utf-8">
+<script>/* one Sound setting for every smAisle game */(function(){try{var s=localStorage.getItem('smaisle-sound');if(s==='on'||s==='off')localStorage.setItem('bw-sound',s)}catch(e){}})();</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, user-scalable=no">
 <title>Blipword</title>
 <meta name="description" content="A daily word game. A word flashes on the screen for a split second. Pick its definition from four look-alikes.">
@@ -256,7 +257,7 @@ body.home #top,body.home #pips,body.home #pastTag{display:none!important}
 
 <script>
 /* ---------- Version (bump on every change; keep the Claude link and GitHub copies the same) ---------- */
-const VERSION='2.10',VDATE='Nov 3',GAME='bw';
+const VERSION='2.11',VDATE='Nov 4',GAME='bw';
 
 /* ---------- Look-alike groups. Each line is 4 words that look alike, WORD|definition.
    Each day picks 10 groups and one word from each as the answer; the other 3 definitions are the wrong choices. ---------- */
@@ -759,5 +760,7 @@ function moreGames(){return `<div class="more"><div class="mh">More smAisle game
 dmApply();sndApply();spdSegApply();load(today());HOME=true;draw();
 if(!agreed())only('sHelp');else checkIn('open');
 </script>
+<script>/* sound icon at the top right of the menu; it and Settings stay in step */
+(function(){var K='bw-sound',C='#sndSeg',m=document.querySelector('#sMenu');if(!m)return;var c=m.querySelector('.card,.sc,.box2')||m,x=c.querySelector('.x,[data-close]'),b=document.createElement('button');b.type='button';b.id='smSnd';b.setAttribute('style','position:absolute;top:9px;right:'+(x?'51px':'9px')+';width:38px;height:34px;padding:0;display:grid;place-items:center;background:var(--card,#fffdf6);color:var(--ink,#1a1814);border:2px solid var(--ink,#1a1814);border-radius:4px;z-index:3;cursor:pointer;touch-action:manipulation');if(getComputedStyle(c).position==='static')c.style.position='relative';c.appendChild(b);function on(){var v='on';try{v=(localStorage.getItem(K)||'on').replace(/"/g,'')}catch(e){}return v!=='off'}function draw(){var o=on();b.setAttribute('aria-label',o?'Turn sound off':'Turn sound on');b.innerHTML='<svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9.5v5h3.5l5 4v-13l-5 4z" fill="currentColor"/>'+(o?'<path d="M16 9a4.2 4.2 0 0 1 0 6"/><path d="M18.6 6.5a8 8 0 0 1 0 11"/>':'<path d="M16.5 9.5l5 5M21.5 9.5l-5 5"/>')+'</svg>'}function share(){try{localStorage.setItem('smaisle-sound',on()?'on':'off')}catch(e){}}b.onclick=function(e){e.stopPropagation();var v=on()?'off':'on';var b=document.querySelector(C+' button[data-s="'+v+'"]');if(b)b.click();draw();share()};document.addEventListener('click',function(e){var t=e.target.closest&&e.target.closest(C);setTimeout(function(){if(t)share();draw()},0)},true);draw()})();</script>
 </body>
 </html>
